@@ -1,0 +1,193 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AI Reader</title>
+        <style>
+            
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    color: #2d3748;
+    margin: 0;
+    padding: 20px;
+    background: #f7fafc;
+}
+
+.digest {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.header h2 {
+    margin: 0;
+    color: #2d3748;
+}
+
+.header p {
+    margin: 0.5rem 0 0;
+    color: #718096;
+}
+
+.highlights {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+    border: 1px solid #e2e8f0;
+}
+
+.highlights h3 {
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+}
+
+.summary {
+    white-space: pre-line;
+    line-height: 1.6;
+}
+
+.summary ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.summary li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+}
+
+.papers {
+    margin-top: 3rem;
+}
+
+.papers h3 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.paper {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.paper:last-child {
+    border-bottom: none;
+}
+
+.paper h3 {
+    margin: 0 0 0.5rem;
+    color: #2d3748;
+}
+
+.paper .scores {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.paper .score {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.paper .relevance {
+    background: #e6fffa;
+    color: #047481;
+}
+
+.paper .importance {
+    background: #ebf4ff;
+    color: #1a56db;
+}
+
+.paper .abstract {
+    color: #4a5568;
+    margin: 0.5rem 0;
+}
+
+.paper .meta {
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.paper .meta a {
+    color: #4299e1;
+    text-decoration: none;
+}
+
+.paper .meta a:hover {
+    text-decoration: underline;
+}
+
+        </style>
+    </head>
+    <body>
+        
+<div class="digest">
+    <div class="header">
+        <h2>AI Reader</h2>
+        <p>Found 2 relevant papers out of 200 new submissions</p>
+    </div>
+    
+    <div class="highlights">
+        <h3>🔥 Key Highlights</h3>
+        Hey boss, found 2 cool papers today that I think you'll love:
+<ol>
+<li><strong>A Systematic Taxonomy of Security Vulnerabilities in the OpenClaw AI Agent Framework</strong>: The authors built a systematic taxonomy of 190 advisories against the OpenClaw agent runtime and show that per-layer trust enforcement enables cross-layer exploit chains — including a composed unauthenticated RCE path — plus concrete failures in the exec allowlist parsing and plugin distribution. With an average score of 8.5/10 (Relevance 9/10, Importance 8/10), the practical takeaway is that agent frameworks are a distinct multi-layer attack surface: we should run focused threat modeling and pentests on our gateway/node-host components, replace brittle lexical allowlists with unified policy boundaries, and add runtime enforcement for plugin/skill distribution (paper: http://arxiv.org/abs/2603.27517v1).</li>
+<li><strong>Conditional Factuality Controlled LLMs with Generalization Certificates via Conformal Sampling</strong>: They propose CFC, a post-hoc conformal framework that returns set-valued outputs with conditional coverage guarantees (via augmented quantile regression + a fixed-point threshold) and a PAC-style variant (CFC-PAC) that gives finite-sample certificates and is provably more sample-efficient than marginal conformal methods. Scored 8.5/10 (Relevance 9/10, Importance 8/10) and empirically showing near-target coverage with smaller prediction sets, this is ready to be prototyped as an inference-time wrapper to control hallucinations and produce certification signals we can fold into SLOs — worth measuring coverage vs. latency on a high-risk QA endpoint (paper: http://arxiv.org/abs/2603.27403v1).</li>
+</ol>
+Let’s run a quick agent-security sweep this week and spin up a 2–3 day CFC prototype on one service to assess fixes and tradeoffs.
+    </div>
+    
+    <div class="papers">
+        <h3>📄 Detailed Papers</h3>
+        
+<div class="paper">
+    <h3>A Systematic Taxonomy of Security Vulnerabilities in the OpenClaw AI Agent Framework</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">AI agent frameworks connecting large language model (LLM) reasoning to host execution surfaces--shell, filesystem, containers, and messaging--introduce security challenges structurally distinct from conventional software. We present a systematic taxonomy of 190 advisories filed against OpenClaw, an open-source AI agent runtime, organized by architectural layer and trust-violation type. Vulnerabilities cluster along two orthogonal axes: (1) the system axis, reflecting the architectural layer (exec policy, gateway, channel, sandbox, browser, plugin, agent/prompt); and (2) the attack axis, reflecting adversarial techniques (identity spoofing, policy bypass, cross-layer composition, prompt injection, supply-chain escalation).   Patch-differential evidence yields three principal findings. First, three Moderate- or High-severity advisories in the Gateway and Node-Host subsystems compose into a complete unauthenticated remote code execution (RCE) path--spanning delivery, exploitation, and command-and-control--from an LLM tool call to the host process. Second, the exec allowlist, the primary command-filtering mechanism, relies on a closed-world assumption that command identity is recoverable via lexical parsing. This is invalidated by shell line continuation, busybox multiplexing, and GNU option abbreviation. Third, a malicious skill distributed via the plugin channel executed a two-stage dropper within the LLM context, bypassing the exec pipeline and demonstrating that the skill distribution surface lacks runtime policy enforcement. The dominant structural weakness is per-layer trust enforcement rather than unified policy boundaries, making cross-layer attacks resilient to local remediation.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2603.27517v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>Conditional Factuality Controlled LLMs with Generalization Certificates via Conformal Sampling</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">Large language models (LLMs) need reliable test-time control of hallucinations. Existing conformal methods for LLMs typically provide only \emph{marginal} guarantees and rely on a single global threshold, which can under-cover hard prompts, over-cover easy ones, and produce oversized prediction sets. We propose \emph{Conditional Factuality Control} (CFC), a post-hoc conformal framework that returns \emph{set-valued} outputs with \emph{conditional} coverage guarantees. CFC defines a continuous, feature-conditional acceptance threshold through augmented quantile regression on a latent ``success'' score, and deploys it through a fixed-point threshold rule at inference time. Theoretically, we show that CFC satisfies a conditional coverage guarantee under exchangeability and analyze its \emph{efficiency}, proving that, under mild assumptions on the score distributions, the conditional rule is strictly more sample-efficient than marginal conformal prediction at the same target coverage. We further derive a PAC-style variant, CFC-PAC, which shrinks the nominal risk level based on a stability bound, yielding a finite-sample certificate that the conditional miscoverage deviates from the target by at most $O(\sqrt{\log(1/δ)/N})$. Empirically, on synthetic data, real-world reasoning and QA benchmarks, and a Flickr8k VLM setting, CFC and CFC-PAC consistently attain near-target coverage across difficulty groups while using smaller prediction sets than CP and non-CP baselines.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2603.27403v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </body>
+    </html>
+    
