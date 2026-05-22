@@ -1,0 +1,193 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AI Reader</title>
+        <style>
+            
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    color: #2d3748;
+    margin: 0;
+    padding: 20px;
+    background: #f7fafc;
+}
+
+.digest {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.header h2 {
+    margin: 0;
+    color: #2d3748;
+}
+
+.header p {
+    margin: 0.5rem 0 0;
+    color: #718096;
+}
+
+.highlights {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+    border: 1px solid #e2e8f0;
+}
+
+.highlights h3 {
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+}
+
+.summary {
+    white-space: pre-line;
+    line-height: 1.6;
+}
+
+.summary ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.summary li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+}
+
+.papers {
+    margin-top: 3rem;
+}
+
+.papers h3 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.paper {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.paper:last-child {
+    border-bottom: none;
+}
+
+.paper h3 {
+    margin: 0 0 0.5rem;
+    color: #2d3748;
+}
+
+.paper .scores {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.paper .score {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.paper .relevance {
+    background: #e6fffa;
+    color: #047481;
+}
+
+.paper .importance {
+    background: #ebf4ff;
+    color: #1a56db;
+}
+
+.paper .abstract {
+    color: #4a5568;
+    margin: 0.5rem 0;
+}
+
+.paper .meta {
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.paper .meta a {
+    color: #4299e1;
+    text-decoration: none;
+}
+
+.paper .meta a:hover {
+    text-decoration: underline;
+}
+
+        </style>
+    </head>
+    <body>
+        
+<div class="digest">
+    <div class="header">
+        <h2>AI Reader</h2>
+        <p>Found 2 relevant papers out of 200 new submissions</p>
+    </div>
+    
+    <div class="highlights">
+        <h3>🔥 Key Highlights</h3>
+        Hey boss, found 2 cool papers today that I think you'll love:
+<ol>
+<li><b>Compiling Agentic Workflows into LLM Weights: Near-Frontier Quality at Two Orders of Magnitude Less Cost</b>. They show you can "compile" orchestrated agent workflows into the weights of small fine-tuned models (a subterranean agent) and get near-frontier quality at ~100x lower runtime cost, empirically tested across travel booking (14 nodes), Zoom support (14 nodes), and an insurance claims flow (55 nodes, 6 decision hubs) — the paper scored 9.0/10 (Relevance 9/10, Importance 9/10). For product teams this means we can avoid per-conversation frontier calls and external orchestration (fixing cost, latency, and data-exposure issues) — next step: pick a 10–20 node workflow we currently orchestrate, run a small compile/fine-tune pilot and an A/B on cost + task accuracy; paper: http://arxiv.org/abs/2605.22502v1.</li>
+<li><b>Echo: Learning from Experience Data via User-Driven Refinement</b>. Echo is a practical pipeline that extracts high-quality training signals from noisy agent interaction logs by harvesting user-driven refinement sequences, and in a production code-completion setting raised acceptance from 25.7% to 35.7% — the paper scored 8.5/10 (Relevance 9/10, Importance 8/10). For engineering teams this is a playbook to continuously close the static data ceiling: instrument edit/refinement captures, distill them into training examples, and iterate — next step: stand up a minimal Echo pipeline on one feature to validate lift and data-efficiency; paper: http://arxiv.org/abs/2605.21984v1.</li>
+</ol>
+Let’s prototype a tiny compiled agent on one high-cost workflow and spin up a mini-Echo pipeline on a single product this week so we have concrete cost/quality numbers by next check-in.
+    </div>
+    
+    <div class="papers">
+        <h3>📄 Detailed Papers</h3>
+        
+<div class="paper">
+    <h3>Compiling Agentic Workflows into LLM Weights: Near-Frontier Quality at Two Orders of Magnitude Less Cost</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 9/10</span>
+    </div>
+    <div class="abstract">Agent orchestration frameworks have proliferated, collectively exceeding 290,000 GitHub stars across LangGraph, CrewAI, Google ADK, OpenAI Agents SDK, Semantic Kernel, Strands, and LlamaIndex. All follow the same pattern: an external orchestrator above the LLM, injecting instructions and routing decisions every turn. Recent work has shown this architecture is dominated for procedural tasks by simply providing the procedure in a frontier model's system prompt [Dennis et al., 2026a], at the cost of consuming the context window, requiring a frontier model for every conversation, and exposing proprietary procedures to third-party providers. Compiling the procedure into the weights of a small fine-tuned model -- creating a subterranean agent -- should resolve all of these concerns, and prior work (SimpleTOD, FireAct, SynTOD, WorkflowLLM, Agent Lumos) has shown the technique works. Yet developer adoption has overwhelmingly favored orchestration. We identify three perceived barriers and address each empirically across travel booking (14 nodes), Zoom support (14 nodes, product-specific knowledge), and insurance claims (55 nodes, 6 decision hubs).</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2605.22502v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>Echo: Learning from Experience Data via User-Driven Refinement</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">Static "human data" faces inherent limitations: it is expensive to scale and bounded by the knowledge of its creators. Continuous learning from "experience data" - interactions between agents and their environments - promises to transcend these barriers. Today, the widespread deployment of AI agents grants us low-cost access to massive streams of such real-world experience. However, raw interaction logs are inherently noisy, filled with trial-and-error and low information density, rendering them inefficient for direct model training.   We introduce Echo, a generalized framework designed to operationalize the transition from raw experience to learnable knowledge, effectively "echoing" environmental feedback back into the training loop for model optimization. In today's agent ecosystem, user refinement serves as a primary source of such feedback: driven by responsibility for the outcome, users rigorously transform flawed agent proposals into verified solutions. These user-driven refinement sequences inherently distill agents' crude attempts into high-quality training signals. Echo systematically harvests these signals to continuously align the agent with real-world needs. Large-scale validation in a production code completion environment confirms that Echo effectively harnesses this pipeline, breaking the static performance ceiling by increasing the acceptance rate from 25.7% to 35.7%.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2605.21984v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </body>
+    </html>
+    
