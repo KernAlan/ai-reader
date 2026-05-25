@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 def openai_completion(
     prompt: str,
     args: 'OpenAIDecodingArguments',
-    model_name: str = "gpt-4",
+    model_name: str = "deepseek/deepseek-v4-pro",
     provider: str = "openai",
     system_prompt: Optional[str] = None
 ) -> str:
@@ -19,6 +19,11 @@ def openai_completion(
         client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     elif provider == "groq":
         client = openai.OpenAI(api_key=os.getenv("GROQ_API_KEY"), base_url="https://api.groq.com/openai/v1")
+    elif provider == "openrouter":
+        client = openai.OpenAI(
+            api_key=os.getenv("OPENROUTER_API_KEY"),
+            base_url="https://openrouter.ai/api/v1",
+        )
     else:
         raise ValueError(f"Unknown provider: {provider}")
 

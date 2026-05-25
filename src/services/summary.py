@@ -74,7 +74,7 @@ class SummaryService:
                     max_tokens=16000,
                     top_p=self.model_config.get("top_p", 1.0)
                 ),
-                model_name=self.model_config.get("summary_name", self.model_config.get("name", "gpt-5-mini")),
+                model_name=self.model_config.get("summary_name", self.model_config.get("name", "deepseek/deepseek-v4-pro")),
                 provider=self.model_config.get("provider", "openai"),
                 system_prompt=self.config.SUMMARY_SYSTEM_PROMPT.strip()
             )

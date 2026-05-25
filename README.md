@@ -34,7 +34,7 @@ Setup
 
 3. Add API keys and Telegram credentials to `.env`:
    ```
-   OPENAI_API_KEY=your_key_here
+   OPENROUTER_API_KEY=your_key_here
    TELEGRAM_BOT_TOKEN=your_bot_token_here
    TELEGRAM_CHAT_ID=your_chat_id_here
    ```
@@ -107,7 +107,7 @@ Papers with an arbitrage score >= 9.0 and GitHub repos with a composite score >=
 ### GitHub Actions
 
 The daily pipeline runs at 1:25 PM UTC. To enable it, add these repository secrets:
-- `OPENAI_API_KEY`
+- `OPENROUTER_API_KEY`
 - `TELEGRAM_BOT_TOKEN`
 - `TELEGRAM_CHAT_ID`
 

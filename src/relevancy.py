@@ -36,7 +36,7 @@ def score_papers(
         response = openai_completion(
             prompt,
             OpenAIDecodingArguments(),
-            model_name=model_config.get("name", "gpt-4"),
+            model_name=model_config.get("name", "deepseek/deepseek-v4-pro"),
             provider=model_config.get("provider", "openai")
         )
         

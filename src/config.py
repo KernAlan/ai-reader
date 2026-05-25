@@ -109,8 +109,8 @@ Papers to evaluate:
 
     # Model Configuration
     MODEL_CONFIG = {
-        "name": "gpt-5-mini",
-        "provider": "openai",
+        "name": "deepseek/deepseek-v4-pro",
+        "provider": "openrouter",
         "papers_per_batch": 8,
         "threshold": 9.0,
         "arbitrage_threshold": 9.0,
@@ -142,31 +142,43 @@ Papers to evaluate:
     """
 
     ARBITRAGE_INTEREST = """
-    I'm Alan Kern. Score papers based on PRACTICAL IMPACT to my work.
+    I'm Alan Kern. Score papers for ARBITRAGE: rare breakthroughs plus near-term business leverage.
 
-    I use LLMs daily for: WRITING (long-form, creative), building products/agents, coding.
+    I use LLMs daily for: WRITING (long-form, creative), building products/agents, coding, and creating AI-powered services/products through Solanus/KernTech.
 
-    BE EXTREMELY CONSERVATIVE. Most papers deserve a 5 or below. A 10 should happen maybe once a month.
+    My practical opportunity surface includes:
+    - Healthcare admin, EHR/API integrations, prior authorization, medical record summarization
+    - Legal-medical document review, chronologies, demand letters, discovery/deposition summaries
+    - Small business workflow automation for local operators, trades, accounting, insurance, and professional services
+    - MSP/agency white-label AI, chat/email/document automation, and business audit products
+    - Agent reliability, orchestration, QA, memory/state, tool use, evaluation, and autonomous delivery workflows
+    - Voice/SMS/email automation, document extraction, writing/ghostwriting/content systems, and API integration templates
+
+    BE EXTREMELY CONSERVATIVE. Most papers deserve a 5 or below. A 10 should happen rarely.
 
     **HOW TO SCORE — default low, only go high with extraordinary evidence:**
 
-    **10** = "Once-in-a-year paradigm shift" — genuinely transforms how AI works at a fundamental level.
-    - Example: Attention mechanism (Transformers paper), RLHF, diffusion models.
-    - NOT incremental improvements, NOT "we beat SOTA by 2%".
+    **10** = "Once-in-a-year arbitrage breakthrough"
+    - Either a fundamental AI paradigm shift, like attention/Transformers, RLHF, diffusion models, or a genuinely new agent/capability pattern
+    - OR a paper that unlocks an obvious, defensible, high-value service/product Alan could deploy quickly with major economic upside
+    - Must be both novel and important; not an incremental benchmark win.
 
-    **9** = "Genuine breakthrough I must adopt immediately or lose competitive ground"
-    - A truly novel architecture or capability that didn't exist before.
-    - Must be immediately actionable, not theoretical.
+    **9** = "Must read/adopt immediately"
+    - A true breakthrough architecture, capability, evaluation method, or workflow that changes how Alan should build AI systems
+    - OR directly enables/improves a Solanus business wedge in the next 30-60 days, especially healthcare/legal/local-business automation
+    - Must be actionable, not merely theoretical.
 
-    **7-8** = "Solid and directly useful to my work"
+    **7-8** = "Solid and directly useful"
+    - Meaningfully improves agent reliability, document processing, retrieval/memory, orchestration, workflow automation, writing systems, or business delivery
+    - Could influence implementation or a service offer, but is not an urgent breakthrough.
 
-    **5-6** = "Interesting but incremental, or only tangentially relevant"
+    **5-6** = "Interesting but incremental"
+    - Useful background, modest improvement, or tangential relevance
+    - May be worth noting, but does not create clear technical or commercial arbitrage.
 
     **1-4** = "Not relevant to my work"
-    - Infrastructure (KV cache, quantization) — I use APIs
-    - Pure SOTA-chasing benchmarks
-    - Training techniques (I don't train)
-    - Incremental improvements to existing methods
+    - Pure SOTA-chasing benchmarks, training-only methods, infra-only speedups, KV cache/quantization details, or academic methods with no near-term deployment path
+    - Incremental improvements without a new capability, reliability gain, or sellable workflow advantage.
 
     DEFAULT SCORE IS 5. Work UP from there only with strong justification.
     If you're unsure between two scores, pick the LOWER one.

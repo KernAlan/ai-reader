@@ -34,6 +34,12 @@ def setup_client(provider="openai"):
             base_url="https://api.groq.com/openai/v1",
             api_key=os.environ.get("GROQ_API_KEY")
         )
+    if provider == "openrouter":
+        return OpenAI(
+            base_url="https://openrouter.ai/api/v1",
+            api_key=os.environ.get("OPENROUTER_API_KEY"),
+            timeout=60.0
+        )
     return OpenAI(
         api_key=os.environ.get("OPENAI_API_KEY"),
         timeout=60.0
