@@ -1,0 +1,228 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AI Reader</title>
+        <style>
+            
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    color: #2d3748;
+    margin: 0;
+    padding: 20px;
+    background: #f7fafc;
+}
+
+.digest {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.header h2 {
+    margin: 0;
+    color: #2d3748;
+}
+
+.header p {
+    margin: 0.5rem 0 0;
+    color: #718096;
+}
+
+.highlights {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+    border: 1px solid #e2e8f0;
+}
+
+.highlights h3 {
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+}
+
+.summary {
+    white-space: pre-line;
+    line-height: 1.6;
+}
+
+.summary ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.summary li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+}
+
+.papers {
+    margin-top: 3rem;
+}
+
+.papers h3 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.paper {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.paper:last-child {
+    border-bottom: none;
+}
+
+.paper h3 {
+    margin: 0 0 0.5rem;
+    color: #2d3748;
+}
+
+.paper .scores {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.paper .score {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.paper .relevance {
+    background: #e6fffa;
+    color: #047481;
+}
+
+.paper .importance {
+    background: #ebf4ff;
+    color: #1a56db;
+}
+
+.paper .abstract {
+    color: #4a5568;
+    margin: 0.5rem 0;
+}
+
+.paper .meta {
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.paper .meta a {
+    color: #4299e1;
+    text-decoration: none;
+}
+
+.paper .meta a:hover {
+    text-decoration: underline;
+}
+
+        </style>
+    </head>
+    <body>
+        
+<div class="digest">
+    <div class="header">
+        <h2>AI Reader</h2>
+        <p>Found 4 relevant papers out of 200 new submissions</p>
+    </div>
+    
+    <div class="highlights">
+        <h3>🔥 Key Highlights</h3>
+        Hey boss, found 4 cool papers today that I think you'll love:
+
+1. **Reverse Probing: Supervised Token-level Uncertainty Quantification for Large Language Models in Clinical Text** (http://arxiv.org/abs/2605.28740v1)  
+They figured out how to pull token-level uncertainty signals straight from the model’s internal activations for clinical summaries, no extra generations needed. This lets us highlight exactly which words are shaky—4x better AUPRC at a fraction of the compute—so we can actually trust LLM outputs in high-stakes healthcare settings.
+
+2. **Better Accuracies, Worse Reasoning: A Step-Level Audit of Medical Chain-of-Thought Distillation** (http://arxiv.org/abs/2605.28301v1)  
+Distillation bumps final answer accuracy on medical QA benchmarks, but a step-by-step audit shows the reasoning traces get *less* factual—error rates nearly double. If we’re ever reusing or showing these traces, we can’t just look at answer scores; we need to audit the steps or risk spreading confident-sounding but wrong rationales.
+
+3. **Do Clinical Models Change Treatment Decisions?** (http://arxiv.org/abs/2605.28129v1)  
+They built a benchmark that tests whether models actually pivot treatment plans when patient context changes, and even top-tier models often fail to adjust correctly, despite strong QA scores. This is a wake-up call: for real-world clinical decision support, we need to test decision sensitivity to context shifts, not just accuracy.
+
+4. **Tool Forge: A Validation-Carrying Toolchain for Governed Agentic Execution** (http://arxiv.org/abs/2605.28000v1)  
+They created a system that turns natural-language intents into sandbox-verified, policy-governed tool capsules, then routes them to agents while slashing context size by 99%. That means enterprise agents calling APIs get a massive reliability and compliance boost with minimal overhead—practically drop-in for any MCP-based setup.
+
+These are all super actionable this week—ClinPivot and Tool Forge especially could shift how we evaluate safety and tool use. Let’s grab coffee and brainstorm how to prototype a few of these.
+    </div>
+    
+    <div class="papers">
+        <h3>📄 Detailed Papers</h3>
+        
+<div class="paper">
+    <h3>Reverse Probing: Supervised Token-level Uncertainty Quantification for Large Language Models in Clinical Text</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 10/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">As large language models are increasingly deployed for clinical text, ensuring they can reliably signal their own uncertainty becomes critical. Most existing uncertainty quantification (UQ) methods are designed for open-domain generation and cannot localize uncertainty at the token or span level in long clinical text. We propose Reverse Probing, the first UQ framework specialized for clinical summarization, which estimates token-level uncertainty directly from pre-existing labeled summaries. Rather than sampling new outputs, Reverse Probing treats the text as a probe into the model's internal state, extracting uncertainty signals from four categories of internal activations. We evaluate on two expert-annotated clinical datasets and outperform eight adapted baselines on all metrics, achieving up to 4 times higher AUPRC while reducing inference time and computational costs. Feature analysis reveals that delta energy and neighborhood context are the most consistent predictors across all models. This study offers interpretable insights into how models internally respond to unsupported clinical content.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2605.28740v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>Better Accuracies, Worse Reasoning: A Step-Level Audit of Medical Chain-of-Thought Distillation</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">Chain-of-thought (CoT) distillation trains a smaller model to imitate a teacher's reasoning trace, but it is typically evaluated by final-answer metrics including accuracy. We ask whether gains in answer quality are accompanied by improvements in the trace. In medical QA, where short answer options can leave a richer clinical justification under-specified, a Qwen3-8B student distilled from a DeepSeek-V3-family teacher improves on MedQA-USMLE answer metrics (SC@64 74.7% to 84.4%; expected calibration error (ECE) 0.096 to 0.034). Yet under a Kimi-K2.6 style-blind LLM-judge audit, its error rate over non-abstained steps rises from 30.6% to 50.3%. In this primary medical setting, answer quality and trace factuality move in opposite directions. This before--after pattern persists across evaluators, teacher strengths, student scales and families, medical benchmarks, and style, segmentation, and answer-correctness controls. A 150-step blinded audit by a clinical expert reproduces the same ordering. Boundary checks narrow the scope of the claim: the risk appears when a compact answer under-constrains the rationale and a capable student can imitate expert-like form without reliably grounding each local claim. Standard answer metrics and aggregate hedging rates do not reveal the shift. When such traces are released or reused, answer-level metrics alone are insufficient.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2605.28301v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>Do Clinical Models Change Treatment Decisions?</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">Clinical foundation models are evaluated with factual or exam-style medical QA, but treatment decisions must change when patient context changes. We introduce ClinPivot, an auditable treatment-decision benchmark built from biomedical relations and pivoted patient contexts. ClinPivot asks whether models change treatment choices when new clinical constraints shift the action space. We find that strong medical QA performance does not reliably predict decision-making performance: frontier models and task-adapted Qwen variants often fail to change decisions correctly, and model rankings shift across evaluation regimes. Decision-structured supervision improves pivot-sensitive decision-making and medical QA under matched knowledge budgets, while lightweight replay reduces losses in general assistant ability.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2605.28129v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>Tool Forge: A Validation-Carrying Toolchain for Governed Agentic Execution</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 7/10</span>
+    </div>
+    <div class="abstract">Large language model agents are increasingly expected to perform operational work: calling APIs, manipulating files, assembling workflows, and acting inside enterprise systems. Yet the tool layer on which this execution depends is still commonly treated as either a hand-written integration artifact or a static list of schemas exposed to a model. This paper introduces Tool Forge, a validation-carrying toolchain for converting natural-language capability intent into governed, sandbox-verified, cataloged tool artifacts and exposing those artifacts to agents through a token-efficient routing layer.   Tool Forge treats a tool as a capsule containing intent, capability contract, implementation, dependency policy, tests, documentation, runtime validation evidence, lifecycle state, credential bindings, and routing metadata. It also introduces a Router that exposes intent-scoped tool sessions instead of loading full catalog schemas into the model context. We describe the system architecture, validation pipeline, MCP-facing routing model, governance controls, and initial reproducible benchmarks from the open-source implementation.   Across 83 Router benchmark cases, Tool Forge Router achieves aggregate micro-F1 of 0.901 while reducing estimated task-flow tool context by 99.2% relative to naive full-catalog schema exposure. In a 25-case end-to-end generation probe over local-tool tasks, Tool Forge generates 25 of 25 tool bundles, reaches micro-F1 of 0.940 against deterministic acceptance checks, and passes 23 of 25 live sandbox validations. These results are presented as an initial systems benchmark, not as a state-of-the-art claim. The paper identifies remaining challenges in adversarial routing, broader API grounding, sandbox isolation, and cross-system evaluation.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2605.28000v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </body>
+    </html>
+    
