@@ -1,0 +1,237 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AI Reader</title>
+        <style>
+            
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    color: #2d3748;
+    margin: 0;
+    padding: 20px;
+    background: #f7fafc;
+}
+
+.digest {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.header h2 {
+    margin: 0;
+    color: #2d3748;
+}
+
+.header p {
+    margin: 0.5rem 0 0;
+    color: #718096;
+}
+
+.highlights {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+    border: 1px solid #e2e8f0;
+}
+
+.highlights h3 {
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+}
+
+.summary {
+    white-space: pre-line;
+    line-height: 1.6;
+}
+
+.summary ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.summary li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+}
+
+.papers {
+    margin-top: 3rem;
+}
+
+.papers h3 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.paper {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.paper:last-child {
+    border-bottom: none;
+}
+
+.paper h3 {
+    margin: 0 0 0.5rem;
+    color: #2d3748;
+}
+
+.paper .scores {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.paper .score {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.paper .relevance {
+    background: #e6fffa;
+    color: #047481;
+}
+
+.paper .importance {
+    background: #ebf4ff;
+    color: #1a56db;
+}
+
+.paper .abstract {
+    color: #4a5568;
+    margin: 0.5rem 0;
+}
+
+.paper .meta {
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.paper .meta a {
+    color: #4299e1;
+    text-decoration: none;
+}
+
+.paper .meta a:hover {
+    text-decoration: underline;
+}
+
+        </style>
+    </head>
+    <body>
+        
+<div class="digest">
+    <div class="header">
+        <h2>AI Reader</h2>
+        <p>Found 5 relevant papers out of 200 new submissions</p>
+    </div>
+    
+    <div class="highlights">
+        <h3>🔥 Key Highlights</h3>
+        Hey boss, found some cool papers today that I think you'll love:
+
+<ol>
+<li><b>Absorbing Complexity: An Interaction-Native Knowledge Harness for Financial LLM Agents</b> – Builds an architecture that silently manages all the messy user, market, and portfolio context, cutting latency by 83%, token cost by 82%, and stale knowledge usage by 96.6% while boosting task quality. For any financial agent we’re tinkering with, this is a plug-in way to make decisions faster, cheaper, and audit-ready without the user doing all the work. (<a href="http://arxiv.org/abs/2606.01886v1">link</a>)</li>
+<li><b>POIROT: Interrogating Agents for Failure Detection in Multi-Agent Systems</b> – Instead of building a separate evaluator, they let the system’s own agents cross-examine each other to catch hallucinations and failures, outperforming centralized baselines and scaling with complexity. Since it’s open-source, we can drop this into our multi‑agent setups to get built‑in safety oversight with zero extra infrastructure. (<a href="http://arxiv.org/abs/2606.02282v1">link</a>)</li>
+<li><b>Post-Deterministic Distributed Systems: A New Foundation for Trustworthy Autonomous Infrastructure</b> – Lays out a blueprint for mixing LLMs, stochastic models, and deterministic code in mission‑critical systems, with pillars like Semantic Quorum Assurance and Epistemic State Replication to keep everything coherent. It’s the missing theoretical and engineering map for safely deploying agentic reasoning in areas like cloud control planes or financial infrastructure. (<a href="http://arxiv.org/abs/2606.01722v1">link</a>)</li>
+<li><b>Hierarchical Online Prompt Mutation with Dual-Loop Feedback for Guardrailed Evidence Document Generation</b> – Treats prompts as online policies that mutate via a router and dual human+auto feedback, improving win rate by 11 pp and quality scores from 3.18 to 4.40 while slashing issue flags. This is a no‑retraining recipe for lifting the quality of any production document‑generation pipeline (legal, financial) and drastically reducing the manual review burden. (<a href="http://arxiv.org/abs/2606.01472v1">link</a>)</li>
+<li><b>AgentRedBench: Dynamic Redteaming and Integration-Aware Defense for LLM Agents over SaaS Integrations</b> – Created a dynamic benchmark of 215 subtle injection attacks across 24 enterprise tool integrations, and backed it with an open‑source guard model that crushes attack success from 69.9% to just 2.4% at 0.37% false‑positive rate. If any of our agents touch Gmail, Salesforce, or Jira responses, we should ship AgentRedGuard tomorrow—it’s a high‑signal, low‑cost safety net. (<a href="http://arxiv.org/abs/2606.02240v1">link</a>)</li>
+</ol>
+
+This week, maybe we can spike on that prompt mutation framework and the tool‑response guard—they both look like quick, high-impact wins we could bake into our current pipelines. Cheers!
+    </div>
+    
+    <div class="papers">
+        <h3>📄 Detailed Papers</h3>
+        
+<div class="paper">
+    <h3>Absorbing Complexity: An Interaction-Native Knowledge Harness for Financial LLM Agents</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 10/10</span>
+        <span class="score importance">Importance: 9/10</span>
+    </div>
+    <div class="abstract">Financial AI agents often fail for a simple reason: they make users carry the complexity. A user must repeatedly restate goals, risk preferences, portfolio context, past judgments, and shifting market assumptions, while the agent answers, retrieves, acts, and forgets. In finance, this is not just inconvenient. In tasks such as market analysis, copy-trading review, and trade preparation, forgotten context and stale memory can create latency, repeated errors, weak auditability, and unsafe decisions.   We propose the interaction-native knowledge harness (InKH), an architecture for financial LLM agents that absorbs complexity into the system. InKH converts user, market, portfolio, and tool events into structured operational knowledge. It uses passive knowledge injection to assemble a bounded working context buffer before the main model step, temporal graph memory for low-latency retrieval, a wiki audit surface for human-readable governance, and background extraction with maturity, decay, and write-time invalidation.   We evaluate InKH on a reproducible controlled synthetic benchmark with 24 random seeds, 4 rounds, 80 episodes per round, and 6 baselines, producing 46,080 baseline-conditioned evaluations. InKH achieves mean task quality of 0.815 at 900 ms latency. Compared with agent-driven wiki-walk memory, it reduces latency by 82.95 percent, token cost by 82.29 percent, and stale-knowledge usage by 96.58 percent, while improving quality by 0.108 and traceability by 0.461. Compared with a temporal-graph system without invalidation, it improves quality by 0.050 and reduces stale-memory usage by 96.58 percent with comparable serving cost.   The results support a design thesis for financial AI: adoption happens when complexity is absorbed by the system rather than transferred to the user. The benchmark validates architecture-level behavior, not live trading performance.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.01886v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>POIROT: Interrogating Agents for Failure Detection in Multi-Agent Systems</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 9/10</span>
+    </div>
+    <div class="abstract">Orchestrating Large Language Models into Multi-Agent Systems (LLM-MAS) has unlocked remarkable reasoning capabilities, yet emergent failures and hallucinations that resist characterisation block their deployment in safety-critical domains -- a gap made legally untenable by emerging AI regulation. Existing evaluation paradigms share a common flaw: centralised judgment creates single points of failure and demands domain-specific expertise. Here we present POIROT, a protocol that repurposes a system's own agents as its diagnostic layer, leveraging the epistemic diversity already present in the architecture. Across evaluated settings, POIROT outperforms single-LLM evaluator baselines, with gains that scale with problem complexity (OR = 1.60, $p = 0.008$), agent count, and fault dimensionality, persisting under compound fault conditions. These results demonstrate that safety oversight need not be externalised: the agents executing a role carry sufficient collective intelligence to audit it. We release POIROT as an open-source library alongside BLAME, a benchmark for fault attribution in safety-critical multi-agent systems.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.02282v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>Post-Deterministic Distributed Systems: A New Foundation for Trustworthy Autonomous Infrastructure</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 9/10</span>
+    </div>
+    <div class="abstract">For decades, distributed systems have typically assumed that correct participants execute protocol-specified behavior with stable, externally defined, and deterministic semantics. Classical theory has extensively parameterized network timing, communication topologies, and failure domains, but this participant model has remained comparatively fixed. The integration of autonomous reasoning engines, stochastic model-driven agents, and policy-driven actors into cloud control planes, incident response systems, and financial infrastructure challenges the universality of this assumption. These agents often produce divergent reasoning paths, distinct operational traces, and heterogeneous internal representations while achieving semantically equivalent and correct outcomes. In this paper, we introduce Post-Deterministic Distributed Systems (PDDS) as a research and engineering model for coordinating heterogeneous environments where deterministic code, stochastic models, and autonomous agents coexist. We show that classical distributed computing models form a zero-ambiguity special case of this participant-general model. We do not argue that deterministic systems disappear; rather, deterministic execution can no longer serve as the universal participant assumption for autonomous infrastructure. Finally, we outline five architectural pillars of post-deterministic infrastructure: Protocol-Driven Development, Verifiable Agentic Infrastructure, Autonomous State Control Planes, Semantic Quorum Assurance, and Epistemic State Replication. Epistemic State Replication extends persistence and consistency models from data visibility to knowledge visibility, enabling agentic memory, Verifiable Semantic Rollback, and coherence across reasoning participants. We also define a taxonomy of failure classes that arise in this setting.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.01722v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>Hierarchical Online Prompt Mutation with Dual-Loop Feedback for Guardrailed Evidence Document Generation: A Production-Evaluation Case Study</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 10/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">High-stakes production document-generation systems require language models to be adaptive, evidence-grounded, and auditable. We present HOPM, a hierarchical online prompt mutation framework evaluated on a real marketplace dispute-evidence workflow. HOPM treats prompts as online policies: a family/version router selects a prompt, deterministic guardrails attribute failures to mutable prompt-token categories, and dual feedback from human review and an automated judge updates both routing and mutation priorities. The primary evidence is an observed matched production-evaluation ablation: seven variants are evaluated on the same 600 cases each, enabling component comparisons against static prompting, manual iteration, bandit-only routing, mutation-only adaptation, human-only feedback, auto-judge-only feedback, and full dual-loop HOPM. Full HOPM improves count win rate over a static control from 34.7% to 45.7% (+11.0 pp; paired McNemar p = 1.31e-11) and amount-weighted win rate from 22.3% to 41.4% (+19.1 pp; 95% paired bootstrap CI [10.3, 28.9] pp). It also increases mean Likert quality from 3.18 to 4.40 and reduces issue-flag rate from 15.3% to 5.2%. Supporting review artifacts cover 770 generated-text reviews, 318 labeled reviewer exports, a 10-case/61-rating calibration slice, and a 70-case/350-rating OCR benchmark; these artifacts calibrate rubric, guardrail, title-risk, and OCR-risk interpretation rather than substituting for the production ablation. The paper includes control setup, sample sizes, confidence intervals, paired tests, prompt-token categories, pseudocode, schema, rubric, guardrail taxonomy, and a constructed example so the evaluation structure can be reproduced without exposing proprietary evidence.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.01472v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>AgentRedBench: Dynamic Redteaming and Integration-Aware Defense for LLM Agents over SaaS Integrations</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">Indirect prompt injection in tool-use agents is a concrete production threat: LLM agents read from integrations (third-party services such as Gmail, Salesforce, or Jira accessed through tool calls) whose response content the user neither writes nor controls. Existing benchmarks under-measure the threat: most cover only a handful of integrations with the same attack payload replayed across runs, and open-source guards are trained on chat-style data rather than tool-response content. We introduce AGENTREDBENCH, a dynamic LLM-driven redteaming benchmark of 215 subtle underspecified authorization (attacks at the boundary of what the user's request authorises) scenarios across 24 enterprise integrations in nine functional families and five attack types. Across an eight-model panel (Anthropic, OpenAI, Google), no-guard ASR (attack success rate) ranges from 32% (Claude Sonnet 4.6) to 81% (Gemini 3 Flash). To keep the scenario set out of training corpora and preserve headline ASR meaning over time, we release the codebase, integration schemas, and AGENTREDGUARD model openly; the canonical scenarios are evaluated through a maintainer-mediated channel with immutable versioning. We release AGENTREDGUARD alongside the benchmark: a guard trained on an integration-diverse corpus of adversarial tool-response content. AGENTREDGUARD cuts panel ASR from 69.9% to 2.4% at 0.37% false-positive rate, outperforming every open-source baseline with non-trivial detection (Llama Guard, PromptGuard 2, ProtectAI) on both axes. Cross-integration and cross-attack type holdouts both confirm the gain transfers beyond the training subset.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.02240v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </body>
+    </html>
+    
