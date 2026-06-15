@@ -20,7 +20,7 @@ def score_papers(
     arbitrage_interest: str = "",
     arbitrage_threshold: float = 8.5
 ) -> Tuple[List[Dict], bool]:
-    """Score papers for relevance and importance"""
+    """Score papers for relevance and importance — returns ALL with scores"""
     logger.info(f"Scoring {len(papers)} papers")
     
     # Split papers into chunks
@@ -28,7 +28,7 @@ def score_papers(
     paper_chunks = [papers[i:i+chunk_size] for i in range(0, len(papers), chunk_size)]
     
     # Score papers in chunks
-    scored_papers = []
+    all_scored_papers = []
     had_hallucination = False
     
     for chunk in tqdm(paper_chunks, desc="Scoring papers"):
@@ -46,34 +46,34 @@ def score_papers(
             threshold, 
             arbitrage_threshold=arbitrage_threshold
         )
-        scored_papers.extend(chunk_scored)
+        all_scored_papers.extend(chunk_scored)
         had_hallucination = had_hallucination or chunk_hallu
     
     # Log results
-    logger.info(f"Papers processed: {len(papers)}")
-    logger.info(f"Papers above threshold: {len(scored_papers)}")
+    logger.info(f"Papers processed: {len(all_scored_papers)}")
     
-    # Get score distributions
+    # Log full score distribution
     relevance_dist = {i: 0 for i in range(1, 11)}
     importance_dist = {i: 0 for i in range(1, 11)}
+    arbitrage_dist = {i: 0 for i in range(1, 11)}
     
-    for p in scored_papers:
+    for p in all_scored_papers:
         rel_score = round(p["relevance"])
         imp_score = round(p["importance"])
+        arb_score = round(p["arbitrage_score"])
         if 1 <= rel_score <= 10:
             relevance_dist[rel_score] += 1
         if 1 <= imp_score <= 10:
             importance_dist[imp_score] += 1
+        if 1 <= arb_score <= 10:
+            arbitrage_dist[arb_score] += 1
             
-    logger.info(f"Relevance distribution: " + ", ".join(f"{k}:{v}" for k, v in relevance_dist.items()))
-    logger.info(f"Importance distribution: " + ", ".join(f"{k}:{v}" for k, v in importance_dist.items()))
+    logger.info(f"Relevance distribution: " + ", ".join(f"{k}:{v}" for k, v in relevance_dist.items() if v > 0))
+    logger.info(f"Importance distribution: " + ", ".join(f"{k}:{v}" for k, v in importance_dist.items() if v > 0))
+    logger.info(f"Arbitrage distribution:  " + ", ".join(f"{k}:{v}" for k, v in arbitrage_dist.items() if v > 0))
     
-    # Sort by combined score and take top 20
-    final_papers = sorted(
-        scored_papers,
-        key=lambda x: (x["relevance"] + x["importance"])/2,
-        reverse=True
-    )[:20]
+    # Sort by composite score descending
+    all_scored_papers.sort(key=lambda x: x.get("composite_score", 0), reverse=True)
     
-    logger.info(f"Final selection: {len(final_papers)} papers")
-    return final_papers, had_hallucination
+    logger.info(f"Final: {len(all_scored_papers)} scored papers (all shown in digest)")
+    return all_scored_papers, had_hallucination

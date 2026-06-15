@@ -33,7 +33,7 @@ def create_quick_scoring_prompt(interest: str, papers: List[Dict], arbitrage_int
     )
 
 def process_scoring_response(papers: List[Dict], response: str, threshold: float, arbitrage_threshold: float = 9.5) -> Tuple[List[Dict], bool]:
-    """Process scoring response from LLM"""
+    """Process scoring response from LLM — return ALL papers with scores attached"""
     try:
         # Clean up response - remove markdown code blocks if present
         response = response.strip()
@@ -50,7 +50,7 @@ def process_scoring_response(papers: List[Dict], response: str, threshold: float
             logger.debug(f"Papers: {len(papers)}, Scores: {scores}")
             return [], True
             
-        scored_papers = []
+        all_papers = []  # Return ALL papers with scores
         for i, (paper, score) in enumerate(zip(papers, scores)):
             try:
                 relevance = score.get('Relevancy score', 0)
@@ -66,15 +66,13 @@ def process_scoring_response(papers: List[Dict], response: str, threshold: float
                 paper['importance'] = importance
                 paper['arbitrage_score'] = arbitrage
                 paper['arbitrage_reason'] = arbitrage_reason
-                
-                # Check for either high overall relevance OR high arbitrage potential
-                if (relevance + importance) / 2 >= threshold or arbitrage >= arbitrage_threshold:
-                    scored_papers.append(paper)
+                paper['composite_score'] = (relevance + importance) / 2
+                all_papers.append(paper)
             except Exception as e:
                 logger.error(f"Error processing score for paper {i+1}: {e}")
                 continue
                 
-        return scored_papers, False
+        return all_papers, False
         
     except json.JSONDecodeError:
         logger.error("Failed to parse scoring response")

@@ -86,6 +86,11 @@ def generate(commit: bool, output_dir: str, email: bool):
         filepath = output_manager.save_digest(html_content)
         logger.info(f"Saved digest to {filepath}")
         
+        # Send Telegram daily digest with top gems
+        top_papers = [p for p in scored_papers if p.get('composite_score', 0) >= 8]
+        telegram = TelegramService(config)
+        telegram.send_digest_summary(top_papers, len(papers))
+        
         # Optional actions
         if commit:
             output_manager.commit_to_git(filepath)
@@ -219,29 +224,29 @@ def github_trending(language: str, since: str, threshold: float, dry_run: bool, 
 
     click.echo(f"Scoring {len(new_repos)} new repos...\n")
 
-    # Score each repo
+    # Score repos — batch mode: all repos in one LLM call for better distribution
     telegram = TelegramService(config)
-    scored_repos = []
+    scored_repos = _score_github_repos_batch(new_repos)
+    
+    if not scored_repos:
+        click.echo("Failed to score repos.")
+        return
+
+    # Show results
     high_scores = []
+    for repo in scored_repos:
+        relevance = repo.get('relevance', 0)
+        impact = repo.get('impact', 0)
+        summary = repo.get('summary', 'No summary')
+        composite = (relevance + impact) / 2
+        repo['composite'] = composite
 
-    for repo in new_repos:
-        score_result = _score_github_repo(repo)
+        icon = ">>" if composite >= threshold else "  "
+        click.echo(f"{icon} [R:{relevance:>2} I:{impact:>2} C:{composite:.1f}] {repo['name'][:32]:<32} *{repo['stars']:>6} (+{repo['stars_today']})")
+        click.echo(f"          {summary[:75]}...")
 
-        if score_result:
-            relevance = score_result.get('relevance', 0)
-            impact = score_result.get('impact', 0)
-            summary = score_result.get('summary', 'No summary')
-            composite = (relevance + impact) / 2
-
-            icon = ">>" if composite >= threshold else "  "
-            click.echo(f"{icon} [R:{relevance:>2} I:{impact:>2} C:{composite:.1f}] {repo['name'][:32]:<32} *{repo['stars']:>6} (+{repo['stars_today']})")
-            click.echo(f"          {summary[:75]}...")
-
-            scored_repo = {**repo, 'relevance': relevance, 'impact': impact, 'composite': composite, 'summary': summary}
-            scored_repos.append(scored_repo)
-
-            if composite >= threshold:
-                high_scores.append(scored_repo)
+        if composite >= threshold:
+            high_scores.append(repo)
 
     # Generate executive summary
     executive_summary = ""
@@ -273,12 +278,89 @@ def github_trending(language: str, since: str, threshold: float, dry_run: bool, 
     else:
         click.echo(f"\nNo repos with composite score >= {threshold}")
 
+    # Send consolidated GitHub digest if we scored repos
+    if scored_repos and not dry_run:
+        _send_github_digest(telegram, scored_repos, threshold)
+
     # Mark all as seen
     gh_service.mark_seen([r['name'] for r in new_repos])
 
 
-def _score_github_repo(repo: dict) -> dict:
-    """Score a single GitHub repo using LLM"""
+def _score_github_repos_batch(repos: list) -> list:
+    """Score all GitHub repos in one LLM call for better score distribution"""
+    if not repos:
+        return []
+    
+    # Build repo descriptions for prompt
+    repo_texts = []
+    for i, repo in enumerate(repos):
+        repo_texts.append(
+            f"Repo {i+1}:\n"
+            f"- Name: {repo['name']}\n"
+            f"- Description: {repo['description'] or 'No description'}\n"
+            f"- Language: {repo.get('language', 'Unknown')}\n"
+            f"- Stars: {repo['stars']} ({repo['stars_today']} today)\n"
+        )
+    
+    repos_text = "\n---\n".join(repo_texts)
+    
+    prompt = f"""{config.github_batch_scoring_prompt.format(num_repos=len(repos), name_placeholder="repo_name")}
+
+Repos to evaluate:
+{repos_text}
+
+Return only valid JSON with scores for ALL {len(repos)} repos."""
+
+    try:
+        response = openai_completion(
+            prompt,
+            OpenAIDecodingArguments(max_tokens=32000),
+            model_name=config.model.get("name", "gpt-4"),
+            provider=config.model.get("provider", "openai")
+        )
+
+        cleaned = response.strip()
+        if cleaned.startswith('```'):
+            cleaned = cleaned.split('\n', 1)[1]
+        if cleaned.endswith('```'):
+            cleaned = cleaned.rsplit('\n', 1)[0]
+
+        data = json.loads(cleaned)
+        scored = data.get('repos', [])
+        
+        # Map scores back to repo objects
+        result = []
+        for score_entry in scored:
+            name = score_entry.get('name', '')
+            # Find matching repo
+            matched = next((r for r in repos if r['name'] == name), None)
+            if matched:
+                result.append({
+                    **matched,
+                    'relevance': score_entry.get('relevance', 5),
+                    'impact': score_entry.get('impact', 5),
+                    'summary': score_entry.get('summary', 'No summary'),
+                })
+            else:
+                logger.warning(f"Repo '{name}' in scores not found in input list")
+        
+        logger.info(f"Batch scored {len(result)} repos")
+        return result
+        
+    except Exception as e:
+        logger.warning(f"Failed to batch score repos: {e}")
+        # Fallback: score individually
+        logger.info("Falling back to individual scoring...")
+        results = []
+        for repo in repos:
+            result = _score_github_repo_single(repo)
+            if result:
+                results.append({**repo, **result})
+        return results
+
+
+def _score_github_repo_single(repo: dict) -> dict:
+    """Score a single GitHub repo using LLM (fallback if batch fails)"""
     prompt = f"""{config.github_scoring_prompt}
 
 Repository:
@@ -363,6 +445,42 @@ def _send_github_alert(telegram: TelegramService, repo: dict) -> bool:
         return True
     except Exception as e:
         logger.error(f"Failed to send GitHub alert: {e}")
+        return False
+
+
+def _send_github_digest(telegram: TelegramService, scored_repos: list, threshold: float) -> bool:
+    """Send a consolidated GitHub trending digest to Telegram"""
+    if not telegram.bot_token or not telegram.chat_id:
+        return False
+
+    try:
+        import httpx
+
+        top = sorted(scored_repos, key=lambda r: r.get('composite', 0), reverse=True)[:5]
+        lines = ["💻 *GitHub Trending Digest*", ""]
+        for i, r in enumerate(top, 1):
+            cs = r.get('composite', 0)
+            name = r['name']
+            url = r.get('url', f"https://github.com/{name}")
+            stars = r.get('stars', 0)
+            arrow = "🔥" if cs >= threshold else "👀"
+            lines.append(f"{arrow} {i}. [{name}]({url}) — *{cs:.1f}* ⭐{stars}")
+        lines.append("")
+        lines.append(f"_{len(scored_repos)} repos scored, {len([r for r in scored_repos if r.get('composite', 0) >= threshold])} above threshold_")
+
+        payload = {
+            "chat_id": telegram.chat_id,
+            "text": "\n".join(lines),
+            "parse_mode": "Markdown",
+            "disable_web_page_preview": True
+        }
+
+        response = httpx.post(telegram.base_url, json=payload, timeout=10.0)
+        response.raise_for_status()
+        logger.info("GitHub digest sent to Telegram")
+        return True
+    except Exception as e:
+        logger.error(f"Failed to send GitHub digest: {e}")
         return False
 
 
