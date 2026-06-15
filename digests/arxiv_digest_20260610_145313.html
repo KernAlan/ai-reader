@@ -1,0 +1,244 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AI Reader</title>
+        <style>
+            
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    color: #2d3748;
+    margin: 0;
+    padding: 20px;
+    background: #f7fafc;
+}
+
+.digest {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.header h2 {
+    margin: 0;
+    color: #2d3748;
+}
+
+.header p {
+    margin: 0.5rem 0 0;
+    color: #718096;
+}
+
+.highlights {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+    border: 1px solid #e2e8f0;
+}
+
+.highlights h3 {
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+}
+
+.summary {
+    white-space: pre-line;
+    line-height: 1.6;
+}
+
+.summary ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.summary li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+}
+
+.papers {
+    margin-top: 3rem;
+}
+
+.papers h3 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.paper {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.paper:last-child {
+    border-bottom: none;
+}
+
+.paper h3 {
+    margin: 0 0 0.5rem;
+    color: #2d3748;
+}
+
+.paper .scores {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.paper .score {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.paper .relevance {
+    background: #e6fffa;
+    color: #047481;
+}
+
+.paper .importance {
+    background: #ebf4ff;
+    color: #1a56db;
+}
+
+.paper .abstract {
+    color: #4a5568;
+    margin: 0.5rem 0;
+}
+
+.paper .meta {
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.paper .meta a {
+    color: #4299e1;
+    text-decoration: none;
+}
+
+.paper .meta a:hover {
+    text-decoration: underline;
+}
+
+        </style>
+    </head>
+    <body>
+        
+<div class="digest">
+    <div class="header">
+        <h2>AI Reader</h2>
+        <p>Found 5 relevant papers out of 200 new submissions</p>
+    </div>
+    
+    <div class="highlights">
+        <h3>🔥 Key Highlights</h3>
+        Hey boss, found 5 cool papers today that I think you'll love:
+
+1. **ActiveMem: Distributed Active Memory for Long-Horizon LLM Reasoning**  
+They decouple agent memory from the reasoning core by having a planner work with semantic gists while a lightweight distributed memory system handles accumulation in parallel. This means we can scale LLM agents to handle marathon reasoning tasks without drowning in context—SOTA accuracy on BrowseComp-Plus and GAIA with much less overhead. [Check it out](http://arxiv.org/abs/2606.10532v1)
+
+2. **Infini Memory: Maintainable Topic Documents for Long-Term LLM Agent Memory**  
+Instead of messy isolated records, they treat persistent memory as topic-structured documents that can be updated and queried iteratively via tool calls. That 64.7% on MemoryAgentBench shows promise for assistants that actually remember and revise facts over months—something our customer-facing agents desperately need. [Paper here](http://arxiv.org/abs/2606.10677v1)
+
+3. **Trace2Policy: From Expert Behavior Traces to Self-Evolving Decision Agents**  
+They take expert audit/compliance traces and iteratively refine them into deterministic Python rules, no LLM calls at inference, which ran 9.8pp better than prompting for a logistics carrier in production. We should totally steal this pattern—it can turn our expensive, flaky LLM pipelines into cheap, rock-solid decision engines without changing the domain logic. [Deep dive](http://arxiv.org/abs/2606.10457v1)
+
+4. **Less Context, Better Agents: Efficient Context Engineering for Long-Horizon Tool-Using LLM Agents**  
+On an enterprise expense task, just keeping the last 5 tool calls plus an automated summary bumped completion from 71% to 91.6% and cut token usage by nearly 3x. The playbook here: stop throwing full history at your agent, and you'll get cheaper, more reliable tool use immediately. [Read it](http://arxiv.org/abs/2606.10209v1)
+
+5. **Density Ridge Selective Prediction for LLM and VLM Hallucination Detection under Calibration Label Scarcity**  
+They score hallucination risk by mapping hidden states to a geometric density ridge, outperforming entropy-based detectors by 5–20 AUROC points even with just 200 calibration queries. For our production guardrail where labeled examples are scarce, this is a low-touch upgrade to catch made-up answers without breaking the bank. [Paper link](http://arxiv.org/abs/2606.10198v1)
+
+These all zero in on making agents more efficient, reliable, and scalable through smarter memory and context design. I'd say we spike the ActiveMem and context engineering approach this sprint—could directly unblock our long-horizon pipeline and slash inference cost. Want me to pull together a quick prototype brief?
+    </div>
+    
+    <div class="papers">
+        <h3>📄 Detailed Papers</h3>
+        
+<div class="paper">
+    <h3>ActiveMem: Distributed Active Memory for Long-Horizon LLM Reasoning</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 9/10</span>
+    </div>
+    <div class="abstract">Memory is essential for enabling large language model (LLM) agents to handle long-horizon reasoning tasks. Existing memory mechanisms are largely centralized, typically organizing retrieved information and interaction history within a single model context. This design imposes a fundamental trade-off: scaling reasoning trajectories risks context overload, whereas aggressive content pruning may result in irreversible information loss. Seeking a better trade-off, we draw inspiration from human cognitive systems, especially the functional complementarity between the prefrontal cortex (executive control) and the hippocampus (memory management), suggesting that such a trade-off need not be inherent, but may instead stem from centralized memory organization. To this end, we propose ActiveMem, a heterogeneous framework that decouples agent memory from the core reasoning process. Specifically, a high-level Planner utilizes distilled semantic gists to execute reasoning, while a lightweight, distributed memory system operates in parallel to actively accumulate and consolidate these gists throughout the task. Experiments on BrowseComp-Plus and GAIA show that ActiveMem achieves state-of-the-art accuracy with significantly reduced overhead, demonstrating the effectiveness of distributed active memory for long-horizon reasoning.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.10532v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>Infini Memory: Maintainable Topic Documents for Long-Term LLM Agent Memory</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">Long-term LLM agents need persistent memory that can track changing facts and provide relevant evidence across sessions. Existing memory systems often store observations as isolated records, summaries, or indexed fragments, which makes evidence aggregation, fact revision, and memory maintenance difficult. We propose Infini Memory, a maintainable text-based persistent memory architecture that treats agent memory as topic-structured documents. Each topic document serves as a semantic unit for collecting related evidence, preserving metadata, and revising facts over time. New observations are first staged in a buffer and periodically consolidated into coherent textual contexts. At inference time, an agentic retrieval procedure lets the LLM read memory through iterative tool calls rather than a single retrieval step. On MemoryAgentBench, Infini Memory achieves 64.7% overall score. Ablations show that topic-structured maintenance and iterative evidence inspection improve complementary aspects of long-term memory use.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.10677v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>Trace2Policy: From Expert Behavior Traces to Self-Evolving Decision Agents</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">Decision rules that enterprise experts apply tacitly -- in auditing, compliance, and contract review -- can be systematically recovered and improved through iterative error analysis. We present \textbf{Trace2Policy}, whose core mechanism -- \textbf{EISR} (\textbf{E}rror-driven \textbf{I}terative \textbf{S}kill \textbf{R}efinement) -- maintains a human-readable rule document as its optimization target: each round executes the rules on a validation set, clusters errors by root cause into MISSING, WRONG, or CONFLICT types, applies targeted patches, and commits only those that pass a regression gate. \textbf{For this class of compliance-sensitive, skewed-base-rate decision tasks, we identify rule quality -- not model capability -- as the dominant performance lever}: across five LLMs, one-shot distillation plateaus near $\sim$70\% on the deployed pool, while eight EISR rounds lift the same rules to 79.6\% when compiled into deterministic Python -- zero LLM calls at inference. \textbf{Execution form compounds the gain: in production, the same EISR-refined content runs 9.8~pp higher as compiled Python than as an LLM prompt, a form-and-engineering bundle the 22-day deployment matured together.} Deployed for 22 days at a major logistics carrier (3,349 audit cases), the compiled pipeline outperforms the pure-LLM baseline it replaced (72.7\%); on these calibrated, skewed-base-rate workloads, re-enabling LLM fallback monotonically degrades accuracy. An LLM-driven variant, \textbf{Auto-EISR}, reproduces this refinement at \$5--\$10 per cycle versus $\sim$70 expert-hours, and transfers to four public benchmarks spanning legal reasoning (LegalBench) and process-mining decisions (BPIC 2012) without re-engineering.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.10457v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>Less Context, Better Agents: Efficient Context Engineering for Long-Horizon Tool-Using LLM Agents</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">Large language models deployed as autonomous agents for enterprise workflows face a key challenge: verbose tool responses from enterprise systems can cause context overflow, stale-state errors, and high inference cost. We study this problem in automated expense itemization in Microsoft Dynamics 365 Finance and Operations using Model Context Protocol tools. We evaluate four GPT-5 configurations on a 50-task hotel expense benchmark: no user model, full conversation history, context pruned to the last 5 tool call/response pairs, and pruning with automated summarization. Results are averaged across 5 independent runs, with the user model held constant for the context-engineering comparison. The no-user-model baseline achieves only 8.0% complete itemization. Full-context retention improves completion to 71.0%, but consumes 1,480,996 tokens and 14.56 hours per benchmark. Pruning to the last 5 tool calls improves completion to 79.0% while reducing token use to 535,274 and runtime to 5.39 hours. Adding summarization achieves the best result: 91.6% complete itemization and 99.64% average amount itemized, with 553,374 tokens and 5.79 hours. We further report confidence intervals, effect-size analysis, sensitivity over pruning and summary windows, failure analysis, results across five expense types grouped into three categories, and cross-model evidence with Claude Sonnet 4.5. These results show that, for this class of enterprise tool-use workflow, selective retention of recent tool interactions plus compact summarization can improve both reliability and efficiency compared with full-history retention.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.10209v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>Density Ridge Selective Prediction for LLM and VLM Hallucination Detection under Calibration Label Scarcity</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">Hallucination detection in large language and vision-language models is increasingly framed as selective prediction, where a detector assigns a confidence score and abstains when confidence is low. Unsupervised sampling detectors (Semantic Entropy, EigenScore) avoid labels but plateau in quality, while supervised probes (SAPLMA) attain stronger in-distribution scores yet degrade sharply when calibration labels are scarce. We recover the response manifold of an LLM as the density ridge of a kernel density estimate built on a six-dimensional kinematic feature map of hidden state generation trajectories. A test generation is scored by the negated Euclidean distance from its projected feature point to the nearest ridge vertex, yielding a low-dimensional geometric skeleton of the stochastic output distribution. We evaluate against Semantic Entropy, SAR, EigenScore, SAPLMA, and log-probability on seven QA benchmarks (HaluEval-QA, TriviaQA, GSM8K, POPE, ScienceQA, A-OKVQA) using nine text and vision LLMs in a deliberately label-scarce protocol ($n_{\text{cal}}{=}200$ queries, $N{=}5$ generations). Our ridge-based score beats on AUROC with 5-20 points gain, while demonstrating tempered degradation under calibration-label scarcity.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.10198v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </body>
+    </html>
+    

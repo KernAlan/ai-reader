@@ -1,4 +1,4 @@
-"""Command line interface for ArXiv Digest"""
+"""Command line interface for AI Reader"""
 import logging
 from datetime import datetime
 from pathlib import Path
@@ -29,9 +29,25 @@ logging.getLogger('asyncio').setLevel(logging.WARNING)
 
 logger = logging.getLogger(__name__)
 
+API_KEY_ENV_BY_PROVIDER = {
+    "openai": "OPENAI_API_KEY",
+    "groq": "GROQ_API_KEY",
+    "openrouter": "OPENROUTER_API_KEY",
+}
+
+
+def _configured_api_key_env() -> str:
+    provider = config.model.get("provider", "openai")
+    return API_KEY_ENV_BY_PROVIDER.get(provider, "OPENAI_API_KEY")
+
+
+def _has_configured_api_key() -> bool:
+    return bool(os.getenv(_configured_api_key_env()))
+
+
 @click.group()
 def cli():
-    """ArXiv Research Digest CLI"""
+    """AI Reader CLI"""
     pass
 
 @cli.command()
@@ -45,10 +61,11 @@ def generate(commit: bool, output_dir: str, email: bool):
         
         # Verify API keys
         load_dotenv()
-        if not os.getenv("OPENAI_API_KEY") and not os.getenv("GROQ_API_KEY"):
+        if not _has_configured_api_key():
+            api_key_env = _configured_api_key_env()
             logger.error("No API key found!")
             raise RuntimeError(
-                "No API key found. Please set either OPENAI_API_KEY or GROQ_API_KEY in your .env file"
+                f"No API key found. Please set {api_key_env} in your .env file or repository secrets"
             )
 
         logger.debug("API keys verified")
@@ -121,8 +138,8 @@ def score(title: str, abstract: str):
     """Score a single paper (real or fake) to test the scoring system"""
     load_dotenv()
 
-    if not os.getenv("OPENAI_API_KEY"):
-        click.echo("Error: OPENAI_API_KEY not set")
+    if not _has_configured_api_key():
+        click.echo(f"Error: {_configured_api_key_env()} not set")
         return
 
     # Create fake paper
@@ -147,7 +164,7 @@ def score(title: str, abstract: str):
     response = openai_completion(
         prompt,
         OpenAIDecodingArguments(),
-        model_name=config.model.get("name", "gpt-5-mini"),
+        model_name=config.model.get("name", "deepseek/deepseek-v4-pro"),
         provider=config.model.get("provider", "openai")
     )
 
@@ -198,8 +215,8 @@ def github_trending(language: str, since: str, threshold: float, dry_run: bool, 
     """Fetch GitHub trending repos, score them, and alert on high-value finds"""
     load_dotenv()
 
-    if not os.getenv("OPENAI_API_KEY"):
-        click.echo("Error: OPENAI_API_KEY not set")
+    if not _has_configured_api_key():
+        click.echo(f"Error: {_configured_api_key_env()} not set")
         return
 
     click.echo(f"\nFetching GitHub trending ({since})...")
@@ -375,7 +392,7 @@ Return only valid JSON: {{"relevance": N, "impact": N, "summary": "..."}}"""
         response = openai_completion(
             prompt,
             OpenAIDecodingArguments(max_tokens=16000),
-            model_name=config.model.get("name", "gpt-5-mini"),
+            model_name=config.model.get("name", "deepseek/deepseek-v4-pro"),
             provider=config.model.get("provider", "openai")
         )
 
@@ -409,7 +426,7 @@ def _generate_executive_summary(scored_repos: list) -> str:
         response = openai_completion(
             prompt,
             OpenAIDecodingArguments(max_tokens=16000),
-            model_name=config.model.get("name", "gpt-5-mini"),
+            model_name=config.model.get("name", "deepseek/deepseek-v4-pro"),
             provider=config.model.get("provider", "openai")
         )
         return response.strip()

@@ -1,4 +1,4 @@
-ArXiv Research Assistant
+AI Reader
 ====================
 
 Daily digest of new arXiv papers and GitHub trending repos, scored for relevance and delivered with Telegram alerts.
@@ -6,7 +6,7 @@ Daily digest of new arXiv papers and GitHub trending repos, scored for relevance
 Features
 --------
 
-- **ArXiv Digest** — Fetches new papers, scores them with an LLM for relevance, importance, and "arbitrage" discovery potential, then generates an HTML digest.
+- **ArXiv Papers** — Fetches new papers, scores them with an LLM for relevance, importance, and "arbitrage" discovery potential, then generates an HTML digest.
 - **GitHub Trending** — Scrapes GitHub trending repos, scores each for relevance and impact, and generates an HTML report.
 - **Telegram Alerts** — Sends real-time notifications for high-scoring papers and repos that cross your configured thresholds.
 - **Automated Daily Pipeline** — GitHub Actions workflow runs daily and commits digests to the repo.
@@ -27,14 +27,14 @@ Setup
 
 2. Clone and install:
    ```
-   git clone https://github.com/KernAlan/arXivResearchAssistant.git
-   cd ArxivResearchAssistant
+   git clone https://github.com/KernAlan/ai-reader.git
+   cd ai-reader
    pip install -r requirements.txt
    ```
 
 3. Add API keys and Telegram credentials to `.env`:
    ```
-   OPENAI_API_KEY=your_key_here
+   OPENROUTER_API_KEY=your_key_here
    TELEGRAM_BOT_TOKEN=your_bot_token_here
    TELEGRAM_CHAT_ID=your_chat_id_here
    ```
@@ -53,7 +53,7 @@ Setup
 Usage
 -----
 
-### ArXiv Digest
+### ArXiv Papers
 
 ```
 python -m src.cli generate [OPTIONS]
@@ -107,7 +107,7 @@ Papers with an arbitrage score >= 9.0 and GitHub repos with a composite score >=
 ### GitHub Actions
 
 The daily pipeline runs at 1:25 PM UTC. To enable it, add these repository secrets:
-- `OPENAI_API_KEY`
+- `OPENROUTER_API_KEY`
 - `TELEGRAM_BOT_TOKEN`
 - `TELEGRAM_CHAT_ID`
 

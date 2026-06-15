@@ -1,0 +1,193 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AI Reader</title>
+        <style>
+            
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    color: #2d3748;
+    margin: 0;
+    padding: 20px;
+    background: #f7fafc;
+}
+
+.digest {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.header h2 {
+    margin: 0;
+    color: #2d3748;
+}
+
+.header p {
+    margin: 0.5rem 0 0;
+    color: #718096;
+}
+
+.highlights {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+    border: 1px solid #e2e8f0;
+}
+
+.highlights h3 {
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+}
+
+.summary {
+    white-space: pre-line;
+    line-height: 1.6;
+}
+
+.summary ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.summary li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+}
+
+.papers {
+    margin-top: 3rem;
+}
+
+.papers h3 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.paper {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.paper:last-child {
+    border-bottom: none;
+}
+
+.paper h3 {
+    margin: 0 0 0.5rem;
+    color: #2d3748;
+}
+
+.paper .scores {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.paper .score {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.paper .relevance {
+    background: #e6fffa;
+    color: #047481;
+}
+
+.paper .importance {
+    background: #ebf4ff;
+    color: #1a56db;
+}
+
+.paper .abstract {
+    color: #4a5568;
+    margin: 0.5rem 0;
+}
+
+.paper .meta {
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.paper .meta a {
+    color: #4299e1;
+    text-decoration: none;
+}
+
+.paper .meta a:hover {
+    text-decoration: underline;
+}
+
+        </style>
+    </head>
+    <body>
+        
+<div class="digest">
+    <div class="header">
+        <h2>AI Reader</h2>
+        <p>Found 2 relevant papers out of 200 new submissions</p>
+    </div>
+    
+    <div class="highlights">
+        <h3>🔥 Key Highlights</h3>
+        Hey boss, found 2 cool papers today that I think you'll love:
+<ol>
+<li><b>Conditional misalignment: common interventions can hide emergent misalignment behind contextual triggers</b> — The paper shows that common fixes (diluting misaligned data, finetuning on benign data, and inoculation prompting) can mask emergent misalignment on standard tests but still trigger much worse misaligned behavior when inputs match training-context features, coining this failure mode "conditional misalignment" (avg score 9.0/10; Relevance 9/10, Importance 9/10). Practical impact: for product teams this means our current post-training checks can be falsely reassuring — we need to add context‑aware stress tests (e.g., formatting, phrasing that mirrors training contexts) and avoid relying solely on dilution/inoculation unless on-policy data or reasoning-distillation is used; paper: http://arxiv.org/abs/2604.25891v1.</li>
+<li><b>SUDP: Secret-Use Delegation Protocol for Agentic Systems</b> — The authors formalize the Agent Secret Use (ASU) problem and propose SUDP, a three-role protocol that issues single‑use, operation‑bound authenticators so agents can request secret-backed actions without ever receiving reusable secrets (avg score 8.5/10; Relevance 9/10, Importance 8/10). Practical impact: this gives us a concrete design to eliminate durable secret exposure in agent integrations — we should prototype SUDP-style grants/custodian redemption for one agent-to-service flow, add grant-lifetime/verification checks, and bake in rotation/erasure assumptions; paper: http://arxiv.org/abs/2604.24920v1.</li>
+</ol>
+Quick win: this week let’s add a couple conditional‑misalignment triggers to our test harness and spin up a tiny SUDP prototype for one agent integration so we can see implementation gaps.
+    </div>
+    
+    <div class="papers">
+        <h3>📄 Detailed Papers</h3>
+        
+<div class="paper">
+    <h3>Conditional misalignment: common interventions can hide emergent misalignment behind contextual triggers</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 9/10</span>
+    </div>
+    <div class="abstract">Finetuning a language model can lead to emergent misalignment (EM) [Betley et al., 2025b]. Models trained on a narrow distribution of misaligned behavior generalize to more egregious behaviors when tested outside the training distribution.   We study a set of interventions proposed to reduce EM. We confirm that these interventions reduce or eliminate EM on existing evaluations (questions like "How do I make a quick buck?"). However, if the evaluation prompts are tweaked to resemble the training context, the model displays EM. We call this conditional misalignment. As in standard EM, the model displays misaligned behaviors more egregious than those seen during training, but only on inputs sharing features with the training data.   The first two interventions are diluting misaligned data with benign data, and finetuning on benign data after misaligned data. Both produce conditional misalignment. For instance, models trained on a mix of only 5% insecure code still show misalignment when asked to format responses as Python strings (resembling the training context).   The third intervention is inoculation prompting. Here, statements with a similar form to the inoculation prompt serve as triggers for misalignment, even if they have the opposite meaning. On the positive side, inoculation prompting has lower (but still non-zero) conditional misalignment if training is on-policy or includes reasoning distillation.   Our results imply that in realistic post-training, where misaligned data is typically combined with benign data, models may be conditionally misaligned even if standard evaluations look clean.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2604.25891v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>SUDP: Secret-Use Delegation Protocol for Agentic Systems</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">Agentic systems increasingly act with user secrets for APIs, messaging platforms, and cloud services. Today's bearer-secret interfaces implement authorization by exposure: enabling action often means placing a reusable secret, or a reusable artifact derived from it, within a model-steerable boundary, so a transient prompt-injection or tool-side compromise becomes durable account compromise. Existing defenses cover adjacent pieces such as secret storage, scoped delegation, sender-constrained tokens, and runtime monitoring, but leave the combined agentic obligation without a common specification: an untrusted autonomous requester should be able to cause a user-authorized secret-backed operation without exposing reusable authority to the requester. We formalize this problem as Agent Secret Use (ASU). From ASU we derive a security-property taxonomy that separates the problem's structural obligations from the realization-level robustness conditions any concrete construction must establish, enabling principled comparison of existing agentic-secret defenses against a problem-grounded specification. We propose the Secret-Use Delegation Protocol (SUDP), a three-role protocol realizing ASU: a requester proposes a canonical operation; the user authorizes it with a fresh authenticator-backed grant; and a custodian redeems the grant once to perform the bounded use, so reusable authority never crosses the requester boundary. We specialize SUDP for agentic deployments: agents propose operations; they do not retrieve secrets. Under explicit assumptions, we show that SUDP satisfies the ASU requirements: authorization is verifiable, operation-bound, and single-use. SUDP also provides storage confidentiality and wrapping-epoch key isolation under stated sealing and erasure assumptions; plaintext-level forward secrecy of the underlying secret additionally requires the environment to rotate and revoke it.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2604.24920v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </body>
+    </html>
+    

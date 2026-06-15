@@ -1,0 +1,178 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AI Reader</title>
+        <style>
+            
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    color: #2d3748;
+    margin: 0;
+    padding: 20px;
+    background: #f7fafc;
+}
+
+.digest {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.header h2 {
+    margin: 0;
+    color: #2d3748;
+}
+
+.header p {
+    margin: 0.5rem 0 0;
+    color: #718096;
+}
+
+.highlights {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+    border: 1px solid #e2e8f0;
+}
+
+.highlights h3 {
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+}
+
+.summary {
+    white-space: pre-line;
+    line-height: 1.6;
+}
+
+.summary ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.summary li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+}
+
+.papers {
+    margin-top: 3rem;
+}
+
+.papers h3 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.paper {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.paper:last-child {
+    border-bottom: none;
+}
+
+.paper h3 {
+    margin: 0 0 0.5rem;
+    color: #2d3748;
+}
+
+.paper .scores {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.paper .score {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.paper .relevance {
+    background: #e6fffa;
+    color: #047481;
+}
+
+.paper .importance {
+    background: #ebf4ff;
+    color: #1a56db;
+}
+
+.paper .abstract {
+    color: #4a5568;
+    margin: 0.5rem 0;
+}
+
+.paper .meta {
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.paper .meta a {
+    color: #4299e1;
+    text-decoration: none;
+}
+
+.paper .meta a:hover {
+    text-decoration: underline;
+}
+
+        </style>
+    </head>
+    <body>
+        
+<div class="digest">
+    <div class="header">
+        <h2>AI Reader</h2>
+        <p>Found 1 relevant papers out of 200 new submissions</p>
+    </div>
+    
+    <div class="highlights">
+        <h3>🔥 Key Highlights</h3>
+        Hey boss, found 1 cool paper today that I think you'll love:
+1. **Agent-First Tool API: A Semantic Interface Paradigm for Enterprise AI Agent Systems.** The paper defines an "Agent-First" semantic API layer—with a Six-Verb protocol (search, resolve, preview, execute, verify, recover), a Normalized Tool Contract (NTC) carrying confidence/evidence/next-action metadata, and a dual-layer governance pipeline—and in a production multi-tenant SaaS test (85 tools across 6 domains) it raised end-to-end task success to 88% vs 64% (+37.5%), cut human interventions by 72.7%, and improved autonomous error recovery 5.8x (avg score 9.0/10; Relevance 10/10, Importance 8/10). For industry teams the immediate takeaway is to prototype an Agent-First wrapper around one high-value tool (add NTC metadata, implement preview/verify/recover verbs, and layer static policies with dynamic risk escalation) and run an A/B against our CRUD endpoints to validate the same metrics — paper: http://arxiv.org/abs/2605.10555v1
+
+This week let's pick one core integration, spin up a quick sprint to add NTC + the Six-Verb hooks, and measure success rate / human interventions / recovery to see if we replicate those gains.
+    </div>
+    
+    <div class="papers">
+        <h3>📄 Detailed Papers</h3>
+        
+<div class="paper">
+    <h3>Agent-First Tool API: A Semantic Interface Paradigm for Enterprise AI Agent Systems</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 10/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">As AI agents transition from research prototypes to enterprise production systems, the tool interfaces they consume remain rooted in human-oriented CRUD paradigms. This paper identifies five fundamental architectural mismatches between conventional APIs and autonomous agent requirements: exact-identifier dependence, rendering-oriented responses, single-shot interaction assumptions, user-equivalent authorization, and opaque error semantics. We propose the Agent-First Tool API paradigm, comprising three integrated mechanisms: (1) a Six-Verb Semantic Protocol that decomposes tool interactions into search, resolve, preview, execute, verify, and recover phases; (2) a Normalized Tool Contract (NTC) providing structured decision-support metadata including confidence scores, evidence chains, and suggested next actions; and (3) a dual-layer governance pipeline combining static capability policies with dynamic risk escalation. The paradigm is implemented and validated in a production multi-tenant SaaS platform serving 85 registered tools across 6 business domains. Comparative experiments on 50 real operational tasks demonstrate that Agent-First APIs achieve 88% end-to-end task success rate versus 64% for optimized CRUD baselines (+37.5%), while reducing required human interventions by 72.7% and improving autonomous error recovery by 5.8x. We establish that the paradigm is orthogonal and complementary to transport-layer standards such as MCP, operating as the semantic application layer above existing tool discovery and invocation protocols.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2605.10555v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </body>
+    </html>
+    

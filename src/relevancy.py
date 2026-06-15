@@ -32,22 +32,26 @@ def score_papers(
     had_hallucination = False
     
     for chunk in tqdm(paper_chunks, desc="Scoring papers"):
-        prompt = create_quick_scoring_prompt(interest, chunk, arbitrage_interest=arbitrage_interest)
-        response = openai_completion(
-            prompt,
-            OpenAIDecodingArguments(),
-            model_name=model_config.get("name", "gpt-4"),
-            provider=model_config.get("provider", "openai")
-        )
-        
-        chunk_scored, chunk_hallu = process_scoring_response(
-            chunk, 
-            response, 
-            threshold, 
-            arbitrage_threshold=arbitrage_threshold
-        )
-        all_scored_papers.extend(chunk_scored)
-        had_hallucination = had_hallucination or chunk_hallu
+        try:
+            prompt = create_quick_scoring_prompt(interest, chunk, arbitrage_interest=arbitrage_interest)
+            response = openai_completion(
+                prompt,
+                OpenAIDecodingArguments(),
+                model_name=model_config.get("name", "deepseek/deepseek-v4-pro"),
+                provider=model_config.get("provider", "openai")
+            )
+            
+            chunk_scored, chunk_hallu = process_scoring_response(
+                chunk, 
+                response, 
+                threshold, 
+                arbitrage_threshold=arbitrage_threshold
+            )
+            all_scored_papers.extend(chunk_scored)
+            had_hallucination = had_hallucination or chunk_hallu
+        except Exception as e:
+            logger.error(f"Failed to score chunk of {len(chunk)} papers: {e}")
+            had_hallucination = True
     
     # Log results
     logger.info(f"Papers processed: {len(all_scored_papers)}")

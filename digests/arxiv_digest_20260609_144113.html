@@ -1,0 +1,283 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AI Reader</title>
+        <style>
+            
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    color: #2d3748;
+    margin: 0;
+    padding: 20px;
+    background: #f7fafc;
+}
+
+.digest {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.header h2 {
+    margin: 0;
+    color: #2d3748;
+}
+
+.header p {
+    margin: 0.5rem 0 0;
+    color: #718096;
+}
+
+.highlights {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+    border: 1px solid #e2e8f0;
+}
+
+.highlights h3 {
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+}
+
+.summary {
+    white-space: pre-line;
+    line-height: 1.6;
+}
+
+.summary ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.summary li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+}
+
+.papers {
+    margin-top: 3rem;
+}
+
+.papers h3 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.paper {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.paper:last-child {
+    border-bottom: none;
+}
+
+.paper h3 {
+    margin: 0 0 0.5rem;
+    color: #2d3748;
+}
+
+.paper .scores {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.paper .score {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.paper .relevance {
+    background: #e6fffa;
+    color: #047481;
+}
+
+.paper .importance {
+    background: #ebf4ff;
+    color: #1a56db;
+}
+
+.paper .abstract {
+    color: #4a5568;
+    margin: 0.5rem 0;
+}
+
+.paper .meta {
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.paper .meta a {
+    color: #4299e1;
+    text-decoration: none;
+}
+
+.paper .meta a:hover {
+    text-decoration: underline;
+}
+
+        </style>
+    </head>
+    <body>
+        
+<div class="digest">
+    <div class="header">
+        <h2>AI Reader</h2>
+        <p>Found 7 relevant papers out of 200 new submissions</p>
+    </div>
+    
+    <div class="highlights">
+        <h3>🔥 Key Highlights</h3>
+        Hey boss, found 5 cool papers today that I think you'll love:
+
+<ol>
+<li>
+<strong>Collaborative Human-Agent Protocol (CHAP)</strong> (<a href="http://arxiv.org/abs/2606.09751v1">arxiv link</a>)  
+The team at BrightbeamAI defined a standard protocol that turns every human override, approval, and handoff into a structured, auditable event (diff + rationale + hash).  
+This means teams can finally treat human judgment as a first-class data source for compliance, feedback learning, and cross-shift handoffs—no more losing those decisions in chat threads.
+</li>
+<li>
+<strong>PRISM: Recovering Instruction Sets from Language Model Activations</strong> (<a href="http://arxiv.org/abs/2606.09563v1">arxiv link</a>)  
+Researchers built an interpreter that decodes a frozen LLM’s hidden states into a bullet list of every active instruction, constraint, and subgoal—trained with judge-guided reinforcement.  
+It gives you a real-time window into what your deployed agent is <em>really</em> aiming for, catching prompt injections and hidden objectives before they turn into actions.
+</li>
+<li>
+<strong>SecureClaw: Clawing Back Control of LLM Agents</strong> (<a href="http://arxiv.org/abs/2606.09549v1">arxiv link</a>)  
+A team introduced a dual‑boundary architecture: a trusted gateway replaces sensitive data with opaque handles (read side) and a PREVIEW→COMMIT protocol enforces authorized writes only.  
+Across AgentDojo, AgentLeak, and ASB, it’s the only defense that keeps near‑zero attack success rates while preserving real task utility—perfect for production sandboxing.
+</li>
+<li>
+<strong>Anything2Skill: Compiling External Knowledge into Reusable Skills for Agents</strong> (<a href="http://arxiv.org/abs/2606.09316v1">arxiv link</a>)  
+Researchers built a framework that extracts step‑by‑step procedures from docs, manuals, and logs, compiles them into structured skill contracts, and stores them in a persistent SkillBank.  
+When paired with RAG, it boosted agent success rates to 98.9% and 94.1% on CLI tasks—turning a knowledge base from “lookup” into executable know‑how.
+</li>
+<li>
+<strong>ComplexConstraints and Beyond: Expert Rubrics for RLVR</strong> (<a href="http://arxiv.org/abs/2606.09118v1">arxiv link</a>)  
+This work shows that expert‑written atomic rubrics (10–40 per prompt) can serve as both evaluation gold and incredibly efficient RL training signals.  
+Just 1,000 examples gave a +15.5% instruction‑following boost for a 4B model, and the method transferred gains to unseen agent benchmarks—so you can fine‑tune on rubrics and improve tool‑use for free.
+</li>
+</ol>
+
+Grab the SecureClaw design for our agent security sprint and pilot CHAP for logging human overrides—those could be quick wins this week, and the rubric + skill‑compilation tricks can supercharge our next fine‑tune run. Let me know if you want a deep dive on any of them!
+    </div>
+    
+    <div class="papers">
+        <h3>📄 Detailed Papers</h3>
+        
+<div class="paper">
+    <h3>Collaborative Human-Agent Protocol (CHAP)</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 10/10</span>
+        <span class="score importance">Importance: 9/10</span>
+    </div>
+    <div class="abstract">Foundation models are moving from response generation into operational roles. They plan across steps, call tools, request human input, coordinate with other agents, and increasingly carry responsibility for work that affects customers, claims, code, contracts, and clinical decisions. Production deployments are no longer one human supervising one model. They are multi-human, multi-agent collaborations that cross teams, time zones, and trust boundaries. The technical surface for this collaboration remains weakly specified. When an agent drafts a response and a human edits it before it ships, the moment of human judgement is the most valuable signal in the system. In current practice it is recorded, if at all, in application code, chat threads, ticket comments, and tribal memory. Two protocol standards address adjacent concerns: MCP standardises agent access to tools and data, and A2A standardises agent-to-agent interoperability. Neither defines the shared workspace in which humans and agents perform accountable work together. This paper presents CHAP, the Collaborative Human-Agent Protocol. Under CHAP, the override that used to vanish into a chat thread becomes a structured event carrying a diff, a rationale, and a content hash. The handoff between shifts becomes a portable envelope rather than a pinned message. The human approval of an agent's draft becomes a non-repudiable signed decision that can be replayed years later. The protocol achieves this through a small Core (workspaces, participants, tasks, artefacts, and an append-only evidence log) together with composable profiles that add review, modes, routing, deliberation, handoff, identity, signatures, and transparency-backed audit as deployments require them. Specification, reference implementation, conformance suite, and worked examples are available at: https://github.com/BrightbeamAI/chap</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.09751v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>PRISM: Recovering Instruction Sets from Language Model Activations</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">As LLMs are deployed as agents, reliable monitoring requires knowing not only what they output, but which instructions are steering their behavior. This is difficult when models infer unintended subgoals, follow contextual cues, or are influenced by prompt injections and hidden objectives. While activation-to-language methods suggest that hidden states can reveal natural-language information, existing approaches are not designed to recover the full set of simultaneous instructions, constraints, prohibitions, and subgoals active in agentic settings. We formalize this problem as instruction set retrieval and introduce PRISM, an activation-conditioned interpreter that decodes hidden states from a frozen target model into a faithful bullet list of active instructions. Unlike prior activation-to-language methods, PRISM is trained to recover instruction sets directly, using judge-guided GRPO to reward covered instructions and penalize unsupported ones. Across benign, constrained, prompt-injection, and hidden-objective settings, PRISM outperforms activation-to-language baselines, especially on security-relevant objectives.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.09563v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>SecureClaw: Clawing Back Control of LLM Agents</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">Tool-using large language model (LLM) agents face two distinct security failures: unauthorized external actions and exposure of sensitive plaintext inside the runtime before any final output check can intervene. Existing defenses usually protect one boundary, either the planner/runtime or the action sink, and therefore do not by themselves secure both surfaces. We present SecureClaw, a dual-boundary architecture that places authorization at the effect sink and plaintext confinement at the read boundary. Sensitive reads pass through a trusted gateway that replaces raw values with opaque handles and, in the evaluated deployment, bounded summaries as an explicit declassification interface. Writes that change external state follow a PREVIEW$\rightarrow$COMMIT protocol in which only a trusted executor may commit the exact canonical request authorized by policy. The runtime can still plan over summaries and symbolic references, but cannot directly dereference secrets or perform side effects. Across AgentDojo, AgentLeak, and Agent Security Bench (ASB), SecureClaw is the only defense we evaluate in a common harness that simultaneously retains usable task utility and achieves 0\% attack success rate (ASR) on ASB, 0.64\% ASR on AgentDojo, and 3.23\% overall leak on AgentLeak's attacked parity lane, which measures final-output and internal-relay leakage.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.09549v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>Anything2Skill: Compiling External Knowledge into Reusable Skills for Agents</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">Retrieval-augmented generation (RAG) enables agents to access external knowledge at inference time, but it primarily retrieves fragmented declarative evidence, leaving agents to repeatedly infer task procedures from passages, manuals, examples, logs, or trajectories. This raises a fundamental question: can skills extracted from external knowledge bases be installed into an agent, enabling it to rapidly approximate domain expertise? In this paper, we propose Anything2Skill, a taxonomy-guided framework that compiles heterogeneous external knowledge into reusable, retrievable, and executable skills for agents. Given a corpus of knowledge records, \textsc{Anything2Skill} first decomposes each record into evidence windows and performs plan-and-expand skill extraction under a skill-tree prior. The extracted candidates are then converted into structured skill contracts that specify invocation conditions, contraindications, action moves, workflow steps, constraints, output specifications, supporting evidence, and confidence scores. To construct a deployable procedural memory, Anything2Skill manages the extracted skills in a persistent SkillBank through taxonomy-aware compilation, registry-level reconciliation, lifecycle tracking, versioned updates, and visible skill-tree projection. At inference time, agents retrieve both task-specific passages from the original knowledge base and relevant procedural skills from the SkillBank, allowing RAG to provide declarative evidence while compiled skills provide reusable procedural guidance. Experiments on qsv and GitHub-CLI show that Anything2Skill combined with RAG achieves 98.85\% and 94.10\% success rates, respectively, substantially outperforming RAG-only agents. These results suggest that compiling latent procedural knowledge into explicit skills is an effective way to extend retrieval-augmented agents from knowledge access toward capability reuse.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.09316v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>ComplexConstraints and Beyond: Expert Rubrics for RLVR</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">As LLM capabilities advance rapidly, the evaluation methods used to assess them increasingly lag behind. Traditional benchmarks relied on programmatic verification of narrow, surface-level constraints, but real-world instruction following and agentic tasks demand assessment of nuanced, context-dependent behaviors that resist simple scripted checks. We present a systematic analysis of expert-curated rubric-based evaluation as an alternative paradigm, drawing on empirical evidence from two domains: complex instruction following and enterprise agentic tasks. We first articulate five design principles for constructing high-quality rubrics, including Maximum Viable Atomicity, intent-aware criterion design, and iterative LLM-judge calibration. To validate these principles, we introduce ComplexConstraints, a new expert-curated instruction-following dataset in which each prompt is paired with 10-40 atomic rubric criteria. We demonstrate that these expert rubrics are not only better evaluation instruments but also highly effective training signals: training on approximately 1,000 ComplexConstraints examples yields +15.5% improvement for a 4B-parameter model and +12.2% for a 235B-parameter model on instruction following, while single-epoch RL training on a rubric-graded enterprise environment produces gains that transfer to out-of-distribution benchmarks the model was never trained on (+4.5% BFCL, +7.4% Tau2-Bench, +6.8% Tool-Decathlon). Our findings establish that expert-authored rubrics improve both the measurement and the development of frontier LLM capabilities, serving as effective evaluation and RL training signals.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.09118v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>CARE: A Conformal Safety Layer for Medical Summarization</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">Large language models (LLMs) are increasingly used for medical summarization, but their outputs can omit medically important information and introduce unsupported claims. Existing error-detection methods produce heuristic or uncalibrated scores, providing no formal control over missed errors and no principled way to trade off safety against clinician review burden. We introduce Conformal Assessment for Risk Evaluation (CARE), a post-hoc, model-agnostic safety layer that uses conformal risk control to overlay calibrated omission and hallucination flags onto summaries from any LLM without retraining. CARE provides finite-sample, distribution-free guarantees through two controllers: a hallucination controller that bounds the probability of a document containing any unflagged hallucinated sentence, and an omission controller that bounds the expected fraction of important omissions not surfaced for review. Unlike hallucination detection, omissions depend jointly on whether a source sentence is important and whether it is covered by the summary. We show that calibrating only one dimension can violate the target risk bound, while marginal decompositions remain valid but overly conservative. By jointly calibrating over the full $(τ,γ)$ threshold space, CARE preserves formal guarantees while surfacing up to 5$\times$ fewer sentences than alternative calibrated baselines. Across five medical summarization tasks, CARE satisfies the target risk bound at $α= 0.15$ with 95% confidence across 100 calibration/test resplits, using only ~100 labeled documents per domain. In a preliminary clinician study (75 document reviews), calibrated flags improved omission detection by 28.6 percentage points on average. These results show that sentence-level safety guarantees are feasible for LLM-assisted medical summarization and offer a tunable mechanism for balancing residual risk and review effort.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.08969v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>RAILS: Verification-Native Clearing For Agentic Commerce</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">Autonomous agents negotiate, purchase, deploy code, and move funds, but no neutral mechanism determines whether they   met their delegated obligation, who is responsible when they did not, or which settlement action follows. This is the   agentic clearing problem. Tool protocols (MCP), inter-agent communication (A2A), payment rails (x402), mandate and   network agent protocols (AP2, Visa, Mastercard), and settlement-risk standards each assume that determination and none   produce it.   Clearing is the missing primitive. Payment is not clearing. Authorization is not clearing. LLM-as-judge evaluation is   not clearing. Settlement-risk escrow is not clearing: it consumes clearing decisions.   RAILS (Real-Time Agent Integrity & Ledger Settlement) is the integrity and clearing layer for agentic commerce,   spanning a per-output reliability score, a published reliability record, and a clearing function that consumes them.   The clearing protocol at its core closes that gap. Seven primitives (Obligation Object, Evidence Envelope,   Verification Mesh, Clearing Decision, Settlement Instruction, Clearing Passport, Finality Rules), bound by a formal   model of admissibility-graded verification, together yield a soundness property: no financially material settlement is   supported by evidence below the obligation's admissibility floor. The property is falsifiable against the spec. We   are not aware of a prior agent-commerce verification mechanism that states a property of this kind. The approaches   nearest to it emit a pass, a delivery guarantee, a bare score, or an equilibrium.   This paper specifies that clearing protocol.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2606.08790v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </body>
+    </html>
+    

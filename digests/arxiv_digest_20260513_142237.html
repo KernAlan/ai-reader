@@ -1,0 +1,180 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AI Reader</title>
+        <style>
+            
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    color: #2d3748;
+    margin: 0;
+    padding: 20px;
+    background: #f7fafc;
+}
+
+.digest {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.header h2 {
+    margin: 0;
+    color: #2d3748;
+}
+
+.header p {
+    margin: 0.5rem 0 0;
+    color: #718096;
+}
+
+.highlights {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+    border: 1px solid #e2e8f0;
+}
+
+.highlights h3 {
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+}
+
+.summary {
+    white-space: pre-line;
+    line-height: 1.6;
+}
+
+.summary ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.summary li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+}
+
+.papers {
+    margin-top: 3rem;
+}
+
+.papers h3 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.paper {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.paper:last-child {
+    border-bottom: none;
+}
+
+.paper h3 {
+    margin: 0 0 0.5rem;
+    color: #2d3748;
+}
+
+.paper .scores {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.paper .score {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.paper .relevance {
+    background: #e6fffa;
+    color: #047481;
+}
+
+.paper .importance {
+    background: #ebf4ff;
+    color: #1a56db;
+}
+
+.paper .abstract {
+    color: #4a5568;
+    margin: 0.5rem 0;
+}
+
+.paper .meta {
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.paper .meta a {
+    color: #4299e1;
+    text-decoration: none;
+}
+
+.paper .meta a:hover {
+    text-decoration: underline;
+}
+
+        </style>
+    </head>
+    <body>
+        
+<div class="digest">
+    <div class="header">
+        <h2>AI Reader</h2>
+        <p>Found 1 relevant papers out of 200 new submissions</p>
+    </div>
+    
+    <div class="highlights">
+        <h3>🔥 Key Highlights</h3>
+        Hey boss, found 1 cool paper today that I think you'll love:
+<ol>
+<li><strong>LegalCheck: Retrieval- and Context-Augmented Generation for Drafting Municipal Legal Advice Letters</strong> — introduces a RAG + CAG pipeline plus expert-in-the-loop that uses curated legal KBs and controlled prompting to produce near-final municipal objection-response letters in minutes while keeping outputs explainable and covering ~80–100% of essential legal content. This work scored 9.0/10 (Relevance 10/10, Importance 8/10) and, in a real Amsterdam deployment, cut hours of drafting down to minutes while improving consistency — practical next steps for industry are to pilot a governed RAG+CAG flow with a small curated KB, an expert-review UI, and A/B productivity and accuracy tests (paper: http://arxiv.org/abs/2605.12012v1). 
+</li>
+</ol>
+Let’s scope a quick 2-week pilot this week: pick one legal or compliance micro-workflow, hook up retrieval to a curated KB, add controlled prompts + an expert-review step, and measure time saved and error rates.
+    </div>
+    
+    <div class="papers">
+        <h3>📄 Detailed Papers</h3>
+        
+<div class="paper">
+    <h3>LegalCheck: Retrieval- and Context-Augmented Generation for Drafting Municipal Legal Advice Letters</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 10/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">Public-sector legal departments in the Netherlands face acute staff shortages, increased case volumes, and increased pressure to meet regulatory compliance. This paper presents LegalCheck, a novel system that addresses these challenges by automating the drafting of objection response letters through a combination of Retrieval-Augmented Generation (RAG) and Context-Augmented Generation (CAG). Using a large language model (LLM) alongside curated legal knowledge bases, LegalCheck performs retrieval of relevant laws and precedents, and uses controlled prompting to incorporate both external knowledge and case-specific details into a coherent draft. An expert-in-the-loop review ensures that each generated letter is legally sound and contextually appropriate. In a real-world deployment within the Municipality of Amsterdam, LegalCheck produced near-final advice letters in minutes rather than hours, while maintaining high legal consistency and factual accuracy. The output is based on actual regulations and prior cases, providing explainable outputs that captured the vast majority of required legal reasoning (often 80\% to 100\% of essential content). Legal professionals found that the system reduced their workload and ensured a consistent application of legal standards, without replacing human judgment. These results demonstrate substantial efficiency gains, improved legal consistency, and positive user acceptance. More broadly, this work illustrates how responsible AI can be deployed in the legal domain by augmenting LLMs with domain knowledge and governance mechanisms.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2605.12012v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </body>
+    </html>
+    

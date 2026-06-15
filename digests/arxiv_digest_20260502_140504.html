@@ -1,0 +1,198 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AI Reader</title>
+        <style>
+            
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    color: #2d3748;
+    margin: 0;
+    padding: 20px;
+    background: #f7fafc;
+}
+
+.digest {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.header h2 {
+    margin: 0;
+    color: #2d3748;
+}
+
+.header p {
+    margin: 0.5rem 0 0;
+    color: #718096;
+}
+
+.highlights {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+    border: 1px solid #e2e8f0;
+}
+
+.highlights h3 {
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+}
+
+.summary {
+    white-space: pre-line;
+    line-height: 1.6;
+}
+
+.summary ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.summary li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+}
+
+.papers {
+    margin-top: 3rem;
+}
+
+.papers h3 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.paper {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.paper:last-child {
+    border-bottom: none;
+}
+
+.paper h3 {
+    margin: 0 0 0.5rem;
+    color: #2d3748;
+}
+
+.paper .scores {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.paper .score {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.paper .relevance {
+    background: #e6fffa;
+    color: #047481;
+}
+
+.paper .importance {
+    background: #ebf4ff;
+    color: #1a56db;
+}
+
+.paper .abstract {
+    color: #4a5568;
+    margin: 0.5rem 0;
+}
+
+.paper .meta {
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.paper .meta a {
+    color: #4299e1;
+    text-decoration: none;
+}
+
+.paper .meta a:hover {
+    text-decoration: underline;
+}
+
+        </style>
+    </head>
+    <body>
+        
+<div class="digest">
+    <div class="header">
+        <h2>AI Reader</h2>
+        <p>Found 2 relevant papers out of 200 new submissions</p>
+    </div>
+    
+    <div class="highlights">
+        <h3>🔥 Key Highlights</h3>
+        Hey boss, found 2 cool papers today that I think you'll love:
+
+1. **From Unstructured Recall to Schema-Grounded Memory: Reliable AI Memory via Iterative, Schema-Aware Extraction**  
+   They propose shifting external AI memory from “search over prose” to a schema-grounded, iterative write path (object detection → field detection → field-value extraction) with validation gates and retries, which the authors show yields much higher accuracy (xmemory: 97.10% F1 vs ~80–87% for baselines; extraction judge-in-loop: 90.42% object accuracy) — avg score 8.5/10 (Relevance 9/10, Importance 8/10).  
+   For product teams this means treat memory as a system-of-record: define schemas for what must/should/never be inferred, implement write-time validation and stateful prompt control (start a small PoC on a critical agent flow to replace ad-hoc embedding-store memory); details at http://arxiv.org/abs/2604.27906v1.
+
+2. **Secret Stealing Attacks on Local LLM Fine-Tuning through Supply-Chain Model Code Backdoors**  
+   They demonstrate a practical supply-chain vector where malicious model code (not poisoned weights) hijacks local fine-tuning via deterministic tensor-rule matching and value-gradient tricks to memorize and exfiltrate secrets, achieving >98% strict ASR while bypassing DP-SGD and audit defenses — avg score 8.5/10 (Relevance 8/10, Importance 9/10).  
+   For engineering teams this is a red flag: local offline fine-tuning is not a safe privacy boundary — immediately tighten code provenance, add execution-level / dynamic audits of model code, and quarantine any third-party training helpers; read more at http://arxiv.org/abs/2604.27426v1.
+
+Quick and actionable: this week let’s spin up a tiny schema-backed memory PoC on one agent flow and run a fast audit of any third‑party model code in our fine-tune pipelines.
+    </div>
+    
+    <div class="papers">
+        <h3>📄 Detailed Papers</h3>
+        
+<div class="paper">
+    <h3>From Unstructured Recall to Schema-Grounded Memory: Reliable AI Memory via Iterative, Schema-Aware Extraction</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 9/10</span>
+        <span class="score importance">Importance: 8/10</span>
+    </div>
+    <div class="abstract">Persistent AI memory is often reduced to a retrieval problem: store prior interactions as text, embed them, and ask the model to recover relevant context later. This design is useful for thematic recall, but it is mismatched to the kinds of memory that agents need in production: exact facts, current state, updates and deletions, aggregation, relations, negative queries, and explicit unknowns. These operations require memory to behave less like search and more like a system of record.   This paper argues that reliable external AI memory must be schema-grounded. Schemas define what must be remembered, what may be ignored, and which values must never be inferred. We present an iterative, schema-aware write path that decomposes memory ingestion into object detection, field detection, and field-value extraction, with validation gates, local retries, and stateful prompt control. The result shifts interpretation from the read path to the write path: reads become constrained queries over verified records rather than repeated inference over retrieved prose.   We evaluate this design on structured extraction and end-to-end memory benchmarks. On the extraction benchmark, the judge-in-the-loop configuration reaches 90.42% object-level accuracy and 62.67% output accuracy, above all tested frontier structured-output baselines. On our end-to-end memory benchmark, xmemory reaches 97.10% F1, compared with 80.16%-87.24% across the third-party baselines. On the application-level task, xmemory reaches 95.2% accuracy, outperforming specialised memory systems, code-generated Markdown harnesses, and customer-facing frontier-model application harnesses. The results show that, for memory workloads requiring stable facts and stateful computation, architecture matters more than retrieval scale or model strength alone.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2604.27906v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+
+<div class="paper">
+    <h3>Secret Stealing Attacks on Local LLM Fine-Tuning through Supply-Chain Model Code Backdoors</h3>
+    <div class="scores">
+        <span class="score relevance">Relevance: 8/10</span>
+        <span class="score importance">Importance: 9/10</span>
+    </div>
+    <div class="abstract">Local fine-tuning datasets routinely contain sensitive secrets such as API keys, personal identifiers, and financial records. Although ''local offline fine-tuning'' is often viewed as a privacy boundary, we reveal that compromised model code is sufficient to steal them. Current passive pretrained-weight poisoning attacks, while effective for natural language, fundamentally fail to capture such sparse high-entropy targets due to their reliance on probabilistic semantic prefixes. To bridge this gap, we identify and exploit a practical but overlooked supply-chain vector -- model code camouflaged as standard architectural definitions -- to realize a paradigm shift from passive weight poisoning to active execution hijacking. We introduce a deterministic full-chain memorization mechanism: it locks onto token-level secrets in dynamic computation flows via online tensor-rule matching, and leverages value-gradient decoupling to stealthily inject attack gradients, overcoming gradient drowning to force model memorization. Furthermore, we achieve, for the first time, attacker-verifiable secret stealing through black-box queries that precisely distinguishes true leakage from hallucination. Experiments demonstrate that our method achieves over 98\% Strict ASR without compromising the primary task, and can effectively bypass defense measures including DP-SGD, semantic auditing, and code auditing.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2604.27426v1" target="_blank">View on arXiv</a>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </body>
+    </html>
+    
