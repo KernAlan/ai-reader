@@ -57,14 +57,14 @@ class PaperService:
         return papers
     
     def process_papers(self, papers: list) -> tuple[list, bool]:
-        """Process and score papers"""
+        """Process and score papers — returns ALL scored papers"""
         # Filter papers
         papers = filter_ai_papers(papers, self.config)
         logger.info(f"After filtering: {len(papers)} papers")
         
         # Score papers
         logger.info("Scoring papers...")
-        scored_papers, had_hallucination = relevancy.score_papers(
+        all_scored_papers, had_hallucination = relevancy.score_papers(
             papers,
             self.config.interest,
             self.config.model,
@@ -75,12 +75,12 @@ class PaperService:
 
         # Send Telegram alerts for high arbitrage papers
         arbitrage_threshold = self.config.model.get("arbitrage_threshold", 8.5)
-        for paper in scored_papers:
+        for paper in all_scored_papers:
             if paper.get('arbitrage_score', 0) >= arbitrage_threshold:
-                logger.info(f"Found arbitrage paper: {paper['title']}. Sending Telegram alert...")
+                logger.info(f"Found high-arbitrage paper: {paper['title']}. Sending Telegram alert...")
                 self.telegram_service.send_alert(paper)
 
-        return scored_papers, had_hallucination
+        return all_scored_papers, had_hallucination
     
     def generate_summary(self, scored_papers: List[Dict]) -> str:
         """Generate executive summary"""

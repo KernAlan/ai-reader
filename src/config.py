@@ -54,6 +54,29 @@ SCORING GUIDELINES:
     - **Criteria**: Focus on Novel Architectures, New Capabilities, and Deep Explanations.
     - **Filter**: Ignore incremental stats-chasing, pure speedups without capability gain, and fluff/marketing.
 
+CALIBRATION ANCHORS — score each paper against the broader AI landscape since 2023, NOT against the other papers in this batch:
+
+**10** = Paradigm shift that creates a new field
+→ Transformer (Attention Is All You Need), RLHF, Diffusion Models
+
+**9** = Major breakthrough, changes how we build AI
+→ GPT-3/Scaling Laws, Chain-of-Thought, LoRA, InstructGPT
+
+**8** = Significant practical advance, widely adopted
+→ RAG, DSPy, function calling, speculative decoding
+
+**7** = Notable improvement to an existing paradigm
+→ Better retrieval methods, new SOTA on a key benchmark
+
+**6** = Incremental but competently done
+→ Solid engineering work, modest improvement
+
+**5** = Average paper — competent but unremarkable
+
+**4-1** = Below average
+
+A paper either measures up to LoRA-level (9) or it doesn't. Most papers are 4-6. If you're unsure between two scores, pick the LOWER one.
+
 My interests are:
 {interest}
 
@@ -146,7 +169,7 @@ Papers to evaluate:
 
     I use LLMs daily for: WRITING (long-form, creative), building products/agents, coding, and creating AI-powered services/products through Solanus/KernTech.
 
-    My practical opportunity surface includes:
+
     - Healthcare admin, EHR/API integrations, prior authorization, medical record summarization
     - Legal-medical document review, chronologies, demand letters, discovery/deposition summaries
     - Small business workflow automation for local operators, trades, accounting, insurance, and professional services
@@ -179,6 +202,7 @@ Papers to evaluate:
     **1-4** = "Not relevant to my work"
     - Pure SOTA-chasing benchmarks, training-only methods, infra-only speedups, KV cache/quantization details, or academic methods with no near-term deployment path
     - Incremental improvements without a new capability, reliability gain, or sellable workflow advantage.
+
 
     DEFAULT SCORE IS 5. Work UP from there only with strong justification.
     If you're unsure between two scores, pick the LOWER one.
@@ -220,6 +244,55 @@ Papers to evaluate:
     }
     """
 
+    GITHUB_BATCH_SCORING_PROMPT = """
+    I'm Alan Kern. Evaluate these GitHub repos for my work.
+
+    I use LLMs for: WRITING (long-form), building agents/products, coding.
+
+    Score each repo on TWO dimensions:
+
+    **RELEVANCE** (1-10): How relevant is this to my work?
+    - 10 = Directly addresses writing, agents, or LLM product building
+    - 7-9 = Related to AI/ML, could be useful
+    - 4-6 = Tangentially related
+    - 1-3 = Not relevant (crypto, games, pure devops, etc.)
+
+    **IMPACT** (1-10): How game-changing is this?
+    - 10 = GAME CHANGER - fundamentally new capability
+      (solves long-form coherence, makes agents reliable, new LLM paradigm)
+    - 9 = Major breakthrough, would change how I architect systems
+    - 8 = Solid innovation, worth adopting
+    - 6-7 = Incremental improvement, interesting
+    - 1-5 = Nothing new, or not useful
+
+    CALIBRATION — score against the actual open-source landscape, NOT against the other repos in this batch:
+    - 9-10 = Things that would change how I build products (new agent frameworks, breakthrough LLM tools)
+    - 7-8 = Solid, well-made tools I'd actually use
+    - 5-6 = Interesting but incremental, or niche
+    - 1-4 = Not useful for my work
+
+    BE HARSH on impact. Most repos are 5 or below. Only true breakthroughs get 9-10.
+    DEFAULT SCORE IS 5. Work up from there only with strong justification.
+    If you're unsure between two scores, pick the LOWER one.
+
+    Also write a 2-3 sentence SUMMARY for each explaining:
+    1. What this repo actually does (in plain English)
+    2. Why it matters (or doesn't) for someone building AI products
+
+    Return JSON:
+    {{
+        "repos": [
+            {{
+                "name": "{name_placeholder}",
+                "relevance": N,
+                "impact": N,
+                "summary": "2-3 sentences"
+            }},
+            ...
+        ]
+    }}
+    """
+
     GITHUB_EXECUTIVE_SUMMARY_PROMPT = """
     You are writing a quick executive briefing for your boss, Alan Kern, about today's GitHub trending repos.
 
@@ -258,6 +331,7 @@ Papers to evaluate:
         self.interest = self.DEFAULT_INTEREST
         self.arbitrage_interest = self.ARBITRAGE_INTEREST
         self.github_scoring_prompt = self.GITHUB_SCORING_PROMPT
+        self.github_batch_scoring_prompt = self.GITHUB_BATCH_SCORING_PROMPT
         self.github_executive_summary_prompt = self.GITHUB_EXECUTIVE_SUMMARY_PROMPT
     
     @property
