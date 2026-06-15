@@ -230,6 +230,15 @@ Papers to evaluate:
     - 6-7 = Incremental improvement, interesting
     - 1-5 = Nothing new, or not useful
 
+    CALIBRATION — score against the actual open-source landscape:
+
+    REFERENCE REPOS (use these to calibrate what a 9-10 looks like):
+    - **OpenClaw** (openclaw/openclaw) → 10 — Universal AI assistant platform, any OS any device. Paradigm shift for how AI agents operate.
+    - **PIMONO/Pi** (earendil-works/pi) → 9 — AI agent toolkit with unified LLM API, agent loop, TUI, coding agent CLI. 62k+ stars.
+    - **EQ-Bench** (EQ-bench/EQ-Bench) → 8 — Benchmark for emotional intelligence in LLMs. Important evaluation tool.
+    - **Codex CLI** (openai/codex) → 9 — Lightweight coding agent in terminal. Breakthrough in making coding agents accessible.
+    - **OpenCode** → 7-8 — Open source coding agent. Solid implementation.
+
     BE HARSH on impact. Most repos are 5 or below. Only true breakthroughs get 9-10.
 
     Also write a 2-3 sentence SUMMARY explaining:
@@ -266,10 +275,13 @@ Papers to evaluate:
     - 1-5 = Nothing new, or not useful
 
     CALIBRATION — score against the actual open-source landscape, NOT against the other repos in this batch:
-    - 9-10 = Things that would change how I build products (new agent frameworks, breakthrough LLM tools)
-    - 7-8 = Solid, well-made tools I'd actually use
-    - 5-6 = Interesting but incremental, or niche
-    - 1-4 = Not useful for my work
+
+    REFERENCE REPOS (use these to calibrate what a 9-10 looks like):
+    - **OpenClaw** (openclaw/openclaw) → 10 — Universal AI assistant platform, any OS any device. Paradigm shift for how AI agents operate.
+    - **PIMONO/Pi** (earendil-works/pi) → 9 — AI agent toolkit with unified LLM API, agent loop, TUI, coding agent CLI. 62k+ stars. Fundamentally changed how people build agents.
+    - **EQ-Bench** (EQ-bench/EQ-Bench) → 8 — Benchmark for emotional intelligence in LLMs. Important evaluation tool, well-crafted, widely used.
+    - **Codex CLI** (openai/codex) → 9 — Lightweight coding agent in terminal. Breakthrough in making coding agents accessible.
+    - **OpenCode** → 7-8 — Open source coding agent. Solid implementation, important for the ecosystem.
 
     BE HARSH on impact. Most repos are 5 or below. Only true breakthroughs get 9-10.
     DEFAULT SCORE IS 5. Work up from there only with strong justification.
