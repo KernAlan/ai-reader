@@ -438,24 +438,26 @@ def _generate_executive_summary(scored_repos: list) -> str:
 
 
 def _send_github_alert(telegram: TelegramService, repo: dict) -> bool:
-    """Send Telegram alert for a high-scoring repo"""
+    """Send Telegram alert for a high-scoring repo — like an intern briefing"""
     try:
         import httpx
 
         composite = repo.get('composite', (repo.get('relevance', 0) + repo.get('impact', 0)) / 2)
+        summary = repo.get('summary', 'No summary')
+        name = repo['name']
+        url = repo.get('url', f"https://github.com/{name}")
+
         message = (
-            f"🔥 *GitHub Trending Alert* 🔥\n\n"
-            f"*Repo:* {repo['name']}\n"
-            f"*Score:* {composite:.1f}/10 (R:{repo.get('relevance', 0)} I:{repo.get('impact', 0)})\n"
-            f"*Stars:* {repo['stars']} (+{repo['stars_today']} today)\n\n"
-            f"*Analysis:* {repo.get('summary', 'No summary')}\n\n"
-            f"[View on GitHub]({repo['url']})"
+            f"🔥 *Hey, check this out — {name.split('/')[-1]}*\n\n"
+            f"{summary}\n\n"
+            f"[→ View on GitHub]({url})  ⭐{repo['stars']} (+{repo['stars_today']} today)"
         )
 
         payload = {
             "chat_id": telegram.chat_id,
             "text": message,
-            "parse_mode": "Markdown"
+            "parse_mode": "Markdown",
+            "disable_web_page_preview": True
         }
 
         response = httpx.post(telegram.base_url, json=payload, timeout=10.0)
@@ -468,7 +470,7 @@ def _send_github_alert(telegram: TelegramService, repo: dict) -> bool:
 
 
 def _send_github_digest(telegram: TelegramService, scored_repos: list, threshold: float) -> bool:
-    """Send a consolidated GitHub trending digest to Telegram"""
+    """Send a consolidated GitHub trending digest — intern briefing style"""
     if not telegram.bot_token or not telegram.chat_id:
         return False
 
@@ -476,16 +478,33 @@ def _send_github_digest(telegram: TelegramService, scored_repos: list, threshold
         import httpx
 
         top = sorted(scored_repos, key=lambda r: r.get('composite', 0), reverse=True)[:5]
-        lines = ["💻 *GitHub Trending Digest*", ""]
-        for i, r in enumerate(top, 1):
-            cs = r.get('composite', 0)
-            name = r['name']
-            url = r.get('url', f"https://github.com/{name}")
-            stars = r.get('stars', 0)
-            arrow = "🔥" if cs >= threshold else "👀"
-            lines.append(f"{arrow} {i}. [{name}]({url}) — *{cs:.1f}* ⭐{stars}")
-        lines.append("")
-        lines.append(f"_{len(scored_repos)} repos scored, {len([r for r in scored_repos if r.get('composite', 0) >= threshold])} above threshold_")
+        gems = [r for r in top if r.get('composite', 0) >= threshold]
+        rest = [r for r in top if r.get('composite', 0) < threshold]
+
+        lines = ["💻 *GitHub Trending — what caught my eye*", ""]
+
+        if gems:
+            lines.append(f"*🔥 Worth your time:*")
+            for r in gems:
+                name = r['name']
+                url = r.get('url', f"https://github.com/{name}")
+                summary = r.get('summary', '')
+                lines.append(f"• [{name}]({url})")
+                lines.append(f"  _{summary}_")
+                lines.append("")
+
+        if rest:
+            lines.append(f"*👀 Also notable:*")
+            for r in rest:
+                name = r['name']
+                url = r.get('url', f"https://github.com/{name}")
+                cs = r.get('composite', 0)
+                summary = r.get('summary', '')
+                lines.append(f"• [{name}]({url}) — {cs:.1f}")
+                lines.append(f"  _{summary}_")
+                lines.append("")
+
+        lines.append(f"_{len(scored_repos)} repos on trending today_")
 
         payload = {
             "chat_id": telegram.chat_id,
