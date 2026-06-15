@@ -104,9 +104,11 @@ def generate(commit: bool, output_dir: str, email: bool):
         logger.info(f"Saved digest to {filepath}")
         
         # Send Telegram daily digest with top gems
-        top_papers = [p for p in scored_papers if p.get('composite_score', 0) >= 8]
-        telegram = TelegramService(config)
-        telegram.send_digest_summary(top_papers, len(papers))
+        threshold = config.model.get("threshold", 9.0)
+        top_papers = [p for p in scored_papers if p.get('composite_score', 0) >= threshold]
+        if top_papers:
+            telegram = TelegramService(config)
+            telegram.send_digest_summary(top_papers, len(papers))
         
         # Optional actions
         if commit:
