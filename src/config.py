@@ -77,6 +77,8 @@ CALIBRATION ANCHORS — score each paper against the broader AI landscape since 
 
 A paper either measures up to LoRA-level (9) or it doesn't. Most papers are 4-6. If you're unsure between two scores, pick the LOWER one.
 
+DISTRIBUTION CONSTRAINT — CRITICAL: In this batch of {num_papers} papers, at MOST 1 paper can have composite score (avg of Relevance + Importance) of 9 or higher. At most 2 can have composite 8 or higher. The remaining papers MUST be 7 or below. Most should be 4-6. If you find yourself giving more than 1 paper a 9+ composite, you are scoring too generously. This constraint applies to EVERY batch.
+
 My interests are:
 {interest}
 
@@ -135,8 +137,8 @@ Papers to evaluate:
         "name": "deepseek/deepseek-v4-pro",
         "provider": "openrouter",
         "papers_per_batch": 8,
-        "threshold": 9.0,
-        "arbitrage_threshold": 9.0,
+        "threshold": 9.5,
+        "arbitrage_threshold": 9.5,
         "max_tokens": 16000,
         "top_p": 1.0
     }
@@ -178,6 +180,8 @@ Papers to evaluate:
     - Voice/SMS/email automation, document extraction, writing/ghostwriting/content systems, and API integration templates
 
     BE EXTREMELY CONSERVATIVE. Most papers deserve a 5 or below. A 10 should happen rarely.
+
+    DISTRIBUTION CONSTRAINT — In any given day's batch (typically 8-10 papers per chunk), at MOST 1 paper deserves a 9+ composite. If a single chunk would produce 2+ papers at 9+, you are over-scoring. At most 2 papers per chunk at 8+. Most papers are 4-6 or below. This is non-negotiable.
 
     **HOW TO SCORE — default low, only go high with extraordinary evidence:**
 
@@ -286,6 +290,8 @@ Papers to evaluate:
     BE HARSH on impact. Most repos are 5 or below. Only true breakthroughs get 9-10.
     DEFAULT SCORE IS 5. Work up from there only with strong justification.
     If you're unsure between two scores, pick the LOWER one.
+
+    DISTRIBUTION CONSTRAINT — CRITICAL: In this batch of {num_repos} repos, at MOST 1 can score 9+ on composite (avg of relevance + impact). At most 2 can score 8+. The rest MUST be 7 or below. If you give more than 1 repo a 9+, you are scoring too generously. This applies to EVERY batch.
 
     Also write a 2-3 sentence SUMMARY for each explaining:
     1. What this repo actually does (in plain English)
