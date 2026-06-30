@@ -9,7 +9,7 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
-SEEN_REPOS_FILE = Path("data/seen_repos.json")
+SEEN_REPOS_FILE = Path("seen_repos.json")
 
 
 class GitHubTrendingService:
