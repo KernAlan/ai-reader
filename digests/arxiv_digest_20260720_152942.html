@@ -1,0 +1,687 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AI Reader</title>
+        <style>
+            
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    color: #2d3748;
+    margin: 0;
+    padding: 20px;
+    background: #f7fafc;
+}
+
+.digest {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.header h2 {
+    margin: 0;
+    color: #2d3748;
+}
+
+.header p {
+    margin: 0.5rem 0 0;
+    color: #718096;
+}
+
+.highlights {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+    border: 1px solid #e2e8f0;
+}
+
+.highlights h3 {
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+}
+
+.summary {
+    white-space: pre-line;
+    line-height: 1.6;
+}
+
+.summary ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.summary li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+}
+
+.papers {
+    margin-top: 3rem;
+}
+
+.papers h3 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.paper {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.paper:last-child {
+    border-bottom: none;
+}
+
+.paper h3 {
+    margin: 0 0 0.5rem;
+    color: #2d3748;
+}
+
+.paper .scores {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.paper .score {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.paper .relevance {
+    background: #e6fffa;
+    color: #047481;
+}
+
+.paper .importance {
+    background: #ebf4ff;
+    color: #1a56db;
+}
+
+.paper .abstract {
+    color: #4a5568;
+    margin: 0.5rem 0;
+}
+
+.paper .meta {
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.paper .meta a {
+    color: #4299e1;
+    text-decoration: none;
+}
+
+.paper .meta a:hover {
+    text-decoration: underline;
+}
+
+        </style>
+    </head>
+    <body>
+        
+<div class="digest">
+    <div class="header">
+        <h2>AI Reader</h2>
+        <p>Found 32 relevant papers out of 80 new submissions</p>
+        <div class="distribution">
+            <strong>Score distribution:</strong> 2: 4, 3: 5, 4: 9, 6: 6, 7: 2, 8: 6
+        </div>
+    </div>
+    
+    <div class="highlights">
+        <h3>🔥 Key Highlights</h3>
+        <ol><li><strong>Agentic Synthesis against Counterexample-Supplemented Sketches</strong> — avg score 8.5/10. Coding agents can fix a failing example without preserving the domain rule that made it fail, so later generations can repeat the same plausible mistake <a href="http://arxiv.org/abs/2607.15854v1">Read more</a>.</li><li><strong>Perceived AGI: Believability as Dimensional Completeness, Not Capability</strong> — avg score 8.0/10. Large language models are broadly capable, yet in sustained one-to-one conversation they still read as flat: competent, responsive, and somehow not quite the presence of a mind <a href="http://arxiv.org/abs/2607.15883v1">Read more</a>.</li><li><strong>When Do Multi-Agent Systems Help? An Information Bottleneck Perspective</strong> — avg score 7.5/10. LLM powered multi-agent systems (MAS) have emerged as a promising paradigm for complex tasks <a href="http://arxiv.org/abs/2607.16133v1">Read more</a>.</li><li><strong>CRAFT: Clustering Rubrics to Diagnose Weak LLM Capabilities and Generate Targeted Fine-Tuning Data</strong> — avg score 7.5/10. Evaluations should do more than measure a models current performance <a href="http://arxiv.org/abs/2607.16122v1">Read more</a>.</li><li><strong>When Model Merging Rivals Joint Multi-Task Reinforcement Learning: A Task-Vector Geometry Analysis</strong> — avg score 7.5/10. Model merging is promoted as a substitute for joint multi-task training, yet in the reinforcement-learning setting this substitution is essentially never tested against the baseline it claims to replace: methods merge independently released agents precisely because a joint model is unavailable <a href="http://arxiv.org/abs/2607.16062v1">Read more</a>.</li></ol>
+    </div>
+    
+    <div class="tier-hot">
+        <h3>🔥 Hot (8+) — Worth your time today</h3>
+        
+<div class="paper" style="opacity: 1.0">
+    <h3>Agentic Synthesis against Counterexample-Supplemented Sketches</h3>
+    <div class="scores">
+        <span class="score relevance">R:9/10</span>
+        <span class="score importance">I:8/10</span>
+        <span class="score arbitrage">A:9/10</span>
+        <span class="score composite comp-high">8.5</span>
+    </div>
+    <div class="abstract">Coding agents can fix a failing example without preserving the domain rule that made it fail, so later generations can repeat the same plausible mistake. We present agentic synthesis against counterexample-supplemented sketches, a repository-native method for systems whose governing policy is discovered during implementation. A human starts with a partial, code-shaped sketch, and a coding agent generates the first implementation. When a concrete failure exposes missing or mistaken policy, an operator explicitly approves the corrected behavior and rule. The agent then revises the sketch and repairs or regenerates code and prompt surfaces for that one counterexample. The full archive preserves provenance; a selected regression set gates each revision before the next candidate is revealed; and periodic clean regeneration tests whether the evolved sketch, rather than prompt history or accumulated examples, carries the learned policy.   We demonstrate the method with CatSynth, a synthetic browser application and captured coding-agent experiment. In one open-world run with GPT-5.4-mini, 8 of 14 frozen candidate cases became counterexamples. The rebuild controls inherited that promotion schedule, and all three paths passed the 8 accepted cases. Rebuilding from the evolved sketch passed 19 of 21 withheld cases, compared with 15 of 21 when rebuilding from the initial sketch and replaying all accepted examples. Retaining code across counterexamples required 9 Developer calls and 719 lines of cumulative artifact churn, versus 15 calls and 2,394 lines for replay-all, and passed 18 of 21 withheld cases. These results provide inspectable evidence that the evolved sketch carried reviewed policy and that retaining code reduced rework in this run; with one model and one reveal order, they do not establish general superiority or correctness beyond the encoded checks.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.15854v1" target="_blank">View on arXiv</a>
+        <span class="arbitrage-badge">🔥 ARBITRAGE</span>
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 1.0">
+    <h3>Perceived AGI: Believability as Dimensional Completeness, Not Capability</h3>
+    <div class="scores">
+        <span class="score relevance">R:9/10</span>
+        <span class="score importance">I:7/10</span>
+        <span class="score arbitrage">A:8/10</span>
+        <span class="score composite comp-mid">8.0</span>
+    </div>
+    <div class="abstract">Large language models are broadly capable, yet in sustained one-to-one conversation they still read as flat: competent, responsive, and somehow not quite the presence of a mind. We hypothesize that a central missing ingredient is not more capability but dimensional completeness. We propose that the believability of an artificial interlocutor -- the degree to which a user attributes an inner life to it, which we call perceived mind -- is governed by whether the agent expresses a small set of first-person stances that humans use as evidence of mind, and that this is separable from task intelligence. We name four such dimensions -- time, truth, entropy, and love -- each defined as a behavioral stance rather than a benchmark competency, each with a human analog and a concrete emulation path; the time dimension already has an author-reported prototype. We identify an observable behavior layer -- initiative (unprompted action) and cadence (the shape and timing of turns) -- through which the stances surface in conversation, both partially realized as deployed features in a production companion application. We state six falsifiable predictions that a later pre-registered study will test, separating those that are pre-registrable now from those that remain conjectures pending operationalization. This is a conceptual framework: it reports no human-subjects data, and its central comparative claims are predictions, not findings. Throughout we hold a firm boundary -- the object is inferrable interiority, not interiority; this is perception engineering, not a theory of machine consciousness -- and we treat the resulting attachment and manipulation risks as load-bearing rather than incidental.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.15883v1" target="_blank">View on arXiv</a>
+        <span class="arbitrage-badge">🔥 ARBITRAGE</span>
+    </div>
+</div>
+
+    </div>
+    
+    <div class="tier-warm">
+        <h3>👀 Worth a Look (6-7.9)</h3>
+        
+<div class="paper" style="opacity: 0.85">
+    <h3>When Do Multi-Agent Systems Help? An Information Bottleneck Perspective</h3>
+    <div class="scores">
+        <span class="score relevance">R:8/10</span>
+        <span class="score importance">I:7/10</span>
+        <span class="score arbitrage">A:7/10</span>
+        <span class="score composite comp-mid">7.5</span>
+    </div>
+    <div class="abstract">LLM powered multi-agent systems (MAS) have emerged as a promising paradigm for complex tasks. However, their advantages over single-agent systems (SAS) remain unclear, with performance varying inconsistently across settings. Here, we provide an information bottleneck perspective on elucidating the differences between MAS and SAS. Specifically, our key observation is that a SAS accumulates its full reasoning trace in one shared context, while a MAS uses isolated local contexts connected by bounded relay messages. We show that, under infinite relay bandwidth, any SAS can be simulated by a MAS that transmits the full upstream context. Thus, the nontrivial advantage of MAS arises under bounded relays, where compression introduces a fundamental trade-off: reducing redundant context can improve efficiency, but may also incur loss of task-relevant information. We formalize this trade-off as an information bottleneck controlled by an effective parameter $β$, which captures how the balance shifts with model capability, and shows that MAS gains arise when context reduction outweighs relay information loss. We conduct 18 controlled experiments across five benchmarks and three model scales to validate our theoretical studies. We observe that MAS consistently helps when relays are near-sufficient, especially for weaker models. In contrast, MAS gains shrink or reverse when relays incur information loss, especially for stronger models that can already extract useful information from redundant context and thus gain little from compression. Our study shows that multi-agent design is fundamentally an information-bottleneck optimization problem. This perspective explains when bounded inter-agent communication helps or hurts.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16133v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.85">
+    <h3>CRAFT: Clustering Rubrics to Diagnose Weak LLM Capabilities and Generate Targeted Fine-Tuning Data</h3>
+    <div class="scores">
+        <span class="score relevance">R:8/10</span>
+        <span class="score importance">I:7/10</span>
+        <span class="score arbitrage">A:8/10</span>
+        <span class="score composite comp-mid">7.5</span>
+    </div>
+    <div class="abstract">Evaluations should do more than measure a models current performance. They should tell us what to fix for the next model iteration and provide a way to generate targeted post training data. Most evaluation pipelines identify weak examples, topics, or categories, but they leave the underlying capability failure implicit: they say where a model fails, not why. We introduce CRAFT, a method that converts any rubric based evaluation dataset into a model specific diagnosis of weak capabilities. CRAFT treats each grading criterion as a capability probe: it extracts a capability description from every prompt rubric pair, clusters these descriptions into a hierarchical capability tree, scores the target model at every node, and selects low performing nodes dynamically across tree levels, at the granularity where each failure is clearest. The selected weak capabilities then direct the generation of targeted supervised finetuning data. Holding the data generation, finetuning, and evaluation setup fixed, we compare CRAFT against prompt level EvalTree clustering and untargeted random generation on four open source models, two professional domains (finance and legal), and 13 held out benchmarks disjoint from the diagnostic data. CRAFT achieves the strongest finance domain average for all four models under repeated temperature decoding; on legal domain, it is strongest for three of four models and remains within the decoding variance bands of the best baseline on the fourth. Diagnosing weaknesses at the level of rubric criteria, rather than prompts or categories, thus yields both a sharper picture of what a model cannot do and measurably better models after finetuning on that diagnosis.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16122v1" target="_blank">View on arXiv</a>
+        <span class="arbitrage-badge">🔥 ARBITRAGE</span>
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.85">
+    <h3>When Model Merging Rivals Joint Multi-Task Reinforcement Learning: A Task-Vector Geometry Analysis</h3>
+    <div class="scores">
+        <span class="score relevance">R:8/10</span>
+        <span class="score importance">I:7/10</span>
+        <span class="score arbitrage">A:7/10</span>
+        <span class="score composite comp-mid">7.5</span>
+    </div>
+    <div class="abstract">Model merging is promoted as a substitute for joint multi-task training, yet in the reinforcement-learning setting this substitution is essentially never tested against the baseline it claims to replace: methods merge independently released agents precisely because a joint model is unavailable. We build the missing comparison. Training difficulty-1 and difficulty-2 Qwen3-8B specialists on the AppWorld agent benchmark with LOOP, we merge them (TIES, RAM+) and pit the result against a jointly trained model on the same data. On task-goal completion, merging matches joint RL -- and every merge variant is statistically indistinguishable. To explain why merge method does not matter here, we measure the geometry of the specialists' task vectors, which carries no task-sampling noise: they are near-orthogonal (cosine 0.06 - 0.10) despite ~65% support overlap, a small, shared direction that grows over training and that we calibrate against a random-init floor and a same-run ceiling to confirm it reflects learning, not the low-rank parameterization. Because direction and support are decoupled, support and sign-based merging (RAM, TIES) collapse to near-uniform averaging. We release all code and statistics.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16062v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.85">
+    <h3>DECODEM: Data Extraction from Corporate Organizational Documents via Enhanced Methods</h3>
+    <div class="scores">
+        <span class="score relevance">R:9/10</span>
+        <span class="score importance">I:6/10</span>
+        <span class="score arbitrage">A:7/10</span>
+        <span class="score composite comp-mid">7.5</span>
+    </div>
+    <div class="abstract">Much empirical legal research depends on translating unstructured text into structured variables. In corporate governance research as elsewhere, this translation has traditionally relied on human coding of documents such as charters and bylaws, a process that is costly, difficult to scale, and often opaque. This paper introduces DECODEM, a set of benchmark datasets for evaluating the automated extraction of corporate governance variables from organizational documents. The benchmarks pair randomly sampled corporate charters and bylaws with high-quality human annotations covering a range of governance provisions commonly studied in empirical work.   Using these datasets, the paper evaluates several large-language-model extraction pipelines that vary in prompt design, task decomposition, and document handling. The underlying task consists of a set of document-level binary classification problems, one for each governance variable. The results show that automated extraction is feasible at a high level of accuracy for many provisions, with median performance near the upper bound across approaches. At the same time, performance varies systematically across variables, with a small number of provisions accounting for most of the remaining errors. More elaborate prompting strategies and cascading pipelines do not consistently improve performance for frontier models, but substantially narrow the gap between frontier and efficiency-oriented models in some settings, suggesting that pipeline design can partly substitute for model capability.   By providing a standardized benchmark and a systematic evaluation of extraction methods, the paper demonstrates that current frontier models can extract legally meaningful information from complex corporate documents with high accuracy and suggests an important future role for automated feature extraction in constructing corporate governance datasets.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.15879v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.85">
+    <h3>Frontier AI performance across the business disciplines: a case-grounded benchmark of knowledge work and analytical reasoning</h3>
+    <div class="scores">
+        <span class="score relevance">R:8/10</span>
+        <span class="score importance">I:6/10</span>
+        <span class="score arbitrage">A:6/10</span>
+        <span class="score composite comp-mid">7.0</span>
+    </div>
+    <div class="abstract">Large language models (LLMs) are improving rapidly as reflected in benchmark scores, yet these AI benchmarks largely test capabilities such as factual recall, narrow question answering, mathematical problem-solving, and coding and agentic tool-use. What remains poorly measured is AI progress on the analytical knowledge work white-collar professionals perform daily, including synthesizing complex information, exercising judgment under uncertainty and incomplete information, applying strategic and adversarial thinking in multi-stakeholder settings, weighing trade-offs, and producing defensible, structured analyses. This gap is even more pronounced for subjective components of such work, where success can be challenging to define. The "case method" form of education practiced by top business schools provides a natural foundation for addressing this measurement gap, and we construct BusinessCaseBench, a benchmark spanning hundreds of questions drawn from business cases across eighteen disciplines, each paired with a grading rubric derived from the expert-written instructor case solution. On BusinessCaseBench, frontier AI models already score highly against instructor rubrics, and capability within one model family improves substantially over two years. These results provide strong evidence that AI performance on this class of work is already high and rapidly improving, with implications for business schools, where case pedagogy trains undergraduates and MBAs in this kind of analytical reasoning, and for entry-level professional roles, where such skills have historically anchored early-career work.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16057v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.85">
+    <h3>Loop the Loopies!</h3>
+    <div class="scores">
+        <span class="score relevance">R:7/10</span>
+        <span class="score importance">I:7/10</span>
+        <span class="score arbitrage">A:5/10</span>
+        <span class="score composite comp-mid">7.0</span>
+    </div>
+    <div class="abstract">We present Loopie, the most powerful looped Transformer to date. The Loopie series consists of two Mixture-of-Experts (MoE) models: a 20B-parameter model with 2B active parameters and a 6Bparameter model with 0.6B active parameters. Looped Transformers have long faced a challenge: given an N-fold increase in pre-training compute, increasing the parameter count by a factor of N usually outperforms looping a model N times. Loopie addresses this challenge. Extensive ablation studies, including comparisons with a vanilla 30B-A3B model, show that Loopie substantially outperforms vanilla Transformer baselines trained with the same compute budget. Our novel post-training pipeline equips Loopie with strong reasoning abilities. At the 2025 IMO and IPhO, Loopie achieves gold-medal performance without tools.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16051v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.85">
+    <h3>Understanding Reasoning from Pretraining to Post-Training</h3>
+    <div class="scores">
+        <span class="score relevance">R:5/10</span>
+        <span class="score importance">I:7/10</span>
+        <span class="score arbitrage">A:5/10</span>
+        <span class="score composite comp-mid">6.0</span>
+    </div>
+    <div class="abstract">Reinforcement learning (RL) has become central to improving large language models (LLMs) on complex reasoning tasks, yet RL post-training is largely studied in isolation from the pretraining that precedes it. As a result, two basic questions remain open: (1) how do pretraining choices (model size, data) shape the returns to RL compute, and (2) what does RL actually do to the model? These questions are difficult to study in the standard LLM setting: pretraining corpora are vast and uncontrolled, making it hard to attribute behaviors to pretraining versus RL, and systematic compute sweeps across both stages are prohibitively expensive. To address these challenges, we use chess as a controlled testbed for studying reasoning across the full pretraining-to-post-training pipeline. We follow the standard LLM training pipeline by pretraining language models from 5M to 1B parameters on human chess games, supervised fine-tuning on synthetic reasoning traces, and running RL on chess puzzles with verifiable rewards. Using this framework, we find that the post-RL performance at given RL compute level is well-predicted from the pretraining loss, and slope of the RL reward curves improves approximately linearly with the pretraining tokens. Beyond scaling, we find that RL does not simply sharpen the SFT policy: on easy puzzles it amplifies correct moves the SFT policy already preferred, while on hard puzzles it surfaces correct moves that were nearly absent under SFT. We further test whether our findings transfer beyond chess by training a 1B language model on math-domain text, where the same predictive pattern emerges: longer-pretrained checkpoints reach higher post-RL performance and improve faster under RL. In sum, we provide a quantitative account of the pretraining-to-RL interface and a controlled testbed for studying the science of reasoning across the full pretraining-to-post-training pipeline.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16097v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.85">
+    <h3>A Formally Grounded ODRL Evaluator: Implementation and Comparison</h3>
+    <div class="scores">
+        <span class="score relevance">R:7/10</span>
+        <span class="score importance">I:5/10</span>
+        <span class="score arbitrage">A:6/10</span>
+        <span class="score composite comp-mid">6.0</span>
+    </div>
+    <div class="abstract">The ODRL policy language is emerging as the de-facto standard for policy modelling data access and usage preferences, AI governance policies and data workflows in European dataspaces. The current standard has no mathematical formal semantics to describe how a system should implement policy evaluation. This has resulted in a variety of systems and tools that implement their own interpretation of the language, which limits interoperability and cannot guarantee consistent results. Based on an existing semantic model of ODRL, we formalise the problems of ODRL evaluation for the access control and monitoring scenarios, in both static and streaming settings, and we provide a novel, efficient algorithm and implementation. We present the first ODRL Evaluator with transparent formal semantics and supporting all rule types. We experimentally measure its performance, analysing different scalability dimensions related to policy complexity and size of the data on which a policy is evaluated. We compare our system with the state-of-the-art by providing a comparative review of existing ODRL evaluators, which highlights the differences in supported ODRL features and evaluation modes.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.15987v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+    </div>
+    
+    <div class="tier-cold">
+        <details>
+            <summary>📊 Background (<6) — 22 papers with lower scores</summary>
+            
+<div class="paper" style="opacity: 0.65">
+    <h3>An Exam for Active Observers</h3>
+    <div class="scores">
+        <span class="score relevance">R:5/10</span>
+        <span class="score importance">I:6/10</span>
+        <span class="score arbitrage">A:5/10</span>
+        <span class="score composite comp-low">5.5</span>
+    </div>
+    <div class="abstract">Human vision is a closed loop: gaze is continuously redirected by intermediate hypotheses rather than a single snapshot. Decades of psychophysics and cognitive science have argued that this active observation is essential for a wide range of tasks. Whether today's multimodal large language models (MLLMs) exercise active observation is an empirical question that current vision-language benchmarks do not answer. We introduce ActiveVision, a benchmark that makes active observation measurable for MLLMs, comprising 17 tasks across 3 categories. Tasks are designed to force repeated visual perception rather than a single static description. Frontier MLLMs collapse on ActiveVision: the highest-scoring model we evaluate, GPT-5.5 at the highest exposed reasoning-effort tier, solves only 10.6% of items and scores zero on 11 of the 17 tasks, and even Claude Fable 5, despite topping most reasoning and coding leaderboards, solves just 3.5%, far behind three human participants who average 96.1%. Furthermore, much of the gap persists even when models write and run their own vision code: such code is unreliable on realistic imagery, and catching its failures itself requires the active perception the models lack. Together, these results indicate that current MLLMs lack robust active visual observation, motivating architectures and training objectives that close the perception-reasoning loop.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16165v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>A Methodology for Auditable Trustworthiness Levels in AI Lifecycle Governance</h3>
+    <div class="scores">
+        <span class="score relevance">R:6/10</span>
+        <span class="score importance">I:5/10</span>
+        <span class="score arbitrage">A:6/10</span>
+        <span class="score composite comp-low">5.5</span>
+    </div>
+    <div class="abstract">AI governance increasingly requires judgments about whether an AI system remains adequately trustworthy over time, whether observed changes are tolerable, and how such judgments should be documented in a transparent and contestable way. Yet existing work on AI trustworthiness remains either too high-level to support lifecycle monitoring and reassessment or too narrowly metric-driven to connect with governance needs. We therefore propose a lightweight methodology for auditable trustworthiness levels in AI governance. The methodology has two components: a formal framework for representing and learning trustworthiness levels, and a lightweight AI lifecycle governance procedure for documenting, monitoring, and reassessing them over time. The formal framework models governance-relative trustworthiness through a context-sensitive protocol of measurable dimensions and learns trustworthiness levels as interpretable rules over trustworthiness profiles. Using decision trees as an interpretable proof-of-concept model class, the methodology yields explicit trustworthiness plateaus, readable level transitions, and two simple lifecycle diagnostics: boundary margins and profile drift. The governance procedure embeds these formal objects in a conformity-oriented workflow for design-time labeling, post-deployment monitoring, reassessment, and reporting. It also assigns human responsibilities and control gates for protocol design, validation, monitoring, and reassessment. We illustrate the methodology on synthetic AI lifecycle traces involving degradation, shocks, updates, heterogeneous monitoring cadences, and system comparison. Our methodology does not replace legal or other expert judgment: it supports conformity documentation and lifecycle monitoring by providing an evidential basis for documenting and tracking AI governance-relevant changes over time.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16130v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Closing the AI Trust Gap: The Case for Independent Certification for Trustworthy AI</h3>
+    <div class="scores">
+        <span class="score relevance">R:6/10</span>
+        <span class="score importance">I:5/10</span>
+        <span class="score arbitrage">A:5/10</span>
+        <span class="score composite comp-low">5.5</span>
+    </div>
+    <div class="abstract">Over the past decade, responsible AI (RAI) has produced a substantial body of practice for identifying and mitigating the risks AI poses in high-stakes settings. Yet this work has not produced a market that rewards trustworthiness. Firms that invest seriously in safety, fairness, and oversight cannot consistently prove to consumers, regulators, and shareholders that their systems go beyond the bare minimum of compliance. What is missing is a way for society to recognize or compare the difference. The result is a trust gap: a structural condition in which responsible development efforts happen inside organizations but produce no external, independently recognized and verifiable signal of trustworthy outcomes. We argue this gap is sustained in part because of a focus on responsible AI (a matter of internal process) as opposed to trustworthy AI (a matter of independently verifiable real-world outcomes), and that it persists because of three compounding failures: (1) the market cannot distinguish trustworthy systems from their imitations; (2) evaluation targets models and outputs rather than deployed sociotechnical systems and their outcomes; (3) the measurement ecosystem is oriented toward avoiding harm rather than demonstrating benefit. Reviewing existing AI governance instruments and comparing them to certification regimes in healthcare, sustainability, and security, we show that none integrate a governance baseline, independently verified positive-outcome evidence, and market signaling in a single framework. We propose independent, outcome-oriented certification as the connective layer that can close the trust gap, complementing regulation and internal governance by making trustworthiness measurable, comparable, and commercially rewarded.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.15992v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>DSWorld: A Data Science World Model for Efficient Autonomous Agents</h3>
+    <div class="scores">
+        <span class="score relevance">R:5/10</span>
+        <span class="score importance">I:6/10</span>
+        <span class="score arbitrage">A:6/10</span>
+        <span class="score composite comp-low">5.5</span>
+    </div>
+    <div class="abstract">Despite strong capabilities in data understanding and decision-making, autonomous data science agents still heavily rely on trial-and-error workflows that involve expensive computation. This bottleneck motivates models that can anticipate the effects of data science operations before real execution. In this paper, we introduce the concept of Data Science World Model, which model the data science execution environment by predicting environment state transitions conditioned on current workflow states and candidate operations. We further propose DSWorld, a practical framework that combines structured state construction, cost-aware routing, lightweight real execution, and an LLM-based simulator for expensive operations. To support training, we construct an 8K-scale transition trajectory dataset and introduce Reflective World Model Optimization, an error-aware reinforcement learning strategy for improving transition prediction. Experiments show that DSWorld accelerates RL-based agent training by approximately $14\times$ and search-based inference by approximately $3$-$6\times$ while maintaining competitive performance, and outperforms the strongest LLM baseline by 35.6% on transition prediction tasks. The code is available at https://anonymous.4open.science/r/DSWorld.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.15901v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Candidate Attended Dialogue State Tracking Using BERT</h3>
+    <div class="scores">
+        <span class="score relevance">R:5/10</span>
+        <span class="score importance">I:4/10</span>
+        <span class="score arbitrage">A:4/10</span>
+        <span class="score composite comp-low">4.5</span>
+    </div>
+    <div class="abstract">Dialogue state tracking (DST) is one of the core components in task-oriented dialogue systems. At each turn in a conversation, DST estimates the user belief or dialogue state, which is used as input for downstream modules to predict system actions and generate responses. The increasingly popular dialogue system applications like Google Assistant, Siri and Alexa need to support a large number of services and APIs, resulting in growing attention to the scalability of such systems. Especially for some domains with little or no training data, the capability of transferring existing knowledge of other domains is highly desired. In this paper, we present a novel scalable framework for multi-domain dialogue state tracking. The proposed system leverages the pretrained BERT model to achieve zero-shot generalization, making it easy to quickly adapt to new domains without additional training. The performance of our model is evaluated on recently released schema-based dialogue (SGD) dataset, showing significant improvement compared to previous baseline.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16021v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>When Not to Automate: A Formal Protocol for Human Preservation in AI-Optimized Organizations</h3>
+    <div class="scores">
+        <span class="score relevance">R:4/10</span>
+        <span class="score importance">I:5/10</span>
+        <span class="score arbitrage">A:5/10</span>
+        <span class="score composite comp-low">4.5</span>
+    </div>
+    <div class="abstract">Standard automation ROI misses four categories of systemic risk -- tacit knowledge erosion, resilience reduction, regulatory exposure, and socio-institutional capital degradation -- that affect long-term organizational performance. PHP-AIO (Protocol for Human Preservation in AI-Optimized Organizations) is a five-gate sequential decision protocol with a final composite check that quantifies these unpriced systemic risks at the role level and produces auditable automation decisions. A closed-form automation-debt measure ($ρ(P)$) formalises how role-level decisions accumulate across multi-step processes; its warning is neutralised only by a regulator-mandated human-in-the-loop anchor. Applied to stylised profiles of representative internal roles, PHP-AIO produces distinct outcomes -- automate, augment, hybrid, and preserve -- for candidates that standard cost-benefit analysis would uniformly automate. Threshold sensitivity analysis confirms the gate decisions are robust to upward perturbations of at least 14% in three of four representative cases.   Keywords: AI governance, automation decision, human oversight, tacit knowledge, organizational resilience, financial services</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.15944v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Conditional Reliability of Toxicity Signals for Multilingual and Code-Mixed Abuse Detection</h3>
+    <div class="scores">
+        <span class="score relevance">R:4/10</span>
+        <span class="score importance">I:5/10</span>
+        <span class="score arbitrage">A:4/10</span>
+        <span class="score composite comp-low">4.5</span>
+    </div>
+    <div class="abstract">Moderation systems increasingly rely on external toxicity tools, but those tools are unreliable under code-mixing, transliteration, slang, and language mismatch. We study the \emph{conditional reliability} of toxicity priors in Indian multilingual and code-mixed short text: English toxicity, Indic abuse, and rule-based severity cues can be useful evidence, but only in some linguistic and abuse-severity contexts. We propose ToxGate, a trust-fusion head that conditions each auxiliary signal on the encoder representation before adding it to the prediction state. Across three short-text abuse datasets, four transformer encoders, and five seeds per setting, ToxGate improves over matched plain encoders in 10 of 12 in-domain settings and 7 of 8 transfer settings. The largest and most interpretable gains occur in high-risk moderation slices, including explicit slurs, violent threats, and cross-dataset transfer. The broader lesson is that moderation systems should treat external toxicity tools and priors as conditional evidence rather than fixed features or ground truth, in focused ablations, source-specific gating gives the strongest results in transfer, severe-abuse slices, and high-risk triage.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.15861v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>When Does Muon Help Agentic Reinforcement Learning?</h3>
+    <div class="scores">
+        <span class="score relevance">R:4/10</span>
+        <span class="score importance">I:4/10</span>
+        <span class="score arbitrage">A:3/10</span>
+        <span class="score composite comp-low">4.0</span>
+    </div>
+    <div class="abstract">Muon is competitive with AdamW in large-scale pre-training, but its value for reinforcement-learning (RL) post-training remains unclear. We study vanilla Muon in sparse-reward agentic RL through matched single-seed comparisons with AdamW on ALFWorld using Qwen2.5-0.5B-Instruct. Under Group-in-Group Policy Optimization (GiGPO), applying Muon only to hidden weight matrices raises final-window validation success from 0.290 to 0.546 (+88%); high-rate AdamW controls retain no post-update success. The effect depends on the advantage estimator and learning rate. At 3e-5, Muon improves GRPO from 0.161 to 0.268, whereas GraphGPO's late-window gap narrows near saturation. At 1e-5, GraphGPO Muon reaches 0.901, raises normalized validation AUC from 0.399 to 0.556, and reaches 0.5 and 0.75 success 30 and 60 updates earlier, respectively. These exploratory results show that Muon can benefit agentic RL and motivate studying the policy optimizer, advantage estimator, and learning rate jointly. Multi-seed and cross-task validation remain open.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16169v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>LLM-Powered Agentic AI for 5G/6G Networks: A Tutorial and Survey on Architectures, Protocols, and Standardization</h3>
+    <div class="scores">
+        <span class="score relevance">R:4/10</span>
+        <span class="score importance">I:4/10</span>
+        <span class="score arbitrage">A:5/10</span>
+        <span class="score composite comp-low">4.0</span>
+    </div>
+    <div class="abstract">Agentic Artificial Intelligence (AI), enabled by Large Language Models, marks a shift from rule-based automation toward autonomous, goal-driven control of Next-Generation Networks (NGNs). Existing surveys treat the two domains in isolation, leaving protocol integration, evaluation, and standardization alignment underexplored. To address this gap, a two-part tutorial-and-survey is presented. Part I formalises the control, management, and AI-native planes of 5G and 6G. It then covers the foundations of agentic systems: reasoning, planning, tool use, multi-agent coordination, and evaluation. Part II maps agentic capabilities onto 5G/6G control surfaces, standardization, and major 6G initiatives. Finally, it identifies open challenges shaping autonomous telecommunications.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16066v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>ToolSciVer: Multimodal Scientific Claim Verification with Visual Tool Augmented Reinforcement Learning</h3>
+    <div class="scores">
+        <span class="score relevance">R:3/10</span>
+        <span class="score importance">I:4/10</span>
+        <span class="score arbitrage">A:2/10</span>
+        <span class="score composite comp-low">3.5</span>
+    </div>
+    <div class="abstract">Multimodal Scientific Claim Verification (MSCV) requires models to verify scientific claims using visually grounded evidence from papers, including figures, tables, charts, and textual context. However, existing methods often fail because they struggle to locate decisive visual evidence, accurately read structured scientific visuals, and integrate multimodal observations into reliable reasoning. We introduce ToolSciVer, the first tool-augmented framework for MSCV to our knowledge. ToolSciVer equips a VLM with three type-aware visual tools, table row/column focus, chart-to-structure parsing, and high-resolution region zoom, which convert dense scientific visuals into explicit, claim-facing evidence, and trains the policy with Group Relative Policy Optimization (GRPO) under a composite reward of answer correctness, format validity, length control, tool-use efficiency, and tool-validity penalties. Experiments on SciVer and MuSciClaims datasets on five VLMs from three model families (Qwen, InternVL, Gemma) demonstrate that our method achieves superior performance compared to four competitive baselines including prompting-based and RL-based tool-use methods, highlighting the effectiveness of learned, type-aware tool use for scientific claim verification.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16131v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>SciForge: An AI-Native, Multimodal Workbench for Scientific Discovery</h3>
+    <div class="scores">
+        <span class="score relevance">R:3/10</span>
+        <span class="score importance">I:4/10</span>
+        <span class="score arbitrage">A:3/10</span>
+        <span class="score composite comp-low">3.5</span>
+    </div>
+    <div class="abstract">Scientific work increasingly spans heterogeneous artifacts -- papers, code, datasets, scientific file formats, model outputs, figures, manuscripts, and team decisions -- yet general-purpose AI assistants rarely preserve these objects as a coherent, auditable research state. We present SciForge, a multimodal research-native AI workbench that reserves the graphical interface for human judgment while search, parsing, model routing, workflow execution, plotting, writing, and presentation generation run as modular agent-accessible services. SciForge is built around five pillars: (i) \emph{goal-scoped scientific decision governance} for \textbf{goal-oriented} research, with review gates and shared review surfaces; (ii) \emph{translate-then-reason} for \textbf{multimodal} input, routing scientific objects through domain translators before the agent reasons; (iii) \emph{evidence governance} for \textbf{auditable} traceability, linking claims to provenance chains and audit findings; (iv) \emph{collaborative team science} for \textbf{collaborative} research, enabling multi-role decision governance, with shared team workspaces planned for future releases; and (v) \emph{real-world application scenarios} for \textbf{practical} impact, demonstrated through eight end-to-end user cases, with flagship demonstrations including multi-day agentic research sprints for gene discovery, AI-guided de novo protein design, molecular optimization, and genome-to-BGC discovery. The system combines a thin interaction layer, contextual research capability patterns, an Agent Runtime and Workflow Engine, an Evidence-DAG audit sidecar and a Scientific Model Router. SciForge currently runs as a desktop application, with mobile supervision support; future releases will deepen team collaboration. The system is open-source and available at https://github.com/AGI4Sci/SciForge</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16038v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>DPNeXt: A Lightweight Multi-Scale Feature Fusion Framework for Efficient ViT-Based Multi-Task Dense Prediction</h3>
+    <div class="scores">
+        <span class="score relevance">R:2/10</span>
+        <span class="score importance">I:5/10</span>
+        <span class="score arbitrage">A:3/10</span>
+        <span class="score composite comp-low">3.5</span>
+    </div>
+    <div class="abstract">Multi-Task Learning (MTL) in robotics perception systems supports comprehensive 3D spatial scene understanding by integrating semantic segmentation and depth estimation. While Vision Foundation Models (VFMs) are increasingly adopted as robust feature encoders, existing decoding strategies present a critical bottleneck. To address this, we propose DPNeXt, a streamlined multi-scale feature fusion decoder and efficient alternative to the standard Dense Prediction Transformer (DPT). DPNeXt uses dual depthwise separable inverted bottlenecks to improve frozen VFM utilization through fusion-centric decoding and independent task modularization. To further mitigate negative inductive transfer between tasks, we introduce the Multi-Task Boundary Guidance (MTBG) strategy. Unlike prior boundary-aware methods that add fusion modules or gating, MTBG applies symmetric boundary-focused supervision to encourage geometric consistency without extra annotation or inference cost. Experiments on Cityscapes show that DPNeXt-S outperforms prior state-of-the-art (SOTA) MTL models, while DPNeXt-B further improves the overall performance and achieves the best results among the compared methods. On NYUv2, DPNeXt-B also achieves the best semantic segmentation and depth estimation results among the compared methods while requiring substantially fewer trainable parameters than prior large-scale MTL models. Compared with the standard DPT, DPNeXt-S reduces trainable parameters by 78.6% and achieves the fastest inference speed among the compared models on resource-constrained laptop hardware. The source code, model checkpoints, and a demo video will be made available at https://github.com/kangjehun/DPNeXt.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16012v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Orbis 2: A Hierarchical World Model for Driving</h3>
+    <div class="scores">
+        <span class="score relevance">R:2/10</span>
+        <span class="score importance">I:5/10</span>
+        <span class="score arbitrage">A:3/10</span>
+        <span class="score composite comp-low">3.5</span>
+    </div>
+    <div class="abstract">Current world models operate at a single level of abstraction, with most prioritizing perceptual fidelity while lacking the spatial reasoning and semantic understanding required for real-world downstream tasks. We present a hierarchical driving world model that factorizes future prediction across two levels operating at distinct temporal and abstraction scales: a high-level predictor that forecasts coarse scene structure over extended temporal horizons, and a low-level generator that produces detailed predictions conditioned on the high-level output. This decomposition yields high perceptual fidelity while also capturing strong spatial and semantic representations. We further show that pretraining with a diffusion forcing objective yields substantially richer internal representations than the standard teacher forcing objective, while teacher forcing -- predicting only the next frame from clean context -- produces more stable autoregressive rollouts. We therefore introduce a generic two-stage training paradigm that pretrains the model with diffusion forcing and fine-tunes with teacher forcing, combining the representational benefits of the former with the rollout stability of the latter. Our approach achieves state-of-the-art results across the standard suite of driving world model evaluations on established benchmarks, including long-horizon generation fidelity, steering responsiveness evaluated on counterfactual scenarios, and internal representation quality. Project page with code, demo, checkpoints and qualitative results: https://lmb-freiburg.github.io/orbis2.github.io/</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.15898v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Evaluating Open-Weight LLMs for Generating Structured Threat Information for Autonomous Vehicle Vulnerabilities</h3>
+    <div class="scores">
+        <span class="score relevance">R:3/10</span>
+        <span class="score importance">I:3/10</span>
+        <span class="score arbitrage">A:2/10</span>
+        <span class="score composite comp-low">3.0</span>
+    </div>
+    <div class="abstract">Connected and Autonomous Vehicles (CAVs) rely on interconnected software and hardware components, including sensors, Electronic Control Units, in-vehicle infotainment systems, and telematics units, where vulnerabilities can compromise assets, users, and vehicle operations. These vulnerabilities are commonly documented as plain text in the Common Vulnerabilities and Exposures (CVE) database; however, security practitioners require structured information about affected assets, types of weaknesses, and attack behaviors to effectively mitigate the risks from these vulnerabilities. To this end, we evaluate open-weight Large Language Models (LLMs) for generating Structured Threat Information Expression (STIX), a well-known structured format for representing threat information, for CAV-related CVEs. We construct a dataset called CAV-STIXGen that maps CAV vulnerability descriptions to STIX domain objects (SDO), STIX relationship objects (SRO), Common Weakness Enumeration (CWE), and MITRE ATT&CK techniques mappings. Using this dataset, we evaluated 11 open-weight LLMs (4B to 120B parameters) across various prompting strategies and temperatures. Single-model configurations achieve F1 scores of 0.94 for SDO, 0.63 for SRO, and 0.99 for CWE mapping, while complete MITRE ATT&CK mapping remains challenging. In a multi-agent setup, Gemma-4-31B and Codestral-22B achieve F1 scores of 0.91 for SDOs and 0.43 for SROs, respectively. Lastly, we analyze CWE and MITRE ATT&CK co-occurrences to identify recurring threat patterns in the CAV domain, demonstrating how AI-assisted vulnerability-to-STIX translation can automate threat intelligence and prioritize defense in transportation security.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16175v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Revisiting data-driven dynamic security assessment with a tabular foundation model</h3>
+    <div class="scores">
+        <span class="score relevance">R:2/10</span>
+        <span class="score importance">I:4/10</span>
+        <span class="score arbitrage">A:3/10</span>
+        <span class="score composite comp-low">3.0</span>
+    </div>
+    <div class="abstract">Data-driven pre-fault dynamic security assessment (DSA) rapidly evaluates the dynamic risk of credible contingencies on a power system using machine learning. Existing approaches face two limitations. First, they require a large labelled database for training, with a separate model trained, tuned, and maintained for each contingency in a potentially long list of credible contingencies. Second, the trained models generalize poorly to unseen contingencies. This work addresses the limitations by using a tabular foundation model (TFM) that assesses stability through in-context learning, requiring no retraining or hyperparameter optimization. A single TFM can assess many contingencies at once, removing the need for one model per classifier. We also characterize when the use of electrical distance coordinates (EDC) as continuous features enables generalization of TFM to unseen contingencies and when they do not, demonstrating how a few labelled samples can reliably improve generalization. Through comprehensive case studies on the IEEE 68-bus system, we show that a single TFM attains an average Macro F1 score of about 90% with only 120 labelled samples per contingency, roughly two orders of magnitude fewer than conventionally assumed, without any model retraining or hyperparameter tuning. For new/unseen contingencies, we show that using just 10 labelled samples of the new contingency with EDC encoding matches the best achievable transfer learning oracle model, which requires fully labelled data and is not deployable in practice. Overall, this initial study paves the way towards developing and deploying foundation models for power system operations, with possible applications across multiple operational tasks.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16031v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Robustness of Reinforcement Learning-Based Congestion Management in Low-Voltage Grids</h3>
+    <div class="scores">
+        <span class="score relevance">R:2/10</span>
+        <span class="score importance">I:4/10</span>
+        <span class="score arbitrage">A:3/10</span>
+        <span class="score composite comp-low">3.0</span>
+    </div>
+    <div class="abstract">Increases in photovoltaic generation, charging of electric vehicles and heat-pump demand challenge operating limits in low-voltage distribution grids. This requires curative curtailment methods that can operate under sparse observability, noisy measurements, and imperfect grid models. Unlike prior end-to-end reinforcement-learning approaches for partially observable curtailment, this work decouples congestion detection and control by combining a random-forest violation pre-classifier with an actor-critic controller, and evaluates its robustness to measurement noise and grid-parameter mismatch. The framework is tested on a real low-voltage grid using synthetic future operating scenarios with low observability and controllability. With accurate grid parameters, the controller reduces total violation magnitude by 98.9%, and this performance remains nearly unchanged under the tested measurement-noise settings. Grid-model mismatch proves to be more challenging, but the controller still mitigates most violations under the tested mismatch assumptions.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16004v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Sociocultural Influences on Opinion Formation: Word of Mouth Dynamics, Mass Media and Behavioural Development</h3>
+    <div class="scores">
+        <span class="score relevance">R:3/10</span>
+        <span class="score importance">I:3/10</span>
+        <span class="score arbitrage">A:2/10</span>
+        <span class="score composite comp-low">3.0</span>
+    </div>
+    <div class="abstract">We study a society of agents belonging to a number of occupational or cultural groups that form opinions about others' situation in the same or different group. Opinions develop either by observation within own group or by directly interacting with members of other groups, therefore by word of mouth (WoM). Additionally, global mass media (MM) may be available that inform indirectly about the situation of the various groups. The sociocultural interplay of these processes and the degrees of relative exposure to each of the sources has diversified effects on final opinion and social attitude formation. In large and complex societies and groups where not everyone can physically interact by WoM with everyone about everything, these processes show potential for mass control and social automation engineering. Our model can also represent and be generally informative about segmented societies that consist of groups with different occupational and cultural characteristics and it can offer insights into social issues such as the generation gap, social cleavages and so on.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.15968v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>EgoExoMoCap: Distributed Ego-Exo Human Motion Capture</h3>
+    <div class="scores">
+        <span class="score relevance">R:2/10</span>
+        <span class="score importance">I:4/10</span>
+        <span class="score arbitrage">A:2/10</span>
+        <span class="score composite comp-low">3.0</span>
+    </div>
+    <div class="abstract">Human motion capture from head-mounted devices (HMDs) offers a scalable way to acquire real-world human motion and interaction data, which is crucial for applications in embodied AI and VR/AR. Existing approaches focus on either egocentric body tracking, estimating the motion of the subject wearing the device, or exocentric tracking, capturing the movements of people in the wearer's surroundings. So far, these two paradigms have largely been explored in isolation. In this paper, we propose a novel distributed framework that jointly leverages ego- and exocentric multi-modal signals for human motion estimation from HMDs. Unlike traditional motion capture systems requiring bulky multi-camera setups or obtrusive mocap suits, our approach, EgoExoMoCap, is as simple as two (or more) people, each wearing a pair of smart glasses. The method leverages head (plus potentially wrist) tracking signals for accurate estimation of global motion in the 3D world and combines context-aware image features based on DINOv3 to achieve robustness in the presence of noise and occlusions. Extensive experiments on two in-the-wild datasets show that our approach can robustly reconstruct motion even in challenging scenarios.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.15868v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>DADiff: Diffusion-Driven Cross-Domain Policy Adaptation for Reinforcement Learning</h3>
+    <div class="scores">
+        <span class="score relevance">R:2/10</span>
+        <span class="score importance">I:3/10</span>
+        <span class="score arbitrage">A:2/10</span>
+        <span class="score composite comp-low">2.5</span>
+    </div>
+    <div class="abstract">Transferring policies across domains poses a vital challenge in reinforcement learning, due to the dynamics mismatch between the source and target domains. In this paper, we consider the setting of online dynamics adaptation, where policies are trained in the source domain with sufficient data, while only limited interactions with the target domain are allowed. There are a few existing works that address the dynamics mismatch by employing domain classifiers, value-guided data filtering, or representation learning. Instead, we study the domain adaptation problem from a generative modeling perspective. Specifically, we introduce DADiff, a diffusion-based framework that leverages the discrepancy between source and target domain generative trajectories in the generation process of the next state to estimate the dynamics mismatch. Both reward modification and data selection variants are developed to adapt the policy to the target domain. We also provide a theoretical analysis to show that the performance difference of a given policy between the two domains is bounded by the generative trajectory deviation. More discussions on the applicability of the variants and the connection between our theoretical analysis and the prior work are further provided. We conduct extensive experiments in environments with various shifts to validate the effectiveness of our method. The results demonstrate that our method provides superior performance compared to existing approaches, effectively addressing the dynamics mismatch. We provide the code of our method at https://github.com/hanyang-chen/DADiff-release</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16090v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>HCIG: A Hierarchical Cross-Modal Incongruity Graph Network for Multimodal Sarcasm and Cyberbullying Detection</h3>
+    <div class="scores">
+        <span class="score relevance">R:2/10</span>
+        <span class="score importance">I:3/10</span>
+        <span class="score arbitrage">A:2/10</span>
+        <span class="score composite comp-low">2.5</span>
+    </div>
+    <div class="abstract">Multimodal sarcasm and cyberbullying detection remain challenging because the intended meaning often emerges from incongruity between textual and visual information rather than from either modality alone. Existing multimodal approaches primarily rely on feature fusion or cross-modal attention, which may not effectively capture hierarchical semantic inconsistencies across different levels of representation. To address this limitation, this paper proposes HCIG (Hierarchical Cross-modal Incongruity Graph Network), a novel framework that models cross-modal incongruity at token, phrase, and global levels using graph attention networks and adaptively integrates these representations through a learned hierarchical attention mechanism. As a complementary architecture, we also introduce GCCN (Graph-based Cross-modal Contradiction Network), which performs graph-based reasoning using contradiction-aware pooling for efficient multimodal interaction learning. The proposed models are evaluated on the MMSD sarcasm benchmark and the MultiBully cyberbullying dataset, together with comprehensive ablation studies and cross-task transfer experiments. Experimental results demonstrate that HCIG achieves the best performance on MMSD with 85.74% accuracy and 85.29% macro-F1, while GCCN attains the highest macro-F1 (68.66%) on MultiBully and HCIG achieves the highest accuracy (69.62%) and bullying-class F1 (74.90%). The findings demonstrate that hierarchical multi-granularity incongruity modeling provides more effective multimodal reasoning than conventional fusion strategies, offering a robust framework for sarcasm and cyberbullying detection in social media.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16076v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>JoyNexus: Service-Oriented Multi-Tenant Post-Training for VLA Models</h3>
+    <div class="scores">
+        <span class="score relevance">R:2/10</span>
+        <span class="score importance">I:3/10</span>
+        <span class="score arbitrage">A:2/10</span>
+        <span class="score composite comp-low">2.5</span>
+    </div>
+    <div class="abstract">The post-training of Vision-Language-Action (VLA) models is essential due to the diversity of simulators, robot embodiments, and task objectives. Existing compute services, whether offered as direct accelerator rental or batch-workload submission, typically allocate an exclusive set of GPU and CPU resources to a single tenant. While this paradigm maximizes client flexibility, it burdens users with infrastructure adaptation, and the fixed card-hour accounting model renders short or bursty workloads both expensive for tenants and inefficient for the service provider. To address these challenges, we present JoyNexus, a unified service for multi-tenant VLA supervised fine-tuning, reinforcement learning, and evaluation. JoyNexus decouples the Training Model Service, Inference Model Service, and Environment Service, each accessed through APIs and backed by resident shared base models with tenant-specific slots. Tenants can directly invoke high-level semantic APIs for training, rollout, and evaluation, or compose custom algorithms using lower-level APIs and their assigned endpoints. Multiple tenants submit workloads concurrently; their action modules, optimizers, rollout records, and policy versions remain isolated, and the service is scheduled by the global Training Queue and Inference Queue. To further improve multi-tenant training efficiency, JoyNexus introduces group batching for heterogeneous VLA data schemas that share a compatible model-facing prefix, enabling a single shared backbone forward pass over grouped samples. Finally, we evaluate JoyNexus through workload simulation and a group-batching pipeline in a realistic embodied scenario. Results show that, compared with isolated single-tenant execution, JoyNexus reduces aggregate GPU time and improves service utilization via cross-tenant scheduling on shared resources.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16074v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Spatial Normalization for Cross-Domain Retinal Layer Segmentation in Optical Coherence Tomography</h3>
+    <div class="scores">
+        <span class="score relevance">R:1/10</span>
+        <span class="score importance">I:2/10</span>
+        <span class="score arbitrage">A:1/10</span>
+        <span class="score composite comp-low">1.5</span>
+    </div>
+    <div class="abstract">Retinal layer segmentation in Optical Coherence Tomography (OCT) is a fundamental step for extracting quantitative biomarkers of retinal structure. Indeed, there is a growing interest in the analysis of OCTs in the context of neurodegenerative diseases. However, segmentation remains challenging due to speckle noise, shadowing artifacts, low contrast between adjacent layers, anatomical variability across subjects, and domain shifts arising from different acquisition protocols and clinical populations. While deep learning methods have achieved remarkable performance, their robustness and generalization across heterogeneous datasets remain limited. In this work, we investigate the role of spatial normalization as a preprocessing strategy to mitigate geometric domain shifts and improve the consistency of retinal layer segmentation. Inspired by standard practices in neuroimaging, we introduce a fovea-centered normalization framework that aligns OCT volumes into a common anatomical reference. We perform a comprehensive evaluation of state-of-the-art deep learning architectures. To provide a comprehensive assessment of segmentation quality, we combine conventional overlap-based metrics at B-scan level with topology-aware metrics at A-scan level and thickness-based measures at the en-face level. In cases where a ground truth is not available, we propose topology violation quantitative metrics that do not require ground truth annotations and a thickness-based qualitative assessment that captures structural consistency and clinically relevant patterns at the en-face level. The results demonstrate the importance of spatial normalization in OCT segmentation pipelines toward the development of robust and clinically meaningful retinal analysis tools, enabling reliable biomarker extraction and downstream computational analysis in neurodegenerative research.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2607.16065v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+        </details>
+    </div>
+</div>
+
+    </body>
+    </html>
+    
