@@ -1,0 +1,688 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AI Reader</title>
+        <style>
+            
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    color: #2d3748;
+    margin: 0;
+    padding: 20px;
+    background: #f7fafc;
+}
+
+.digest {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.header h2 {
+    margin: 0;
+    color: #2d3748;
+}
+
+.header p {
+    margin: 0.5rem 0 0;
+    color: #718096;
+}
+
+.highlights {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+    border: 1px solid #e2e8f0;
+}
+
+.highlights h3 {
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+}
+
+.summary {
+    white-space: pre-line;
+    line-height: 1.6;
+}
+
+.summary ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.summary li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+}
+
+.papers {
+    margin-top: 3rem;
+}
+
+.papers h3 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.paper {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.paper:last-child {
+    border-bottom: none;
+}
+
+.paper h3 {
+    margin: 0 0 0.5rem;
+    color: #2d3748;
+}
+
+.paper .scores {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.paper .score {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.paper .relevance {
+    background: #e6fffa;
+    color: #047481;
+}
+
+.paper .importance {
+    background: #ebf4ff;
+    color: #1a56db;
+}
+
+.paper .abstract {
+    color: #4a5568;
+    margin: 0.5rem 0;
+}
+
+.paper .meta {
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.paper .meta a {
+    color: #4299e1;
+    text-decoration: none;
+}
+
+.paper .meta a:hover {
+    text-decoration: underline;
+}
+
+        </style>
+    </head>
+    <body>
+        
+<div class="digest">
+    <div class="header">
+        <h2>AI Reader</h2>
+        <p>Found 32 relevant papers out of 200 new submissions</p>
+        <div class="distribution">
+            <strong>Score distribution:</strong> 2: 10, 3: 3, 4: 6, 5: 3, 6: 5, 7: 1, 8: 4
+        </div>
+    </div>
+    
+    <div class="highlights">
+        <h3>🔥 Key Highlights</h3>
+        <ol><li><strong>On Turn-Level Best-of-N Sampling for Scaling LLM Agents</strong> — avg score 7.5/10. In this work, we evaluate a simple inference-time scaling approach based on \textit{turn-level best-of-N sampling} (\method) for large language model (LLM) agents on complex, long-horizon tasks <a href="http://arxiv.org/abs/2611.06868v1">Read more</a>.</li><li><strong>Reasoning over Non-Parametric Memory in Multilingual LLMs: A Cognitive-Based Analysis of Relational Knowledge</strong> — avg score 7.5/10. Retrieval-augmented generation (RAG) assumes that language models can reason over relations stated in their context rather than fall back on associations memorized during pretraining <a href="http://arxiv.org/abs/2611.06715v1">Read more</a>.</li><li><strong>AgentTrustCI: Build-Time Policy, Grounding, and Trajectory Tests for Java LLM Agents</strong> — avg score 7.5/10. Infrastructure security does not establish whether an LLM agent selected an allowed tool, grounded its answer in tool output, or followed a required workflow <a href="http://arxiv.org/abs/2611.06674v1">Read more</a>.</li><li><strong>Where Search Agents Go Off the Rails: Graph-Grounded Step-Level Verification</strong> — avg score 7.5/10. Search-augmented reasoning systems can reach correct answers while making errors in intermediate steps <a href="http://arxiv.org/abs/2611.06662v1">Read more</a>.</li><li><strong>Task-Efficient Agent Evaluation Using Cached Traces</strong> — avg score 7.0/10. Efficient benchmarking estimates a system&#x27;s full benchmark performance from a small number of task executions <a href="http://arxiv.org/abs/2611.06803v1">Read more</a>.</li></ol>
+    </div>
+    
+    <div class="tier-hot">
+        <h3>🔥 Hot (8+) — Worth your time today</h3>
+        <p>No hot papers today.</p>
+    </div>
+    
+    <div class="tier-warm">
+        <h3>👀 Worth a Look (6-7.9)</h3>
+        
+<div class="paper" style="opacity: 0.85">
+    <h3>On Turn-Level Best-of-N Sampling for Scaling LLM Agents</h3>
+    <div class="scores">
+        <span class="score relevance">R:8/10</span>
+        <span class="score importance">I:7/10</span>
+        <span class="score arbitrage">A:7/10</span>
+        <span class="score composite comp-mid">7.5</span>
+    </div>
+    <div class="abstract">In this work, we evaluate a simple inference-time scaling approach based on \textit{turn-level best-of-N sampling} (\method) for large language model (LLM) agents on complex, long-horizon tasks. We instantiate this using a \textit{generator-selector} framework with two LLMs; at each turn, a \emph{generator} model generates $N$ candidate actions and a \emph{selector} model selects one of them, which is then executed in the environment. This paper is closely related to the work of \cite{zainullina2025guided} who used critic models for guided search at inference time. Different from their work, we evaluate if off-the-shelf, open-weight LLMs can be effective at comparing different candidate actions directly. Experiments on long-horizon terminal tasks show that \method can lead to significant performance improvements, both in terms of accuracy (5--10\%) and consistency across repeated attempts. Analysis of agent trajectories reveal a shift in agent behaviour towards desirable patterns such as reduction in number of attempts to solve the task, improved task instruction following, debugging and testing.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06868v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.85">
+    <h3>Reasoning over Non-Parametric Memory in Multilingual LLMs: A Cognitive-Based Analysis of Relational Knowledge</h3>
+    <div class="scores">
+        <span class="score relevance">R:8/10</span>
+        <span class="score importance">I:7/10</span>
+        <span class="score arbitrage">A:8/10</span>
+        <span class="score composite comp-mid">7.5</span>
+    </div>
+    <div class="abstract">Retrieval-augmented generation (RAG) assumes that language models can reason over relations stated in their context rather than fall back on associations memorized during pretraining. We study this evidence-conditioned relational reasoning in isolation, with the facts supplied directly in the prompt rather than retrieved. \textsc{Rel-Bloom} is a controlled multilingual diagnostic of 450 multiple-choice questions built from 30 Wikidata relations; the same source relations are instantiated at five Bloom-inspired levels (Remember, Understand, Apply, Analyze, Evaluate) and under three veracity conditions (Factual, Counterfactual, Neutralized). Across 43 models, six languages, and two multilingual settings (226,800 predictions), three findings stand out. First, accuracy drops sharply from Apply to Analyze in every evaluated open-weight model series, reaching 47.2 percentage points for the Large Granite bucket, but not for either Gemini model. Second, Evaluate items remain a bottleneck even for models near ceiling on the other task types: Gemini~3.1 Pro averages 99.5\% on the other four levels but 60.7\% on Evaluate. Third, item- and relation-level difficulty rankings are consistently preserved across languages, indicating a difficulty structure partly shared across languages within this benchmark. Across knowledge conditions, Counterfactual contexts are generally harder than Factual ones, while removing entity identities can improve higher-level performance in some model regimes. Greater model capability therefore does not by itself ensure reliable reasoning over supplied relational evidence. Relevant resources are available at: https://huggingface.co/spaces/QCRI/non-parametric-memory-relational-reasoning.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06715v1" target="_blank">View on arXiv</a>
+        <span class="arbitrage-badge">🔥 ARBITRAGE</span>
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.85">
+    <h3>AgentTrustCI: Build-Time Policy, Grounding, and Trajectory Tests for Java LLM Agents</h3>
+    <div class="scores">
+        <span class="score relevance">R:8/10</span>
+        <span class="score importance">I:7/10</span>
+        <span class="score arbitrage">A:8/10</span>
+        <span class="score composite comp-mid">7.5</span>
+    </div>
+    <div class="abstract">Infrastructure security does not establish whether an LLM agent selected an allowed tool, grounded its answer in tool output, or followed a required workflow. AgentTrustCI is a Java/JUnit 5 framework that expresses these application-layer expectations as policy, grounding, and trajectory checks over recorded traces. A deterministic replay implementation supports repeatable build-time tests; a judge interface provides an extension point for optional semantic evaluation. On 55 synthetic cases spanning seven enterprise domains, the full pipeline correctly classifies all 30 injected faults and 25 passing controls, including ten non-trivial controls, and misses none of 12 designated critical cases. Each single-layer configuration correctly classifies 35 cases because the corpus deliberately isolates ten faults per layer. A grounded answer obtained through a disallowed sequence illustrates the additional coverage of trajectory checks. Repeated measurements quantify validator execution separately from process startup and reporting. These results establish coverage of the authored regression suite, not production accuracy. We describe a production-trace validation protocol, optional LLM-judge integration, and maintenance of expectations as workflows evolve. The contribution is a practical pattern for expressing behavioral contracts within an existing Java release pipeline.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06674v1" target="_blank">View on arXiv</a>
+        <span class="arbitrage-badge">🔥 ARBITRAGE</span>
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.85">
+    <h3>Where Search Agents Go Off the Rails: Graph-Grounded Step-Level Verification</h3>
+    <div class="scores">
+        <span class="score relevance">R:8/10</span>
+        <span class="score importance">I:7/10</span>
+        <span class="score arbitrage">A:8/10</span>
+        <span class="score composite comp-mid">7.5</span>
+    </div>
+    <div class="abstract">Search-augmented reasoning systems can reach correct answers while making errors in intermediate steps. Reliable auditing must check whether evidence $D$ covers the question $Q$, reasoning $T$ addresses $Q$, and $T$ is grounded in $D$. We introduce GraphRail, which represents requirements, evidence, and reasoning as structured claims and compares them without a generative judge or gold answer. Across three multi-hop QA benchmarks and three reasoning frameworks, GraphRail improves error recall over generative verifiers while remaining stable under stochastic extraction. Its diagnoses can also guide online reasoning, providing a traceable way to detect and correct intermediate errors.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06662v1" target="_blank">View on arXiv</a>
+        <span class="arbitrage-badge">🔥 ARBITRAGE</span>
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.85">
+    <h3>Task-Efficient Agent Evaluation Using Cached Traces</h3>
+    <div class="scores">
+        <span class="score relevance">R:7/10</span>
+        <span class="score importance">I:7/10</span>
+        <span class="score arbitrage">A:6/10</span>
+        <span class="score composite comp-mid">7.0</span>
+    </div>
+    <div class="abstract">Efficient benchmarking estimates a system's full benchmark performance from a small number of task executions. Standard approaches rely solely on the binary correctness of executions from a collection of already-evaluated reference systems. An agentic system, however, produces a rich trace for each execution that can reveal substantially more about its capabilities. Leveraging this information requires useful trace representations. We propose representing a trace by extracting a structured summary of it with an LLM and embedding the summary with a standard text encoder. These representations preserve correctness- and task-related signal while minimizing the presence of system identity-, model family- and harness-related signals that dominate raw trace embeddings. Given this representation for each task execution from all reference systems, we construct low-dimensional representations of the systems and predict a new system's score from its position among the reference systems. On SWE-bench Verified and Terminal-Bench 2.0, augmenting an item-response model with this geometry-based prediction reduces mean absolute error from 0.13 to 0.08 (Wilcoxon $p < 10^{-4}$) and from 0.14 to 0.12 (Wilcoxon $p < 10^{-3}$), respectively, when provided a single random executed task. Further, given access to the full set of reference systems, our approach dominates baselines for any given number of executed tasks on both benchmarks.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06803v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.85">
+    <h3>LifeVal: Evaluating AI Model Performance on Personalized Agentic Consumer Tasks</h3>
+    <div class="scores">
+        <span class="score relevance">R:7/10</span>
+        <span class="score importance">I:6/10</span>
+        <span class="score arbitrage">A:5/10</span>
+        <span class="score composite comp-mid">6.5</span>
+    </div>
+    <div class="abstract">We introduce LifeVal, a benchmark evaluating AI model performance on personalized agentic consumer tasks. LifeVal covers the most valuable life tasks that a personalized digital superassistant could automate, representing over 1.7 trillion US dollars in annual willingness-to-pay across 148 consumer task categories (e.g., managing finances, moving apartments, searching for a job, finding childcare). To construct our activity distribution, we conducted a new survey of willingness-to-pay for a digital superassistant across a demographically representative sample of over 3,800 consumers, cross-referencing our results against the American Time Use Survey (Bureau of Labor Statistics, 2025) and the Multinational Time Use Study (Fisher et al., 2025). For the most valuable consumer activities, we recruited task creators to create AI evaluation tasks personalized using real ChatGPT conversations and memories, reference files, and personal context. Task creators had to pass our expertise threshold (including personally completing the task multiple times and seeing the results through in their real lives for over a year) and also write a rubric, ensuring that our evaluation measured the best personalized completion for that task. All tasks had to pass at least three rounds of human quality-control before acceptance into our final evaluation sets.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06687v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.85">
+    <h3>ConceptARC at Scale: Studying Conceptual Understanding in Reasoning Models</h3>
+    <div class="scores">
+        <span class="score relevance">R:6/10</span>
+        <span class="score importance">I:6/10</span>
+        <span class="score arbitrage">A:6/10</span>
+        <span class="score composite comp-mid">6.0</span>
+    </div>
+    <div class="abstract">Large reasoning models (LRMs) perform well on challenging benchmarks, yet it remains unclear whether they form generalizable abstractions across conceptually related reasoning tasks. The Abstraction and Reasoning Corpus (ARC) provides a controlled testbed for studying abstraction, requiring solvers to infer transformation rules over two-dimensional grids from a small set of examples. While ARC evaluates rule abstraction within individual tasks, different tasks may share higher-level structure despite requiring different transformations$\unicode{x2014}$for example, several tasks may involve reasoning about objects contained within other objects. Benchmarks such as ConceptARC capture this structure by grouping ARC-style tasks into recurring spatial and semantic concepts, but they often contain only a few manually constructed tasks per concept. We introduce ConceptARC at Scale, a generator for creating thousands of ARC-style tasks targeting a specific concept. Using this generator, we construct ConceptARC-100, a dataset of 1,600 new, manually reviewed tasks, with 100 tasks for each of the 16 concepts defined by ConceptARC$\unicode{x2014}$ten times the size of the original benchmark. We evaluate a range of recent LRMs and models trained from scratch on ConceptARC-100 to characterize which concepts they solve reliably and where they struggle. We further analyze the models' internal representations and find clear semantic structure: task representations cluster according to the operations applied to objects, such as recoloring, removal, or translation, even when realized through substantially different rules and scenarios. Together, our results suggest that models form stable abstractions of transformation operations that generalize across diverse tasks.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06732v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.85">
+    <h3>Trick-or-Treat: Adversarial Evaluation of Multimodal Medical Reasoning with Synthetic Images</h3>
+    <div class="scores">
+        <span class="score relevance">R:7/10</span>
+        <span class="score importance">I:5/10</span>
+        <span class="score arbitrage">A:5/10</span>
+        <span class="score composite comp-mid">6.0</span>
+    </div>
+    <div class="abstract">We used medical image synthesis to create a challenging multimodal evaluation framework that exposes hallucination behaviors in frontier models. Evaluating multimodal reasoning has historically been difficult because existing medical datasets rarely pair different image modalities, such as radiographs and external clinical photographs. To address this gap, we introduce Trick-or-Treat, an adversarial multimodal medical benchmark that pairs real chest radiographs with synthetic clinical photographs to challenge models' cross-modal reasoning. For each of a wide range of conditions, we created two pairs of images, where the pairs share a single chest radiograph but contain different external photographs. In matched pairs, the chest radiograph and photograph both contain findings suggesting the same disease (e.g., varicella pneumonia suggested by lung opacities and crusted skin lesions seen in chickenpox). In mismatched pairs, the photograph depicts an alternative clinical finding that would not lead to the same unifying diagnosis (e.g. replacing crusted skin lesions with ordinary acne). Synthetic photograph generation allows clinical findings to be varied while the person's features and photographic setting stay consistent, reducing confounding. In an investigation of three frontier models, we found that models hallucinated clinically significant photograph findings in 45-57.5% of mismatched pairs, up from 25-37.5% for the same photographs shown alone. When faced with mismatched pairs, models tended to ignore mismatches and instead hallucinated findings that better matched the radiograph (e.g. misreading acne as crusted skin lesions to justify diagnosing chickenpox). Trick-or-Treat both demonstrates concerning error pattern in frontier models' medical reasoning and provides a proof of concept for the use of synthetic images in adversarial multimodal evaluation.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06631v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+    </div>
+    
+    <div class="tier-cold">
+        <details>
+            <summary>📊 Background (<6) — 24 papers with lower scores</summary>
+            
+<div class="paper" style="opacity: 0.65">
+    <h3>Context--Answer Metamodels: Forecasting LLM Activations Before the First Answer Token</h3>
+    <div class="scores">
+        <span class="score relevance">R:6/10</span>
+        <span class="score importance">I:5/10</span>
+        <span class="score arbitrage">A:5/10</span>
+        <span class="score composite comp-low">5.5</span>
+    </div>
+    <div class="abstract">Under stochastic decoding, a single context can elicit many different answers from a language model. Characterizing this variation typically requires many expensive autoregressive rollouts, each revealing only one realization. We ask whether the activations produced while reading the context can directly forecast the model's rollout activations. We train context--answer metamodels that map a context activation sequence to point or distribution forecasts of mean-pooled answer activations. We find that (i) the four metamodel families we study forecast mean-pooled answer activations with high fidelity, and the distribution metamodels also capture rollout variability; (ii) performance improves as the training set grows to 500,000 prompts, and the metamodels generalize zero-shot to out-of-domain datasets; (iii) their forecasts retain behavior-predictive signal; and (iv) context activations from Qwen2.5 predict mean-pooled answer activations from Qwen3.5 and Gemma 4, suggesting that activation forecasts can transfer across models. Together, these results suggest that context activation traces can support scalable forecasts of behaviors in LLM answers before the first answer token is generated.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06837v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Transforming Integer Grids to Spatial Intuition: Perception, Not Planning, Governs ARC-AGI-3</h3>
+    <div class="scores">
+        <span class="score relevance">R:4/10</span>
+        <span class="score importance">I:7/10</span>
+        <span class="score arbitrage">A:5/10</span>
+        <span class="score composite comp-low">5.5</span>
+    </div>
+    <div class="abstract">Sample-efficient fluid intelligence requires agents that rapidly form working models of unfamiliar interactive environments. ARC-AGI-3 tests this across uninstructed visual games scored by Relative Human Action Efficiency, which penalizes exploratory waste quadratically. When frontier models read raw integer grids, serialization destroys spatial topology, and they spend hundreds of actions rediscovering basic boundaries and symmetries. We introduce SARBLOH, an open-weight agent built on the premise that spatial perception, not planning capacity, governs interactive reasoning on ARC-AGI-3. A zero-parameter O(HW) perception engine turns each frame, in 35 ms, into an object inventory with bipartite temporal tracking, a geometric briefing that separates proven invariants from affordance hypotheses, and an annotated canvas. Paired with a code-as-action runtime, the agent writes algorithmic hypotheses instead of low-level moves. Across eight presentations, grounded perception raises the rubric score from 3/28 to 25/28 points while cutting token use by 89.4%. On 23 held-out games, geometric invariants generalize with 100% accuracy, while single-frame affordance guesses fall to 6-50%, so active verification probes remain necessary. On the public set, Run A (briefing off) solved 143 of 183 levels in 8.2 hours at 59.4% single-pass efficiency; Run B (briefing on) reached 63.5%. Within the nine-hour budget on one Kaggle RTX PRO 6000 GPU, SARBLOH scored 16.53 on the hidden Kaggle evaluation, 13.7x the first Milestone winner.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06793v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>ServerBench: How can your coding agents design specialized LLM serving systems?</h3>
+    <div class="scores">
+        <span class="score relevance">R:5/10</span>
+        <span class="score importance">I:5/10</span>
+        <span class="score arbitrage">A:5/10</span>
+        <span class="score composite comp-low">5.0</span>
+    </div>
+    <div class="abstract">Large language model (LLM) coding agents develop software through experimentation, offering an opportunity to design the serving systems supporting their own operation. Effective serving requires coordinating implementation and operating decisions under session dependencies, latency constraints, and correctness requirements. We introduce ServerBench, a benchmark for agentic design of complete, specialized LLM serving systems. Agents experiment against a common objective, dollars per dollar: latency-qualified token value per dollar of GPU cost. Stateful replay preserves session dependencies, and independent verification checks the submitted system. Across 11 coding-agent models and three deployments, Claude Sonnet 5.5 achieves 2.97 dollars per dollar on Gemma E4B, $4.87\times$ the vLLM reference; 22 of 33 runs yield verified systems, and 13 exceed the strongest baseline. Our analysis identifies three findings: high-value designs coordinate capacity improvements with load selection; agents interpret performance feedback through workload-relevant experiments; and reliable delivery requires verification of the execution paths introduced by optimization. Overall, ServerBench supports systematic study of how agents translate service objectives and feedback into effective, verified serving systems for given task specifications.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06841v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>FedFiOT: Fisher-Weighted Optimal Transport for Model Merging in One-Shot and Few-Round Federated Learning</h3>
+    <div class="scores">
+        <span class="score relevance">R:5/10</span>
+        <span class="score importance">I:5/10</span>
+        <span class="score arbitrage">A:4/10</span>
+        <span class="score composite comp-low">5.0</span>
+    </div>
+    <div class="abstract">One-shot and few-round federated learning (FL) reduce communication burden by constructing a global model within one or a few communication rounds, but often achieve lower performance than conventional multi-round FL. Without frequent synchronization, client models may drift apart, causing neurons that learn similar features to occupy different positions across clients. At the same time, local data heterogeneity can cause corresponding parameters to differ in their importance to each client's predictions. Together, these challenges cause direct averaging to combine mismatched neurons and assign equal weight to parameters despite differences in their importance. We propose FedFiOT, a Fisher-weighted optimal transport framework for one-shot and few-round FL that leverages Fisher information to quantify parameter importance and guide neuron alignment and model aggregation. FedFiOT jointly optimizes neuron correspondences and global model parameters through alternating minimization of a shared Fisher-weighted objective. Theoretically, we show that FedFiOT's optimization procedure monotonically decreases the layer-wise merging objective and establish a stationarity bound that quantifies the effects of client heterogeneity and nonuniform Fisher weighting.Experiments across multiple datasets demonstrate consistent improvements over competing baselines in both one-shot and few-round federated learning settings.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06783v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Route First, See Later: Enabling Vision Agents to Reason Scientifically by Separating Routing Policy from Action Spaces</h3>
+    <div class="scores">
+        <span class="score relevance">R:5/10</span>
+        <span class="score importance">I:5/10</span>
+        <span class="score arbitrage">A:5/10</span>
+        <span class="score composite comp-low">5.0</span>
+    </div>
+    <div class="abstract">Scientific image-analysis workflows require agents to select among diverse capabilities like description, detection, counting, and segmentation. Current multi-tool architectures conflate intent interpretation with visual execution, masking whether a failure arises from flawed reasoning (misrouting) or failed perception (invalid tool execution). This lack of auditability renders agents unreliable for high-stakes scientific automation. We introduce ZETA, an extensible architecture that operationalizes the decoupling of routing policy from action execution. ZETA resolves scientific intent before invoking specialized visual tools, treating measurement as a deterministic operation grounded in explicit geometry rather than generative output. This architecture exposes the "black box" of agent decision-making, allowing routing correctness and downstream execution to be evaluated as independent failure modes.   To our knowledge, we provide the first controlled study in scientific vision-agent routing that isolates explicit routing-policy specification while holding the legal action interface fixed. Evaluation on a zero-shot benchmark of 51 scientific-intent queries shows that explicit routing semantics can substantially improve routing accuracy, particularly at semantically adjacent action boundaries, although improvements vary across models. For Qwen 3.8, explicit routing-policy specification improves segmentation routing accuracy from 6.2% to 75.0% and detection routing accuracy from 60.0% to 100%. ZETA's execution traces make routing decisions and downstream artifacts separately observable, providing a basis for distinguishing intent-selection errors from visual execution failures. ZETA establishes the necessary infrastructure to isolate execution errors from interpretive ones, a critical requirement for deploying reliable scientific vision agents.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06760v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Smartphone-Aided VR Exergames for HIIT: Gamifying Fitness with Real-Time Pose Estimation</h3>
+    <div class="scores">
+        <span class="score relevance">R:4/10</span>
+        <span class="score importance">I:4/10</span>
+        <span class="score arbitrage">A:5/10</span>
+        <span class="score composite comp-low">4.0</span>
+    </div>
+    <div class="abstract">This paper introduces an innovative virtual reality (VR) exergame system designed to gamify High-Intensity Interval Training (HIIT) workouts through 11 predefined combo moves, including squat-punch combinations, bilateral arm strikes, and diagonal stretch combos. Unlike conventional tracking methods that often rely on wearable motion capture suits or limited headset-based sensors, our system uses a standard smartphone camera placed on a tripod to capture full-body movement. This approach offers a cost-effective and scalable alternative, particularly well-suited to the fast, dynamic motions typical of HIIT routines.   The smartphone footage is processed in real time using a pose estimation algorithm, with extracted biomechanical data analyzed by a backend server built on the Model Context Protocol (MCP), Anthropic's open standard for connecting AI models to structured data sources and tools, and a GPT-4o large language model. The system generates personalized assessments of form accuracy, movement efficiency, exercise intensity, and potential injury risks, tailored specifically to high-impact, time-sensitive exercises.   A within-subject study involving 20 participants (ages 18-25) compared experiences in VR and Non-VR HIIT sessions. Results indicated significantly higher enjoyment (Mean = 3.5 vs 2.8, p = 0.02), improved immersion/focus (Mean = 3.2 vs 2.8, p = 0.03), and increased likelihood to recommend (Mean = 3.2 vs 2.7, p = 0.04) under the VR condition. Confidence to continue did not differ significantly between conditions (p = 0.15), while perceived intensity remained comparable. The MCP system showed strong agreement with expert evaluation (87.5%, N = 10 sessions, one certified trainer), supporting its reliability as a feedback tool.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06734v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Interactive World Simulation with Cosmos for Physical AI</h3>
+    <div class="scores">
+        <span class="score relevance">R:3/10</span>
+        <span class="score importance">I:5/10</span>
+        <span class="score arbitrage">A:2/10</span>
+        <span class="score composite comp-low">4.0</span>
+    </div>
+    <div class="abstract">We present a shared framework that adapts Cosmos world foundation models for real-time interactive world simulation in Physical AI. By streaming visual observations in response to actions and scene controls, the framework enables users and embodied agents to interact with evolving virtual environments. It supports both predicting the visual consequences of actions and generating observations from physical state maintained by an external simulator. We demonstrate this approach across camera navigation and robot manipulation, controllable video transfer, and multi-view autonomous vehicle (AV) simulation. These examples provide a shared foundation for developing interactive virtual environments for Physical AI training and evaluation. Our code and model checkpoints are available at https://github.com/nvidia/cosmos and https://huggingface.co/collections/nvidia/cosmos3-examples. The project website is available at https://research.nvidia.com/labs/cosmos-lab/cosmos-simulation.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06627v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>CompressionBench: How can your coding agents compress LLMs?</h3>
+    <div class="scores">
+        <span class="score relevance">R:3/10</span>
+        <span class="score importance">I:4/10</span>
+        <span class="score arbitrage">A:3/10</span>
+        <span class="score composite comp-low">3.5</span>
+    </div>
+    <div class="abstract">Recursive self-improvement requires AI systems to improve the models and infrastructure used by subsequent systems. LLM compression offers a concrete efficiency objective: retain a pretrained model's behavior within a smaller model storage budget. We study whether coding agents can carry out this step autonomously. We formulate compression as a terminal task in which an agent receives a source checkpoint, storage limit, inference environment, and time budget, then constructs compressed weights and executable inference code. The agent controls its algorithm and experiments; perplexity feedback guides search, and independent verification checks the final model. Across six agents and six model--size settings, 29 of 36 submissions pass verification. Selecting the lowest-perplexity agent design per task yields an average 3.4% perplexity increase over BF16 and 77.33% downstream accuracy, compared with 79.56% for BF16. Recorded experiments reveal how agents achieve these outcomes and where improvement breaks down. Agents lower PPL in 21 of 24 revisions at nearly fixed storage; complete-model feedback reverses 17 of 79 prior local rankings; and generation and inference tests expose failures that likelihood alone misses. The results identify representation design, experimental judgment, and capability validation as central to agent-driven model compression, a measurable component of efficiency-oriented self-improvement.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06858v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>TailSteer: Trajectory-Tail Steering for Drift-Resistant Multi-turn Image Editing</h3>
+    <div class="scores">
+        <span class="score relevance">R:2/10</span>
+        <span class="score importance">I:5/10</span>
+        <span class="score arbitrage">A:2/10</span>
+        <span class="score composite comp-low">3.5</span>
+    </div>
+    <div class="abstract">Strong single-turn editing performance does not guarantee reliable multi-turn interaction: as edited outputs are repeatedly reused, small unintended changes can accumulate into severe visual drift. This long-term drift is often mitigated through training on multi-turn data or cross-turn rollouts, potentially altering pretrained priors, or through specialized inference-time mechanisms that are difficult to scale to foundation models. We introduce TailSteer, a final-stage training framework that improves multi-turn robustness while retaining the generative and editing capabilities acquired through earlier training. TailSteer follows a simple principle: keep early denoising dynamics close to those of the base model and concentrate preservation corrections near the trajectory tail, where fine-grained deviations can be suppressed. These corrections are learned from the editor's own on-policy denoising rollouts, using unchanged source content as a preservation reference without requiring curated ground-truth editing pairs. Experiments across the FLUX, SenseNova, and Qwen families show that TailSteer substantially reduces cumulative drift over 15-20 editing turns while largely preserving base-model performance on extensive text-to-image and single-image editing benchmarks. These results demonstrate that long-horizon editing robustness can be unlocked in foundation models after TailSteer, rather than by relearning their existing capabilities.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06741v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Dexterous Robotic Hands in the Foundation-Model Era: A Full-Stack Survey of Hardware, Data, Cross-Embodiment Transfer, Learning, and Evaluation</h3>
+    <div class="scores">
+        <span class="score relevance">R:2/10</span>
+        <span class="score importance">I:5/10</span>
+        <span class="score arbitrage">A:2/10</span>
+        <span class="score composite comp-low">3.5</span>
+    </div>
+    <div class="abstract">Dexterous robotic hands are increasingly coupled to large-scale human data and foundation models, yet progress in hardware, representation learning and evaluation is often assessed separately. This survey reviews work from January 2024 to early November 2026, with earlier studies included to establish technical lineages. We organize the literature into five interdependent layers: hardware; data collection and curation; cross-embodiment transfer; learning and foundation models; and evaluation and applications. Human hand-object understanding and tactile sensing provide two cross-cutting perspectives. A system-level architecture, comparative tables and five case analyses connect design choices across these layers. We distinguish within-study experimental comparisons from heterogeneous corpus statistics, vendor specifications and company-reported results. Three conclusions emerge. First, the value of human data depends on kinematic, visual and contact alignment, not recording volume alone. Second, shared action representations and foundation policies do not remove embodiment-specific constraints on force, latency and contact. Third, task completion is insufficient to establish physical correctness or deployment readiness. Evidence remains limited for zero-shot transfer of contact-rich skills between morphologically different hands, long-duration reliability, and cross-sensor tactile generalization. We identify eleven open problems and propose reporting interfaces and controlled comparisons that can make full-stack progress more measurable. The review is a structured narrative synthesis rather than a pooled performance ranking or an exhaustive systematic review.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06724v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Don't Replace, Complement: A Detector-Agnostic Subspace Signal for Near-OOD Detection</h3>
+    <div class="scores">
+        <span class="score relevance">R:3/10</span>
+        <span class="score importance">I:4/10</span>
+        <span class="score arbitrage">A:2/10</span>
+        <span class="score composite comp-low">3.5</span>
+    </div>
+    <div class="abstract">Post-hoc out-of-distribution (OOD) detection is mature on far-OOD yet remains weak on near-OOD. These two settings differ in their use of class-characteristic feature directions: far-OOD inputs largely fail to activate those of their predicted class, whereas near-OOD inputs activate them much as in-distribution samples do. Because the axis separating far-OOD leaves near-OOD almost indistinguishable from ID, a score optimized for one setting is misaligned with the other; where a detector already saturates far-OOD, added near-OOD sensitivity is bought partly against it. This divergence motivates a targeted near-OOD signal designed to complement existing scores. We propose PLUS (Per-class Low-dimensional sUbspace Signal). For each class, PLUS selects the $m$ most class-active neurons from a sparse autoencoder, orthonormalizes the corresponding decoder directions to form a low-dimensional subspace, and scores an input by its per-class whitened squared Mahalanobis distance $z$ within the subspace of its predicted class. Designed as a dedicated complement rather than a standalone detector, the signal $z$ is fused additively with any calibrated base score at a single, fixed weight. This weight is a single global constant: no value is adjusted per backbone, per OOD dataset, or per deployment, and all calibration statistics are estimated from ID validation data alone. When applied to 18 existing detectors spanning diverse method families, $z$ consistently improves near-OOD AUROC in all 126 detector--backbone combinations. Far-OOD performance is broadly maintained or improved, with only marginal declines where the base score is near-optimal, making $z$ a robust, detector-agnostic complement across backbones.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06688v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Beyond the principle-practice gap: Responsible AI as situated epistemic and ethical practice</h3>
+    <div class="scores">
+        <span class="score relevance">R:3/10</span>
+        <span class="score importance">I:3/10</span>
+        <span class="score arbitrage">A:3/10</span>
+        <span class="score composite comp-low">3.0</span>
+    </div>
+    <div class="abstract">Responsible AI scholarship has found that ethical principles are frequently not reflected in AI design and development. Conceptualised as a `gap' between principle and practice, this is framed as a problem of implementation, awareness or compliance, and by implication, a deficit of systems or individual behaviour. This paper sets out an alternative explanation. Drawing on fourteen semi-structured interviews with actors designing and governing AI-enabled anti-trafficking systems across law enforcement, commercial, research, and survivor-support contexts, it argues that such apparent gaps emerge from the varied and complex institutional and professional conditions through which actors come to recognise some issues, but not others, as ethical problems requiring action. We show that epistemic choices are intertwined with ethical judgements, and trace four interconnected moments---perception, judgement, situated action and socio-technical materialisation---through which concerns become intelligible, are weighed and acted upon, and are embedded in technical artefacts and governance arrangements. Actors often hold genuine ethical commitments, but these commitments are shaped by institutional logics and professional moral economies: some concerns are materialised, while others are narrowed, deferred or left unrealised. We show that ethical agency is exercised within and between competing constraints of profession, role, prior experience, and institutional settings. The paper argues that responsible AI governance requires purposeful and well-developed epistemic infrastructures that can cut across these constraints to establish institutional conditions through which the knowledge of affected communities and potential harms becomes receivable and actionable in design.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06709v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>ALTO: African and Levantine Tech-Facilitated Gender-Based Violence Corpus</h3>
+    <div class="scores">
+        <span class="score relevance">R:2/10</span>
+        <span class="score importance">I:4/10</span>
+        <span class="score arbitrage">A:2/10</span>
+        <span class="score composite comp-low">3.0</span>
+    </div>
+    <div class="abstract">Tech-facilitated gender based violence (TFGBV) is a pervasive online harm affecting women and gender minority groups through its many direct and covert forms. Current models and annotated datasets for gendered harm detection are dominated by data from, and models trained in, Global North languages. In collaboration with civil society organizations (CSOs) from Jordan, Francophone West Africa, and Kenya, we developed a community-led approach to crowdsource culturally and linguistically relevant instances of TFGBV in Levantine Arabic, African French, and Swahili. We annotated the crowdsourced data using active learning to develop a small but performant dataset (N=3022) called ALTO to improve TFGBV detection in the three languages. Through benchmarking and fine-tuning experiments, we show that existing harmful content detection models show poor TFGBV recall within ALTO and improve with fine-tuning. We found that models often miss covert harms across all languages, while error rates are markedly higher in Swahili. We report the experimental results and release the annotation taxonomy, dataset, and trained models.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06706v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>From Reconstruction to Imputation: Test-Time Optimization for Missing Time-Series Channels</h3>
+    <div class="scores">
+        <span class="score relevance">R:2/10</span>
+        <span class="score importance">I:4/10</span>
+        <span class="score arbitrage">A:2/10</span>
+        <span class="score composite comp-low">3.0</span>
+    </div>
+    <div class="abstract">Complete sensor-channel failures create a difficult form of time-series missingness: local interpolation is unavailable, and deploying a separately trained imputer for every failure pattern may be impractical. We ask whether a sequence reconstructor trained without artificial mask augmentation and then frozen can be converted into an imputer at inference time. Our method treats the missing entries of each test window as optimization variables, clamps all observations, and backpropagates through the frozen model to minimize reconstruction error only on observed coordinates. The resulting observed-self-consistency objective requires neither artificial mask augmentation nor full-channel dropout during reconstructor training. We characterize when this refinement is informative through the cross-Jacobian from missing inputs to observed residuals, and use an optional temporal-smoothness prior when that coupling is weak. Across five real-world datasets with exactly one channel synthetically masked per test window and four reconstruction architectures, no-prior test-time refinement reduces MAE relative to one-pass reconstruction in 19 of 20 dataset-backbone combinations. Compared with mask-aware imputers trained under either standard structured masks or matched full-channel dropout, the best refined reconstructor achieves the lowest MAE on two datasets and trails the strongest baseline on three. These gains require substantially more inference time and are sensitive to cross-channel coupling. Our results establish test-time self-consistency as a conditional inference-time adapter for frozen reconstruction models that complements mask-aware imputation without retraining the reconstructor.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06612v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Dull, Dirty, Dangerous? Working Conditions and the Limits of Occupational AI Exposure</h3>
+    <div class="scores">
+        <span class="score relevance">R:3/10</span>
+        <span class="score importance">I:2/10</span>
+        <span class="score arbitrage">A:2/10</span>
+        <span class="score composite comp-low">2.5</span>
+    </div>
+    <div class="abstract">Automation is often justified as relief from dull, dirty, and dangerous work. I examine how these conditions relate to occupational AI exposure using 21 O*NET items across 754 US occupations. Higher exposure is associated with lower condition scores under a large language model (LLM) measure and AI Occupational Exposure (AIOE), with equal occupation weights and employment weights. Adjustment for physical demands, required education, training and experience, and wages reduces the composite association. The adjusted confidence intervals include zero for LLM exposure and remain below zero for AIOE. Separating repetition from restricted discretion also changes what the combined Dull score conveys. These comparisons show how item groupings and occupational characteristics shape the interpretation of exposure estimates. Occupational profiles offer a starting point for selecting contrasting research settings. Establishing desired automation or realized relief requires evidence about workers' preferences and specific interventions.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06888v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Message-passing graph persistence</h3>
+    <div class="scores">
+        <span class="score relevance">R:1/10</span>
+        <span class="score importance">I:4/10</span>
+        <span class="score arbitrage">A:1/10</span>
+        <span class="score composite comp-low">2.5</span>
+    </div>
+    <div class="abstract">Message-passing graph neural networks (GNNs) are limited in expressive power by the one-dimensional Weisfeiler-Leman test. Persistent homology (PH) provides topological descriptors that can complement GNN representations, but existing approaches typically compute persistence separately from the representation learning process. In this paper, we introduce Message-Passing Graph Persistence (MGP), a family of topological descriptors that incorporates message passing into graph filtrations. At each filtration step, node embeddings are updated using the current subgraph and associated with persistence events. These embeddings also determine the representatives of connected components during persistence computation. We prove that MGP is invariant under graph isomorphism and that it is strictly more expressive than the PH-based descriptors it extends. We evaluate MGP on an expressivity benchmark and on several graph classification and regression datasets. Experiments show that MGP outperforms other PH-based descriptors on most of these datasets.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06801v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Perceptive Humanoid Motion from Simulation</h3>
+    <div class="scores">
+        <span class="score relevance">R:1/10</span>
+        <span class="score importance">I:3/10</span>
+        <span class="score arbitrage">A:1/10</span>
+        <span class="score composite comp-low">2.0</span>
+    </div>
+    <div class="abstract">Humanoid robots have the potential to automate a wide range of physical tasks. Progress toward generalist humanoid autonomy, however, remains constrained by a data bottleneck: mapping pixels and free-form language to low-level joint commands requires paired supervision, and no corpus of such data exists at sufficiently large scale. Some approaches rely on human teleoperation and wearable capture devices, which require at least an hour of human time to produce an hour of data. We present HALO, a humanoid autonomy system powered by a pipeline that synthesizes vision-language-motion data across a thousand procedurally generated homes. The corpus scales with compute rather than human labor. HALO acquires a repertoire of physical skills, including sitting on chairs, navigating to named objects, stepping sideways through half-open doors, crouching and crawling beneath tables, and pushing boxes. It orchestrates these skills to solve composite, long-horizon tasks. Without ever seeing a real home during training, HALO transfers zero-shot to the physical world, achieving a 91% success rate across 360 trials in six unmapped real-world environments. See https://apple-aiml-research.github.io/ml-halo/ for code and videos.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06908v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Occlusion for Free: Detecting Occlusion from the Disagreement Between Two Monocular Distance Cues</h3>
+    <div class="scores">
+        <span class="score relevance">R:1/10</span>
+        <span class="score importance">I:3/10</span>
+        <span class="score arbitrage">A:1/10</span>
+        <span class="score composite comp-low">2.0</span>
+    </div>
+    <div class="abstract">Knowing that a pedestrian is occluded is useful to a robot even when the detector cannot recover the hidden pixels, but occlusion estimators are normally trained on occlusion annotations that deployment settings rarely have. We show that occlusion can be read off two distance estimates a camera-only pipeline already computes. Apparent height is largely unchanged by occlusion, because the detected box still spans the whole person; monocular metric depth is pulled toward the occluder, because the nearest surface inside the box is what a depth map reports. Only their ordering matters, so no focal length, stature, or depth scale is needed, provided the depth model's error is close to a pure gain, a condition that can be checked without labels. The score detects heavy occlusion on KITTI with AUC 0.909 (0.888 over all annotated pedestrians, including those the detector misses), requires no training and no occlusion labels, and is not a proxy for range: within fixed distance bands it holds AUC 0.894-0.925 while true distance alone sits near chance. On synthetic CARLA scenes with measured visibility it reaches 0.819, against 0.644 for distance alone. We arrived here after measuring three standard architectural responses to occlusion, depth fusion, occlusion-simulating augmentation, and attention, none of which improved detection outside its training distribution in the configurations we tested, and after finding that a detector trained on German roads loses half its accuracy on self-annotated street scenes in Lagos, Nigeria. Signals that need no local annotation are worth more in settings that benchmarks do not represent.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06899v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>CounterFactual Retrieval for Evidence-Aware Individual Animal Identification</h3>
+    <div class="scores">
+        <span class="score relevance">R:1/10</span>
+        <span class="score importance">I:3/10</span>
+        <span class="score arbitrage">A:2/10</span>
+        <span class="score composite comp-low">2.0</span>
+    </div>
+    <div class="abstract">Automated identification of individual animals is moving from small curated studies toward shared benchmarks and reusable foundation models. This progress is useful, but current evaluation leaves the evidence behind a match unresolved, i.e., high retrieval accuracy does not show whether a model used animal features or identity-correlated shortcuts. We address this with Counterfactual Foreground Retrieval (CFR), an evidence-aware evaluation protocol. CFR evaluates the same query-gallery task under different views: full image, foreground-only, and shortcut-only. The full-image measures standard retrieval performance; the foreground-only measures foreground-supported retrieval; and shortcut-only view measure how much identity signal is recoverable from background, or silhouette. This turns a retrieval score into an evidence profile: how well the model performs on the original images, how much of that performance remains when only the animal is visible, and how much identity signal remains recoverable when the animal is removed. We release around 0.5M masks for 34 datasets and code for mask generation and CFR evaluation.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06864v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Human Motion Prediction via Continual Prior Compensation</h3>
+    <div class="scores">
+        <span class="score relevance">R:2/10</span>
+        <span class="score importance">I:2/10</span>
+        <span class="score arbitrage">A:1/10</span>
+        <span class="score composite comp-low">2.0</span>
+    </div>
+    <div class="abstract">Human Motion Prediction (HMP) aims to predict future human poses at different moments according to observed past motion sequences. Previous approaches mainly treated the prediction of different temporal moments as a single prediction task and learned the predictions of varied moments simultaneously, which would encounter a main limitation: the learning of short-term predictions (referring to ``near-future'' prediction) could be hindered by the predictions of long-term (referring to ``far-future'' prediction) motions. In this paper, we develop a novel temporal continual learning framework called Continual Prior Compensation (CPC) to progressively train HMP models, in which we divide the prediction task of motions corresponding to varied temporal moments into several subtasks and train the model in a multi-stage manner. To mitigate the prior information forgetting in the progressive training, we further introduce a learnable random variable Prior Compensation Factor (PCF) to explicitly measure the prior knowledge loss. We theoretically show that the PCF can be efficiently learned together with the model parameters by minimizing a reasonable upper bound of the objective function. The proposed CPC is further enhanced to estimate the prior information loss for each subtask and a new framework called Continual Prior Compensation++ (CPC++) with Fine-Grained Prior Compensation Factor (FGPCF) is finally developed. Our CPC and CPC++ frameworks are quite flexible and can be easily integrated with different HMP backbone models and adapted to various datasets and applications. Extensive experiments on three HMP benchmark datasets using multiple SOTA HMP backbones (PGBIG, siMLPe, MotionMixer, and LTD) demonstrate the effectiveness and flexibility of our frameworks.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06637v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>BEAKER: An Expert-Curated Benchmark for Embodied Brains in Self-Driving Chemical Laboratories</h3>
+    <div class="scores">
+        <span class="score relevance">R:1/10</span>
+        <span class="score importance">I:2/10</span>
+        <span class="score arbitrage">A:1/10</span>
+        <span class="score composite comp-low">1.5</span>
+    </div>
+    <div class="abstract">Self-Driving Chemical Laboratories (SDCLs) are moving chemical experimentation toward embodied automation, where machines must perceive laboratory scenes, reason about experimental states, and act under physical, procedural, and safety constraints. Although Multimodal Large Language Models (MLLMs) are increasingly considered as embodied brains for such systems, existing laboratory benchmarks mainly focus on safety, anomaly detection, or general scientific understanding, leaving their execution-oriented embodied capabilities underexplored. To fill this gap, we introduce BEAKER, a Benchmark for evaluating Embodied Actionability, Knowledge, Experimentation, and Reasoning in SDCLs. BEAKER contains 1,000 expert-curated question-answer samples across 11 image and video task types, covering key judgments required for chemical laboratory execution, including affordance grounding, trajectory planning, equipment, state, and safety recognition, apparatus setup, operation and step reasoning, and temporal procedure reasoning. All questions and annotations are manually created and reviewed by chemistry and embodied Artificial Intelligence (AI) experts, without AI-assisted generation or annotation. We evaluate 28 general-purpose, science-oriented, chemistry-specialized, and embodied MLLMs in an offline, single-turn setting. Results show that current models can follow coarse experimental procedures in videos, but still struggle to ground actions into operable regions and feasible trajectories, to recognize fine-grained laboratory apparatus, states, and safety norms, and to order steps in mid-length procedures. BEAKER thus reveals a clear gap between coarse procedural understanding and the precise, action-grounded perception required for laboratory execution, providing a diagnostic benchmark for future MLLMs in SDCLs.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06911v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>FrontierPhysics: Evaluating Agents for End-to-End Physics Research</h3>
+    <div class="scores">
+        <span class="score relevance">R:1/10</span>
+        <span class="score importance">I:2/10</span>
+        <span class="score arbitrage">A:1/10</span>
+        <span class="score composite comp-low">1.5</span>
+    </div>
+    <div class="abstract">AI agents are playing an increasingly important role in physics research. However, existing physics benchmarks only evaluate fixed questions, isolated sub-tasks, or paper reproduction with given solutions, and rarely check research quality alongside correctness. We introduce FrontierPhysics, an end-to-end benchmark with 56 tasks made by 42 physicists based on their own research, covering nine domains across theoretical, computational, and experimental physics. Each task requires agents to review the literature, develop a research plan, conduct research and experiments, and produce structured outputs and scientific manuscripts. Combining deterministic verifiers with expert-authored rubrics, FrontierPhysics evaluates whether agents' research is correct and publishable. Across 22 models in 26 configurations, no configuration passes more than 46 of its 168 rollouts. Manual review of agent trajectories shows that frontier agents' main weaknesses are insufficiently rigorous reasoning and limited expert intuition, rather than gaps in physics knowledge or execution errors.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06910v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Learning to Decode Linear Codes with Generalized Belief Propagation Network</h3>
+    <div class="scores">
+        <span class="score relevance">R:1/10</span>
+        <span class="score importance">I:2/10</span>
+        <span class="score arbitrage">A:1/10</span>
+        <span class="score composite comp-low">1.5</span>
+    </div>
+    <div class="abstract">Error correcting codes are a fundamental component of communication systems, enabling reliable data transmission over noisy channels. Recently, neural decoders have demonstrated notable performance gains over classical iterative algorithms. In this paper, we propose a Generalized Belief Propagation Network (GBPNet) that preserves message-passing symmetry while enhancing the decoder's learning capability. The architecture uses cascaded variable-node updates and learned element-wise message scaling while retaining the Tanner graph structure. We also introduce two training strategies, progressive training and high-SNR training, that improve decoding accuracy. Experimental results on several linear codes show that GBPNet achieves lower bit error rates than conventional belief propagation and the evaluated state-of-the-art neural decoders.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06874v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+
+<div class="paper" style="opacity: 0.65">
+    <h3>Enabling AWS Cloud FPGA Development Using High-Level Vitis HLS</h3>
+    <div class="scores">
+        <span class="score relevance">R:1/10</span>
+        <span class="score importance">I:2/10</span>
+        <span class="score arbitrage">A:1/10</span>
+        <span class="score composite comp-low">1.5</span>
+    </div>
+    <div class="abstract">We present a toolchain for development of ML models on AWS EC2 F2 cloud FPGA infrastructure from high-level language, implementing a complete Vitis HLS to HDK bridge to AFI workflow that has been absent from the academic literature despite eight years of AWS FPGA availability. We introduce a four-level methodology (FP32 PyTorch, bit-accurate quantized Python, HLS C-simulation, physical FPGA) to aid in localizing errors, including FPGA-specific circuit errors. Together these tools allow coding agents to effectively implement FPGA designs from user directions, testing and debugging as needed. We document the deployment workflow, timing closure strategies, and practical HLS engineering decisions that proved crucial. We validate using TinyBERT fine-tuned for address Named Entity Recognition, implementing the embedding layer and the first of four encoder layers on the FPGA hardware. Our implementation streams weights from host DRAM, yielding poor performance compared to CPU/GPU implementations; we discuss forward paths.</div>
+    <div class="meta">
+        <a href="http://arxiv.org/abs/2611.06829v1" target="_blank">View on arXiv</a>
+        
+    </div>
+</div>
+
+        </details>
+    </div>
+</div>
+
+    </body>
+    </html>
+    
